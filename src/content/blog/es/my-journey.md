@@ -2,7 +2,7 @@
 title: 'My Journey into Data Engineering'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 07 2026'
-heroImage: '../../assets/my-journey.png'
+heroImage: '../../../assets/my-journey.png'
 ---
 
 Big Data, Data-driven, Data Science, Machine Learning son algunos de los términos que han cambiado las reglas de juego en la sociedad como la conocemos.

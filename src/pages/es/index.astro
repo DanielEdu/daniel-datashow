@@ -1,0 +1,226 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import '../../styles/home.css';
+import { SITE_DESCRIPTION_ES, SITE_TITLE } from '../../consts';
+import astronomerBadge from '../../assets/credentials/astronomer.png';
+import awsCloudPractitionerBadge from '../../assets/credentials/aws-certified-cloud-practitioner.png';
+import databricksAssociateBadge from '../../assets/credentials/databricks-associate.png';
+import databricksFundamentalsBadge from '../../assets/credentials/databricks-fundamentals.png';
+import databricksProfessionalBadge from '../../assets/credentials/databricks-professional.png';
+import dbtBadge from '../../assets/credentials/dbt.png';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION_ES} />
+	</head>
+	<body class="home-page">
+		<Header />
+		<main>
+			<section class="hero-section">
+				<div class="hero-content">
+					<div class="hero-left">
+						<p class="hero-kicker">Data Mentor - Advocate</p>
+						<h1 class="hero-title">Daniel DataShow</h1>
+						<p class="hero-intro">
+							Un espacio personal donde comparto mi recorrido en data engineering, aprendizajes y recursos para
+							la comunidad Data Wizard.
+						</p>
+						<div class="hero-actions">
+							<a class="btn-primary" href="/es/blog/my-journey/">Sobre mi</a>
+							<a class="btn-secondary" href="/es/blog">Ver recursos</a>
+						</div>
+						<div class="hero-stats">
+							<div>
+								<span class="stat-value">120+</span>
+								<span class="stat-label">guias y playbooks</span>
+							</div>
+							<div>
+								<span class="stat-value">8h</span>
+								<span class="stat-label">mentoring semanal</span>
+							</div>
+						</div>
+					</div>
+					<div class="hero-right">
+						<img src="/images/yo.jpeg" alt="Daniel Eduardo" class="hero-avatar" loading="lazy" />
+						<div class="hero-socials">
+							<a class="hero-social" href="https://www.youtube.com/@danielportugalr" target="_blank" rel="noreferrer">
+								YouTube
+							</a>
+							<a class="hero-social" href="https://www.linkedin.com/in/danielportugalr/" target="_blank" rel="noreferrer">
+								LinkedIn
+							</a>
+							<a class="hero-social" href="https://www.tiktok.com/@danielportugalr" target="_blank" rel="noreferrer">
+								TikTok
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="about-section">
+				<div class="section-inner">
+					<h2>Sobre mí</h2>
+					<p>
+						Soy Daniel Eduardo, Data Engineer y fundador de las comunidades Data Wizard y Data Engineering Latam.
+						Mi recorrido está impulsado por la pasión de crear espacios donde las personas se conecten a través de la tecnología.
+						Bajo mi marca, Daniel Datashow, creo contenido para desmitificar el mundo de los datos y transformar arquitecturas en
+						insights accionables.
+					</p>
+					<p>
+						Mi misión va más allá de los pipelines; estoy comprometido con mentorizar a quienes empiezan su camino. Como a mí me guiaron
+						mentores, creo en compartir conocimiento y devolver a la comunidad. Busco empoderar a la próxima generación de profesionales
+						de datos para que nadie recorra este camino en soledad.
+					</p>
+				</div>
+			</section>
+
+			<section class="projects-section">
+				<div class="section-inner">
+					<h2>Top contenido</h2>
+					<p class="section-lead">Lo más destacado de la comunidad Daniel DataShow y Data Wizard.</p>
+					<div class="project-grid">
+						<article class="project-card">
+							<h3>Daniel DataShow 👨🏻‍💻</h3>
+							<p>Data engineering, aprendizajes y recursos prácticos.</p>
+							<div class="project-embed">
+								<iframe
+									src="https://www.youtube.com/embed/rZmNLUQYBic"
+									title="Daniel DataShow en YouTube"
+									loading="lazy"
+									referrerpolicy="no-referrer-when-downgrade"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									allowfullscreen
+								></iframe>
+							</div>
+							<a class="pill" href="https://www.youtube.com/@danielportugalr" target="_blank" rel="noreferrer">YouTube</a>
+						</article>
+						<article class="project-card">
+							<h3>Podcast en Spotify 🎙️</h3>
+							<p>Podcast sobre arquitectura Lakehouse y AI en datos.</p>
+							<div class="project-embed">
+								<iframe
+									src="https://open.spotify.com/embed/episode/4YXzuQGihWck7V71mGinkl?utm_source=generator"
+									title="Podcast en Spotify"
+									loading="lazy"
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+								></iframe>
+							</div>
+							<a
+								class="pill"
+								href="https://open.spotify.com/episode/4YXzuQGihWck7V71mGinkl?si=O7gqqiM8S-aL2wyRRrBY-A"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Escuchar
+							</a>
+						</article>
+						<article class="project-card">
+							<h3>Data Wizard 🧙🏼‍♂️</h3>
+							<p>Comunidad y contenidos para crecer en el mundo de los datos.</p>
+							<div class="project-embed">
+								<iframe
+									src="https://www.youtube.com/embed/QKOg5JSRSlM"
+									title="Data Wizard en YouTube"
+									loading="lazy"
+									referrerpolicy="no-referrer-when-downgrade"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									allowfullscreen
+								></iframe>
+							</div>
+							<a class="pill" href="https://www.youtube.com/@DataWizardClub" target="_blank" rel="noreferrer">
+								YouTube
+							</a>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="skills-section">
+				<div class="section-inner">
+					<h2>Proficiencia</h2>
+					<div class="skills-grid">
+						<div class="skill-card">
+							<div class="skill-header">
+								<span>Databricks</span>
+								<span class="skill-value">65%</span>
+							</div>
+							<div class="skill-bar"><span style="--skill: 65;"></span></div>
+						</div>
+						<div class="skill-card">
+							<div class="skill-header">
+								<span>Spark</span>
+								<span class="skill-value">70%</span>
+							</div>
+							<div class="skill-bar"><span style="--skill: 70;"></span></div>
+						</div>
+						<div class="skill-card">
+							<div class="skill-header">
+								<span>DBT</span>
+								<span class="skill-value">75%</span>
+							</div>
+							<div class="skill-bar"><span style="--skill: 75;"></span></div>
+						</div>
+						<div class="skill-card">
+							<div class="skill-header">
+								<span>Airflow</span>
+								<span class="skill-value">75%</span>
+							</div>
+							<div class="skill-bar"><span style="--skill: 75;"></span></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="credentials-section">
+				<div class="section-inner">
+					<h2>Credenciales</h2>
+					<p class="section-lead">Badges y certificaciones recientes.</p>
+					<div class="credentials-grid">
+						
+						<img
+							class="credential-badge"
+							src={databricksProfessionalBadge.src}
+							alt="Badge Databricks Professional"
+							loading="lazy"
+						/>
+						<img
+							class="credential-badge"
+							src={databricksAssociateBadge.src}
+							alt="Badge Databricks Associate"
+							loading="lazy"
+						/>
+						<img
+							class="credential-badge"
+							src={databricksFundamentalsBadge.src}
+							alt="Badge Databricks Fundamentals"
+							loading="lazy"
+						/>
+						<img 
+							class="credential-badge" 
+							src={dbtBadge.src} 
+							alt="Badge dbt" 
+							loading="lazy" 
+						/>
+						<img 
+							class="credential-badge" 
+							src={astronomerBadge.src} 
+							alt="Badge Astronomer" 
+							loading="lazy" 
+						/>
+						<img
+							class="credential-badge"
+							src={awsCloudPractitionerBadge.src}
+							alt="Badge AWS Certified Cloud Practitioner"
+							loading="lazy"
+						/>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

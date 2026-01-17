@@ -1,10 +1,14 @@
 ---
 const today = new Date();
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+const copy = isEn
+	? `All rights reserved.`
+	: `Todos los derechos reservados.`;
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Daniel Eduardo Portugal Revilla. All rights reserved.
-
+	&copy; {today.getFullYear()} Daniel Eduardo Portugal Revilla. {copy}
 </footer>
 <style>
 	footer {
