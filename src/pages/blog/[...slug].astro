@@ -11,5 +11,17 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-return Astro.redirect(`/es/blog/${slug}`);
+const target = `/es/blog/${slug}`;
 ---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="refresh" content={`0; url=${target}`} />
+		<link rel="canonical" href={target} />
+	</head>
+	<body>
+		<p>Redirecting to <a href={target}>{target}</a></p>
+	</body>
+</html>
