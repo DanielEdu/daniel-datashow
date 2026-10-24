@@ -182,6 +182,24 @@ const labels =
 		line-height: 1;
 	}
 	@media (max-width: 720px) {
+		header {
+			padding: 0 0.9em;
+		}
+		h2 {
+			font-size: 0.95em;
+			white-space: nowrap;
+		}
+		.internal-links {
+			display: flex;
+		}
+		.internal-links :global(a) {
+			padding: 1em 0.35em;
+			font-size: 0.82rem;
+		}
+		.internal-links :global(a:first-child),
+		.lang-label {
+			display: none;
+		}
 		.social-links {
 			display: none;
 		}
