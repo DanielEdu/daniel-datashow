@@ -3,8 +3,6 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import '../../styles/home.css';
-import PresentationCard from '../../components/PresentationCard.astro';
-import { ordenadas } from '../../data/presentaciones';
 import { SITE_DESCRIPTION_EN, SITE_TITLE } from '../../consts';
 import astronomerBadge from '../../assets/credentials/astronomer.png';
 import awsCloudPractitionerBadge from '../../assets/credentials/aws-certified-cloud-practitioner.png';
@@ -142,28 +140,6 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 				</div>
 			</section>
 
-			<section class="skills-section">
-				<div class="section-inner">
-					<span class="section-badge violet">Stack</span>
-					<h2>My stack</h2>
-					<ul class="stack-chips">
-						<li>Databricks</li>
-						<li>Apache Spark</li>
-						<li>Delta Lake</li>
-						<li>Unity Catalog</li>
-						<li>Lakeflow</li>
-						<li>MLflow</li>
-						<li>Agent Bricks</li>
-						<li>dbt</li>
-						<li>Airflow</li>
-						<li>AWS</li>
-						<li>Azure</li>
-						<li>Python</li>
-						<li>SQL</li>
-					</ul>
-				</div>
-			</section>
-
 			<section class="credentials-section">
 				<div class="section-inner">
 					<span class="section-badge">Credentials</span>
@@ -207,17 +183,6 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 							alt="Badge AWS Certified Cloud Practitioner"
 							loading="lazy"
 						/>
-					</div>
-				</div>
-			</section>
-
-			<section class="home-decks">
-				<div class="section-inner">
-					<span class="section-badge gold">Talks</span>
-					<div class="home-decks-head"><h2>Latest presentations</h2><a class="pill" href="/en/presentaciones">See all →</a></div>
-					<p class="section-lead">Interactive slides from my talks and workshops.</p>
-					<div class="home-decks-grid">
-						{ordenadas().slice(0, 3).map((p) => <PresentationCard p={p} lang="en" />)}
 					</div>
 				</div>
 			</section>
