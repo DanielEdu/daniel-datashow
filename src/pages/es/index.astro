@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import '../../styles/home.css';
+import PresentationCard from '../../components/PresentationCard.astro';
+import { ordenadas } from '../../data/presentaciones';
 import { SITE_DESCRIPTION_ES, SITE_TITLE } from '../../consts';
 import astronomerBadge from '../../assets/credentials/astronomer.png';
 import awsCloudPractitionerBadge from '../../assets/credentials/aws-certified-cloud-practitioner.png';
@@ -23,24 +25,23 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 			<section class="hero-section">
 				<div class="hero-content">
 					<div class="hero-left">
-						<p class="hero-kicker">Data Mentor - Advocate</p>
+						<p class="hero-kicker">Field Engineering Leader · Fundador de Data Wizard</p>
 						<h1 class="hero-title">Daniel DataShow</h1>
 						<p class="hero-intro">
-							Un espacio personal donde comparto mi recorrido en data engineering, aprendizajes y recursos para
-							la comunidad Data Wizard.
+							Ayudo a empresas y profesionales a sacarle valor a sus datos con Databricks, Spark e IA. Comparto lo que aprendo en charlas, videos y en la comunidad Data Wizard.
 						</p>
 						<div class="hero-actions">
-							<a class="btn-primary" href="/es/blog/my-journey/">Sobre mi</a>
-							<a class="btn-secondary" href="/es/blog">Ver recursos</a>
+							<a class="btn-primary btn-linkedin" href="https://www.linkedin.com/in/danielportugalr/" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.475 0 16 .513 16 1.146v13.708c0 .633-.525 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.213c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.213V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>Conecta en LinkedIn</a>
+							<a class="btn-secondary" href="/es/presentaciones">Ver presentaciones</a>
 						</div>
 						<div class="hero-stats">
 							<div>
-								<span class="stat-value">120+</span>
-								<span class="stat-label">guias y playbooks</span>
+								<span class="stat-value">6</span>
+								<span class="stat-label">certificaciones</span>
 							</div>
 							<div>
-								<span class="stat-value">8h</span>
-								<span class="stat-label">mentoring semanal</span>
+								<span class="stat-value">Databricks</span>
+								<span class="stat-label">Certified Professional</span>
 							</div>
 						</div>
 					</div>
@@ -86,7 +87,7 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 					<p class="section-lead">Lo más destacado de la comunidad Daniel DataShow y Data Wizard.</p>
 					<div class="project-grid">
 						<article class="project-card">
-							<h3>Daniel DataShow 👨🏻‍💻</h3>
+							<h3>Daniel DataShow</h3>
 							<p>Data engineering, aprendizajes y recursos prácticos.</p>
 							<div class="project-embed">
 								<iframe
@@ -101,7 +102,7 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 							<a class="pill" href="https://www.youtube.com/@DanielDatashow" target="_blank" rel="noreferrer">YouTube</a>
 						</article>
 						<article class="project-card">
-							<h3>Podcast en Spotify 🎙️</h3>
+							<h3>Podcast en Spotify</h3>
 							<p>Podcast sobre arquitectura Lakehouse y AI en datos.</p>
 							<div class="project-embed">
 								<iframe
@@ -121,7 +122,7 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 							</a>
 						</article>
 						<article class="project-card">
-							<h3>Data Wizard 🧙🏼‍♂️</h3>
+							<h3>Data Wizard</h3>
 							<p>Comunidad y contenidos para crecer en el mundo de los datos.</p>
 							<div class="project-embed">
 								<iframe
@@ -144,37 +145,22 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 			<section class="skills-section">
 				<div class="section-inner">
 					<span class="section-badge violet">Stack</span>
-					<h2>Proficiencia</h2>
-					<div class="skills-grid">
-						<div class="skill-card">
-							<div class="skill-header">
-								<span>Databricks</span>
-								<span class="skill-value">65%</span>
-							</div>
-							<div class="skill-bar"><span style="--skill: 65;"></span></div>
-						</div>
-						<div class="skill-card">
-							<div class="skill-header">
-								<span>Spark</span>
-								<span class="skill-value">70%</span>
-							</div>
-							<div class="skill-bar"><span style="--skill: 70;"></span></div>
-						</div>
-						<div class="skill-card">
-							<div class="skill-header">
-								<span>DBT</span>
-								<span class="skill-value">75%</span>
-							</div>
-							<div class="skill-bar"><span style="--skill: 75;"></span></div>
-						</div>
-						<div class="skill-card">
-							<div class="skill-header">
-								<span>Airflow</span>
-								<span class="skill-value">75%</span>
-							</div>
-							<div class="skill-bar"><span style="--skill: 75;"></span></div>
-						</div>
-					</div>
+					<h2>Stack con el que trabajo</h2>
+					<ul class="stack-chips">
+						<li>Databricks</li>
+						<li>Apache Spark</li>
+						<li>Delta Lake</li>
+						<li>Unity Catalog</li>
+						<li>Lakeflow</li>
+						<li>MLflow</li>
+						<li>Agent Bricks</li>
+						<li>dbt</li>
+						<li>Airflow</li>
+						<li>AWS</li>
+						<li>Azure</li>
+						<li>Python</li>
+						<li>SQL</li>
+					</ul>
 				</div>
 			</section>
 
@@ -221,6 +207,30 @@ import dbtBadge from '../../assets/credentials/dbt.png';
 							alt="Badge AWS Certified Cloud Practitioner"
 							loading="lazy"
 						/>
+					</div>
+				</div>
+			</section>
+
+			<section class="home-decks">
+				<div class="section-inner">
+					<span class="section-badge gold">Presentaciones</span>
+					<div class="home-decks-head"><h2>Últimas presentaciones</h2><a class="pill" href="/es/presentaciones">Ver todas →</a></div>
+					<p class="section-lead">Slides interactivas de mis charlas y talleres.</p>
+					<div class="home-decks-grid">
+						{ordenadas().slice(0, 3).map((p) => <PresentationCard p={p} lang="es" />)}
+					</div>
+				</div>
+			</section>
+
+			<section class="linkedin-band">
+				<div class="section-inner">
+					<div class="linkedin-card">
+						<img src="/images/yo.jpeg" alt="" loading="lazy" />
+						<div>
+							<h2>Hablemos en LinkedIn</h2>
+							<p>Publico casos reales de datos e IA, novedades de Databricks y oportunidades en la comunidad. Sígueme o escríbeme por mensaje directo.</p>
+						</div>
+						<a class="btn-primary btn-linkedin" href="https://www.linkedin.com/in/danielportugalr/" target="_blank" rel="noreferrer">Seguir en LinkedIn</a>
 					</div>
 				</div>
 			</section>

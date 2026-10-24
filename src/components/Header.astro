@@ -11,8 +11,8 @@ const toggleLang = lang === 'en' ? 'es' : 'en';
 const toggleHref = `/${toggleLang}${strippedPath === '/' ? '' : strippedPath}`;
 const labels =
 	lang === 'en'
-		? { home: 'Home', blog: 'Blog', toggle: 'ES' }
-		: { home: 'Inicio', blog: 'Blog', toggle: 'EN' };
+		? { home: 'Home', blog: 'Blog', talks: 'Talks', toggle: 'ES' }
+		: { home: 'Inicio', blog: 'Blog', talks: 'Presentaciones', toggle: 'EN' };
 ---
 
 <header>
@@ -20,6 +20,7 @@ const labels =
 		<h2><a href={`${basePath}/`}>Daniel <span class="brand-accent">DataShow</span></a></h2>
 		<div class="internal-links">
 			<HeaderLink href={`${basePath}/`}>{labels.home}</HeaderLink>
+			<HeaderLink href={`${basePath}/presentaciones`}>{labels.talks}</HeaderLink>
 			<HeaderLink href={`${basePath}/blog`}>{labels.blog}</HeaderLink>
 		</div>
 		<div class="actions">
