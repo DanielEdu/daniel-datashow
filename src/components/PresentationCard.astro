@@ -1,0 +1,136 @@
+---
+import { CATEGORIAS, type Presentacion } from '../data/presentaciones';
+
+interface Props {
+	p: Presentacion;
+	lang: 'es' | 'en';
+}
+const { p, lang } = Astro.props;
+const fecha = new Date(p.fecha + 'T12:00:00').toLocaleDateString(lang === 'es' ? 'es-PE' : 'en-US', {
+	month: 'short',
+	year: 'numeric',
+});
+---
+
+<a
+	class="deck-card"
+	href={`/slides/${p.slug}/`}
+	target="_blank"
+	rel="noopener"
+	data-search={`${p.titulo} ${p.descripcion[lang]} ${p.tags.join(' ')} ${CATEGORIAS[p.categoria][lang]}`.toLowerCase()}
+	data-cat={p.categoria}
+>
+	<div class="deck-thumb">
+		<img src={`/slides/${p.slug}/cover.jpg`} alt="" loading="lazy" width="640" height="360" />
+		<span class="deck-play" aria-hidden="true">
+			<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>
+		</span>
+	</div>
+	<div class="deck-body">
+		<div class="deck-meta">
+			<span class="deck-cat">{CATEGORIAS[p.categoria][lang]}</span>
+			<span>{fecha} · {p.slides} slides</span>
+		</div>
+		<h3>{p.titulo}</h3>
+		<p>{p.descripcion[lang]}</p>
+		<ul class="deck-tags">{p.tags.map((t) => <li>{t}</li>)}</ul>
+	</div>
+</a>
+
+<style>
+	.deck-card {
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		border-radius: 18px;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.03);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		text-decoration: none;
+		color: inherit;
+		transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	}
+	.deck-card:hover {
+		transform: translateY(-4px);
+		border-color: rgba(0, 163, 255, 0.45);
+		box-shadow: 0 18px 40px rgba(2, 6, 23, 0.55);
+	}
+	.deck-thumb {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		background: #0b1220;
+	}
+	.deck-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.deck-play {
+		position: absolute;
+		right: 14px;
+		bottom: 14px;
+		width: 46px;
+		height: 46px;
+		border-radius: 50%;
+		background: var(--accent);
+		color: #fff;
+		display: grid;
+		place-items: center;
+		box-shadow: 0 8px 20px rgba(0, 163, 255, 0.4);
+		transition: transform 0.25s ease;
+	}
+	.deck-play svg {
+		width: 22px;
+		height: 22px;
+	}
+	.deck-card:hover .deck-play {
+		transform: scale(1.08);
+	}
+	.deck-body {
+		padding: 1.2rem 1.3rem 1.4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.deck-meta {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+		color: #94a3b8;
+		font-weight: 600;
+	}
+	.deck-cat {
+		color: var(--accent-gold);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+	h3 {
+		margin: 0;
+		font-size: 1.3rem;
+		color: #f8fafc;
+	}
+	p {
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.55;
+		color: #94a3b8;
+	}
+	.deck-tags {
+		list-style: none;
+		margin: 0.3rem 0 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+	.deck-tags li {
+		font-size: 0.72rem;
+		font-weight: 600;
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
+		background: rgba(0, 163, 255, 0.08);
+		color: #7cc8ff;
+	}
+</style>

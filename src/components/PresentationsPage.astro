@@ -1,0 +1,179 @@
+---
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import PresentationCard from './PresentationCard.astro';
+import { CATEGORIAS, ordenadas, type Categoria } from '../data/presentaciones';
+import { SITE_TITLE } from '../consts';
+import '../styles/home.css';
+
+interface Props {
+	lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+const t =
+	lang === 'es'
+		? {
+				badge: 'Presentaciones',
+				title: 'Presentaciones interactivas',
+				lead: 'Slides animadas que uso en charlas, talleres y meetups. Ábrelas en pantalla completa y navega con las flechas.',
+				search: 'Buscar por tema, herramienta o palabra clave…',
+				all: 'Todas',
+				empty: 'No hay presentaciones que coincidan con tu búsqueda.',
+				desc: 'Presentaciones interactivas de Daniel Datashow sobre Databricks, datos e IA.',
+			}
+		: {
+				badge: 'Talks',
+				title: 'Interactive presentations',
+				lead: 'Animated slides I use in talks, workshops and meetups. Open them full screen and navigate with the arrow keys.',
+				search: 'Search by topic, tool or keyword…',
+				all: 'All',
+				empty: 'No presentations match your search.',
+				desc: 'Interactive presentations by Daniel Datashow about Databricks, data and AI.',
+			};
+const decks = ordenadas();
+const usadas = Object.keys(CATEGORIAS).filter((c) => decks.some((d) => d.categoria === c)) as Categoria[];
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<BaseHead title={`${t.title} · ${SITE_TITLE}`} description={t.desc} />
+	</head>
+	<body class="home-page">
+		<Header />
+		<main>
+			<section class="decks-hero">
+				<div class="section-inner">
+					<span class="section-badge">{t.badge}</span>
+					<h1>{t.title}</h1>
+					<p class="section-lead">{t.lead}</p>
+					<div class="decks-tools">
+						<input id="deck-search" type="search" placeholder={t.search} aria-label={t.search} />
+						<div class="deck-filters" role="tablist">
+							<button class="on" data-filter="all">{t.all}</button>
+							{usadas.map((c) => <button data-filter={c}>{CATEGORIAS[c][lang]}</button>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="decks-list">
+				<div class="section-inner">
+					{
+						usadas.map((c) => (
+							<div class="deck-group" data-group={c}>
+								<h2>{CATEGORIAS[c][lang]}</h2>
+								<div class="deck-grid">
+									{decks.filter((d) => d.categoria === c).map((p) => <PresentationCard p={p} lang={lang} />)}
+								</div>
+							</div>
+						))
+					}
+					<p class="deck-empty" hidden>{t.empty}</p>
+				</div>
+			</section>
+		</main>
+		<Footer />
+
+		<style>
+			.decks-hero {
+				padding: 4.5rem 0 1.5rem;
+			}
+			.decks-hero h1 {
+				font-size: clamp(2.2rem, 5vw, 3.4rem);
+				margin-bottom: 0.6rem;
+			}
+			.decks-tools {
+				align-items: center;
+				margin-top: 1.8rem;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			#deck-search {
+				width: 100%;
+				max-width: 560px;
+				padding: 0.85rem 1.1rem;
+				border-radius: 12px;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				background: rgba(255, 255, 255, 0.04);
+				color: #f8fafc;
+				font: 500 1rem 'Inter', sans-serif;
+			}
+			#deck-search:focus {
+				outline: none;
+				border-color: var(--accent);
+				box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.2);
+			}
+			.deck-filters {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+			.deck-filters button {
+				padding: 0.45rem 1rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				background: transparent;
+				color: #94a3b8;
+				font: 600 0.85rem 'Inter', sans-serif;
+				cursor: pointer;
+			}
+			.deck-filters button.on {
+				background: var(--accent);
+				border-color: var(--accent);
+				color: #fff;
+			}
+			.decks-list {
+				padding: 1.5rem 0 5rem;
+			}
+			.deck-group {
+				margin-top: 2rem;
+			}
+			.deck-group h2 {
+				text-align: left;
+				font-size: 1.3rem;
+				margin-bottom: 1.2rem;
+				color: #f8fafc;
+			}
+			.deck-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+				gap: 1.5rem;
+			}
+			.deck-empty {
+				color: #94a3b8;
+				margin-top: 2rem;
+			}
+		</style>
+		<script>
+			const input = document.getElementById('deck-search') as HTMLInputElement;
+			const buttons = [...document.querySelectorAll<HTMLButtonElement>('.deck-filters button')];
+			let cat = 'all';
+			function apply() {
+				const q = input.value.trim().toLowerCase();
+				let visibles = 0;
+				document.querySelectorAll<HTMLElement>('.deck-group').forEach((g) => {
+					let n = 0;
+					g.querySelectorAll<HTMLElement>('.deck-card').forEach((c) => {
+						const ok = (cat === 'all' || c.dataset.cat === cat) && (!q || (c.dataset.search || '').includes(q));
+						c.hidden = !ok;
+						if (ok) n++;
+					});
+					g.hidden = n === 0;
+					visibles += n;
+				});
+				(document.querySelector('.deck-empty') as HTMLElement).hidden = visibles > 0;
+			}
+			input.addEventListener('input', apply);
+			buttons.forEach((b) =>
+				b.addEventListener('click', () => {
+					buttons.forEach((x) => x.classList.toggle('on', x === b));
+					cat = b.dataset.filter || 'all';
+					apply();
+				}),
+			);
+		</script>
+	</body>
+</html>

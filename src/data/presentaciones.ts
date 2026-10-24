@@ -1,0 +1,41 @@
+// Catálogo de presentaciones interactivas.
+// Cada deck vive como sitio estático en public/slides/<slug>/ (index.html + assets)
+// y se sirve tal cual en /slides/<slug>/. Para agregar uno: copiar la carpeta y sumar una entrada aquí.
+
+export type Categoria = 'databricks' | 'data-engineering' | 'ia' | 'comunidad';
+
+export interface Presentacion {
+	slug: string;
+	titulo: string;
+	descripcion: { es: string; en: string };
+	categoria: Categoria;
+	fecha: string; // ISO
+	tags: string[];
+	slides: number;
+	destacada?: boolean;
+}
+
+export const CATEGORIAS: Record<Categoria, { es: string; en: string }> = {
+	databricks: { es: 'Databricks', en: 'Databricks' },
+	'data-engineering': { es: 'Data Engineering', en: 'Data Engineering' },
+	ia: { es: 'IA y agentes', en: 'AI & agents' },
+	comunidad: { es: 'Comunidad y carrera', en: 'Community & career' },
+};
+
+export const PRESENTACIONES: Presentacion[] = [
+	{
+		slug: 'databricks-para-todos',
+		titulo: 'Databricks para todos',
+		descripcion: {
+			es: 'La plataforma que revolucionó los datos y ahora la IA: historia, stack 2026 interactivo, roles, industrias y cómo cobra.',
+			en: 'The platform that revolutionized data and now AI: history, interactive 2026 stack, roles, industries and pricing.',
+		},
+		categoria: 'databricks',
+		fecha: '2026-10-24',
+		tags: ['Lakehouse', 'Unity Catalog', 'Agent Bricks', 'Genie'],
+		slides: 24,
+		destacada: true,
+	},
+];
+
+export const ordenadas = () => [...PRESENTACIONES].sort((a, b) => b.fecha.localeCompare(a.fecha));

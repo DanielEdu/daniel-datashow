@@ -569,3 +569,100 @@ body.home-page footer .social-links a:hover {
     height: 120px;
   }
 }
+
+/* ── Rediseño 2026: CTA LinkedIn, stack en chips, presentaciones ───────── */
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #0a66c2;
+  border-color: #0a66c2;
+  box-shadow: 0 10px 26px rgba(10, 102, 194, 0.35);
+}
+.btn-linkedin:hover {
+  background: #0b74dc;
+}
+.btn-linkedin svg {
+  width: 18px;
+  height: 18px;
+}
+
+.stack-chips {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.stack-chips li {
+  padding: 0.55rem 1.05rem;
+  border-radius: 12px;
+  border: 1px solid var(--home-border);
+  background: var(--home-surface);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--home-text);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.stack-chips li:hover {
+  border-color: rgba(0, 163, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.home-decks,
+.linkedin-band {
+  padding: 5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.home-decks-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.home-decks h2,
+.linkedin-band h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin: 0;
+}
+.home-decks-grid {
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.linkedin-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.2rem 2.4rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.22), rgba(123, 47, 190, 0.14));
+  border: 1px solid rgba(10, 102, 194, 0.4);
+}
+.linkedin-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+}
+.linkedin-card p {
+  margin: 0.5rem 0 0;
+  color: var(--home-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .linkedin-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    padding: 1.8rem;
+  }
+}
