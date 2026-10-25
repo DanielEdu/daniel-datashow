@@ -24,6 +24,19 @@ export const CATEGORIAS: Record<Categoria, { es: string; en: string }> = {
 
 export const PRESENTACIONES: Presentacion[] = [
 	{
+		slug: 'del-papel-a-la-ia',
+		titulo: 'Del papel a la IA',
+		descripcion: {
+			es: 'La evolución de los datos: de las tablillas y el quipu a los agentes de IA, las plataformas de 2026, los roles y cómo empezar.',
+			en: 'The evolution of data: from clay tablets to AI agents, the 2026 platforms, data roles and how to get started.',
+		},
+		categoria: 'data-engineering',
+		fecha: '2026-10-25',
+		tags: ['Historia', 'Plataformas', 'Roles', 'IA'],
+		slides: 26,
+		destacada: true,
+	},
+	{
 		slug: 'databricks-para-todos',
 		titulo: 'Databricks para todos',
 		descripcion: {
