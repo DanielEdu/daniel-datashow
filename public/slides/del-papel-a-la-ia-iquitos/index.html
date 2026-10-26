@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Del papel a la IA · Iquitos Data Fest</title>
+<!-- v1.2 · creado 23-oct-2026 · actualizado 23-oct-2026 · Daniel Portugal, Talento Para Ti
+     Navegación: ← → / espacio · R repite la animación · F pantalla completa · clic en piezas para ver el detalle -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css?v=1.2">
+<style>
+  span[data-icon] > svg { width: 100%; height: 100%; display: block; }
+  .pp { width: 110px; } .pp svg { width: 100%; height: auto; display: block; }
+  .pp.sm { width: 84px; } .pp.lg { width: 150px; } .pp.xl { width: 200px; }
+  @keyframes truck { 0% { transform: translateX(-130px); } 100% { transform: translateX(380px); } }
+  @keyframes pump  { 0%,100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+  @keyframes cart  { 0%,100% { transform: translateX(0); } 50% { transform: translateX(40px); } }
+  @keyframes mr-run { 0% { left: 0%; } 14% { left: 22%; } 30% { left: 22%; } 44% { left: 46%; } 60% { left: 46%; } 74% { left: 70%; } 88% { left: 70%; } 100% { left: 92%; } }
+  @keyframes sp-run { 0% { left: 0%; } 100% { left: 92%; } }
+  @keyframes dolphin { 0%,55%,100% { transform: translateY(40px) rotate(20deg); opacity: 0; } 65% { opacity: 1; } 75% { transform: translateY(-50px) rotate(-10deg); opacity: 1; } 90% { transform: translateY(30px) rotate(25deg); opacity: 0; } }
+  @keyframes rot { to { transform: rotate(360deg); } }
+  @keyframes march-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes mask-on { 0%,30% { opacity: 0; } 40%,100% { opacity: 1; } }
+  @keyframes rewind { 0%,15% { left: 88%; } 45%,60% { left: 12%; } 90%,100% { left: 88%; } }
+  @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
+  @keyframes count { from { --n: 0; } to { --n: var(--to); } }
+  .counter { counter-reset: n var(--n); }
+  .counter::after { content: counter(n); }
+  .slide.active .counter { animation: count 3s var(--ease) var(--d, 0s) both; }
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ================================================================ 01 PORTADA · IQUITOS -->
+<section class="slide no-foot" data-wipe="#1E8C55">
+  <div class="a" data-fx="down" style="--d:.1s;position:absolute;left:120px;top:62px;display:flex;align-items:center;gap:26px"><span data-tpt style="--h:50px"></span><span style="width:2px;height:58px;background:var(--oat3)"></span><span style="display:inline-flex;align-items:center;gap:10px;height:60px"><img src="assets/datawizard-logo.png" alt="" style="height:100%"><span style="font:800 22px/1 Montserrat,sans-serif;color:#1a1f4d">DATA<br><span style="color:#E0A100">WIZARD</span></span></span></div>
+  <div class="a mono" data-fx="down" style="--d:.2s;position:absolute;right:120px;top:84px;font-size:20px;letter-spacing:.14em;color:#1E8C55">IQUITOS DATA FEST 2026</div>
+  <div style="position:absolute;left:120px;top:250px;width:860px">
+    <div class="kicker a" style="--d:.3s;--acc:#1E8C55">Iquitos Data Fest 2026</div>
+    <h1 class="a" data-fx="blur" style="--d:.45s;margin-top:28px;font-size:150px">Del papel<br><span style="color:#1E8C55">a la IA</span></h1>
+    <p class="lead a" style="--d:.8s;margin-top:30px;width:800px">Como el Amazonas, los datos nacen pequeños y crecen hasta mover el mundo: de las tablillas de arcilla a los agentes de IA.</p>
+    <div class="a" style="--d:1.1s;margin-top:50px;display:flex;align-items:center;gap:22px">
+      <div class="pp sm" data-person="style:short;shirt:#1B3139;prop:wave;skin:1"></div>
+      <div><div style="font-size:30px;font-weight:700">Daniel Portugal</div><div style="font-size:23px;color:var(--ink2)">Field Engineering Leader · Talento Para Ti · Fundador de Data Wizard</div></div>
+    </div>
+  </div>
+  <!-- El Amazonas: el río de los datos -->
+  <svg class="abs" style="left:1000px;top:170px;width:860px;height:820px" viewBox="0 0 860 820">
+    <defs><clipPath id="iq-clip"><circle cx="430" cy="430" r="380"/></clipPath></defs>
+    <g clip-path="url(#iq-clip)">
+      <rect width="860" height="820" fill="#E8F3EC"/>
+      <g class="loop glow"><circle cx="650" cy="190" r="56" fill="#FFAB00"/></g>
+      <g class="a" data-fx="fade" style="--d:.2s"></g>
+      <g id="jungle"></g>
+      <path class="a" data-fx="growy" style="--d:.5s" d="M60 830 C300 720 170 610 360 530 S300 390 425 300 L470 300 C385 390 525 470 470 530 S430 700 800 830Z" fill="#7FB7D9"/>
+      <path class="loop march" d="M440 790 C330 700 420 600 395 540 S360 420 448 312" fill="none" stroke="#C7E2F2" stroke-width="5"/>
+      <g id="climb"></g>
+      <g class="loop" style="offset-path:path('M450 800 C330 700 420 600 395 540 S360 420 448 312');offset-rotate:0deg;animation:lp-flow 11s linear 1.8s infinite"><g transform="translate(-34 -24)"><path d="M0 26 Q34 42 68 26 L60 36 Q34 46 8 36Z" fill="#8A5A2B"/><rect x="18" y="8" width="34" height="16" rx="3" fill="#FFAB00"/><path d="M14 8 L56 8 L50 0 L20 0Z" fill="#1E8C55"/></g></g>
+      <g class="loop" style="animation:cart 6s ease-in-out infinite"><g transform="translate(620 760)"><rect x="0" y="-46" width="74" height="10" rx="4" fill="#1E8C55"/><path d="M6 -36 H70 V-8 H6Z" fill="#FF3621"/><rect x="14" y="-30" width="22" height="16" rx="3" fill="#E8F3EC"/><path d="M70 -20 L96 -20 L100 -6 L70 -6Z" fill="#FFAB00"/><circle cx="20" cy="-2" r="10" fill="#1B3139"/><circle cx="60" cy="-2" r="10" fill="#1B3139"/><circle cx="92" cy="-2" r="8" fill="#1B3139"/></g></g>
+      <g class="loop" style="transform-origin:640px 690px;transform-box:view-box;animation:dolphin 4.5s ease-in-out infinite"><path d="M600 690 Q640 640 690 676 L704 666 L700 686 Q650 700 600 690Z" fill="#F29BB5"/><circle cx="672" cy="676" r="3" fill="#1B3139"/></g>
+    </g>
+  </svg>
+</section>
+
+<!-- ================================================================ 02 PONENTE -->
+<section class="slide" style="--acc:#6B5FD6" data-wipe="#6B5FD6">
+  <div class="kicker a">Sobre el ponente</div>
+  <div class="abs a" data-fx="pop" style="--d:.2s;left:120px;top:190px;width:480px;height:600px;border-radius:30px;padding:3px;background:linear-gradient(160deg,#2272B4,#6B5FD6)">
+    <img src="assets/daniel-portrait.webp" alt="Daniel Portugal" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:28px;display:block">
+  </div>
+  <div style="position:absolute;left:680px;top:190px;width:1120px">
+    <h2 class="a" style="--d:.3s">Daniel Portugal Revilla</h2>
+    <div class="col" style="margin-top:26px;gap:14px">
+      <div class="a" data-fx="left" style="--d:.5s;display:flex;align-items:center;gap:18px;font-size:28px"><span data-tpt style="--h:46px"></span><span><b>Field Engineering Leader</b> en Talento Para Ti</span></div>
+      <div class="a" data-fx="left" style="--d:.65s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/datawizard-logo.png" alt="" style="height:52px"><span>Fundador de <b>Data Wizard</b> y <b>Data Engineering LATAM</b></span></div>
+      <div class="a" data-fx="left" style="--d:.8s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/youtube-logo.svg" alt="" style="height:34px"><span data-si="tiktok" style="--s:32px;--c:#0B0B0B"></span><span>Creador de <b>Daniel Datashow</b> en YouTube y TikTok</span></div>
+    </div>
+    <p class="a" style="--d:1s;margin-top:34px;width:1050px;font-size:27px">Ingeniero de datos con más de 9 años transformando datos en decisiones: arquitecturas lakehouse, streaming en tiempo real y plataformas como Databricks, Snowflake y BigQuery. Bachiller en Ingeniería de Sistemas por la UCSM, Arequipa.</p>
+    <div class="row a" style="--d:1.2s;gap:10px;flex-wrap:wrap;margin-top:26px">
+      <span class="chip pre">Lakehouse</span><span class="chip pre">Spark</span><span class="chip pre">Kafka · Flink</span><span class="chip pre">Databricks</span><span class="chip pre">Snowflake</span><span class="chip pre">BigQuery</span><span class="chip pre">Agentes de IA</span>
+    </div>
+    <div class="a" style="--d:1.4s;margin-top:36px;display:flex;gap:16px">
+      <span class="pill-btn" style="background:#0A66C2">in/danielportugalr</span><span class="pill-btn">datawizard.tech</span><span class="pill-btn" style="background:#FF0000">@DanielDatashow</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 03 DEMING -->
+<section class="slide dark" style="--acc:#FFAB00" data-wipe="#1B3139">
+  <div class="kicker a">Antes de empezar</div>
+  <div style="position:absolute;left:120px;top:230px;width:1100px">
+    <div class="a" data-fx="pop" style="--d:.2s;font:800 200px/0.6 'DM Sans';color:#FFAB00;height:90px">“</div>
+    <h1 class="a" data-fx="blur" style="--d:.4s;font-size:96px;line-height:1.05">Sin datos, solo eres<br>otra persona con<br><span class="t-yellow">una opinión.</span></h1>
+    <p class="a" style="--d:1s;margin-top:34px;font-size:30px">— W. Edwards Deming, estadístico y padre de la calidad total</p>
+  </div>
+  <!-- multitud que opina vs. la que mide -->
+  <div class="abs" style="right:110px;bottom:120px;width:560px;height:620px">
+    <div class="abs a" data-fx="up" style="--d:1.2s;left:0;bottom:0"><div class="pp lg" data-person="style:short;shirt:#4A5D64;skin:0;prop:think;pants:#A9BCC2"></div></div>
+    <div class="abs a" data-fx="up" style="--d:1.35s;left:170px;bottom:0"><div class="pp lg" data-person="style:long;shirt:#4A5D64;skin:2;prop:point;hair:#5A3A22;pants:#A9BCC2"></div></div>
+    <div class="abs a" data-fx="up" style="--d:1.5s;left:330px;bottom:0"><div class="pp xl" data-person="style:bun;shirt:#FFAB00;skin:1;prop:tablet;acc:#FF3621;pants:#A9BCC2"></div></div>
+    <div class="bubble a" data-fx="pop" style="--d:1.8s;left:-40px;top:250px">Yo creo que…</div>
+    <div class="bubble a" data-fx="pop" style="--d:2s;left:130px;top:170px">Me parece que…</div>
+    <div class="bubble a" data-fx="pop" style="--d:2.3s;left:330px;top:90px;background:#FFAB00">Los datos dicen: +18 %</div>
+  </div>
+</section>
+
+<!-- ================================================================ 04 AGENDA -->
+<section class="slide" style="--acc:#6B5FD6">
+  <div class="kicker a">Agenda</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">Un viaje en cuatro paradas</h2>
+  <div class="grid4" style="position:absolute;left:120px;right:120px;top:360px;gap:26px">
+    <div class="card a" data-fx="flip" style="--d:.4s;height:330px;border-top:8px solid #6B5FD6"><div style="font:800 84px 'DM Sans';color:#6B5FD6">01</div><h3 style="margin-top:12px">De dónde venimos</h3><p style="font-size:22px;margin-top:10px">5.000 años: del papel y los censos a la nube y la IA.</p></div>
+    <div class="card a" data-fx="flip" style="--d:.6s;height:330px;border-top:8px solid #2272B4"><div style="font:800 84px 'DM Sans';color:#2272B4">02</div><h3 style="margin-top:12px">Dónde estamos</h3><p style="font-size:22px;margin-top:10px">Plataformas, tecnologías y tendencias de 2026.</p></div>
+    <div class="card a" data-fx="flip" style="--d:.8s;height:330px;border-top:8px solid #00A972"><div style="font:800 84px 'DM Sans';color:#00A972">03</div><h3 style="margin-top:12px">Quién hace qué</h3><p style="font-size:22px;margin-top:10px">Roles en datos y cómo trabajan hoy los equipos.</p></div>
+    <div class="card a" data-fx="flip" style="--d:1s;height:330px;border-top:8px solid #FF3621"><div style="font:800 84px 'DM Sans';color:#FF3621">04</div><h3 style="margin-top:12px">Cómo empezar</h3><p style="font-size:22px;margin-top:10px">Tu ruta en datos y el siguiente paso para tu empresa.</p></div>
+  </div>
+</section>
+
+<!-- ================================================================ 05 RECOLECCIÓN MANUAL -->
+<section class="slide" style="--acc:#B07A3A" data-wipe="#B07A3A">
+  <div class="chapters a" data-fx="fade"><span class="on">3000 a.C. Manual</span><span>1890 Máquinas</span><span>1970 Relacional</span><span>1990 DWH</span><span>2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Antes de las computadoras,<br>los datos ya <span style="color:#B07A3A">gobernaban</span></h2>
+  <div class="grid4" style="position:absolute;left:120px;right:120px;top:450px;gap:24px">
+    <div class="card a" style="--d:.4s;padding:24px">
+      <svg viewBox="0 0 300 180" style="width:100%;height:180px"><rect width="300" height="180" rx="16" fill="#F3EADB"/><g class="a" data-fx="pop" style="--d:.7s"><rect x="80" y="30" width="140" height="120" rx="18" fill="#C9A27A"/><g stroke="#8A6640" stroke-width="5" stroke-linecap="round"><path d="M100 60h20M130 55l10 10M150 60h30M100 85l15 8M125 90h40M175 85l15-8M100 115h25M135 110l10 10M160 115h30"/></g></g></svg>
+      <div class="tag" style="margin-top:12px">c. 3000 a.C. · Mesopotamia</div><h3 style="font-size:27px;margin-top:4px">Tablillas de arcilla</h3><p style="font-size:19px;margin-top:6px">Los primeros registros: cosechas, impuestos y ganado.</p>
+    </div>
+    <div class="card a" style="--d:.55s;padding:24px">
+      <svg viewBox="0 0 300 180" style="width:100%;height:180px"><rect width="300" height="180" rx="16" fill="#EAF3EC"/><rect x="40" y="34" width="220" height="12" rx="6" fill="#8A6640"/><g id="quipu"></g></svg>
+      <div class="tag" style="margin-top:12px">s. XV · Tawantinsuyu</div><h3 style="font-size:27px;margin-top:4px">El quipu inca</h3><p style="font-size:19px;margin-top:6px">Nudos y colores como base de datos del imperio, sin escritura.</p>
+    </div>
+    <div class="card a" style="--d:.7s;padding:24px">
+      <svg viewBox="0 0 300 180" style="width:100%;height:180px"><rect width="300" height="180" rx="16" fill="#EEF0F7"/><path d="M70 60 L150 25 L230 60Z" fill="#7D8B90"/><rect x="78" y="60" width="144" height="10" fill="#7D8B90"/><g fill="#fff"></g><rect x="88" y="74" width="14" height="66" fill="#fff"/><rect x="118" y="74" width="14" height="66" fill="#fff"/><rect x="148" y="74" width="14" height="66" fill="#fff"/><rect x="178" y="74" width="14" height="66" fill="#fff"/><rect x="198" y="74" width="14" height="66" fill="#fff"/><rect x="70" y="140" width="160" height="12" fill="#7D8B90"/><g class="loop bob"><circle cx="40" cy="120" r="10" fill="#C9A27A"/><rect x="32" y="130" width="16" height="30" rx="6" fill="#FF3621"/></g><g class="loop bob" style="animation-delay:-.6s"><circle cx="262" cy="120" r="10" fill="#C9A27A"/><rect x="254" y="130" width="16" height="30" rx="6" fill="#2272B4"/></g></svg>
+      <div class="tag" style="margin-top:12px">Siglo I · Roma</div><h3 style="font-size:27px;margin-top:4px">El censo romano</h3><p style="font-size:19px;margin-top:6px">Contar personas para cobrar impuestos y reclutar.</p>
+    </div>
+    <div class="card a" style="--d:.85s;padding:24px">
+      <svg viewBox="0 0 300 180" style="width:100%;height:180px"><rect width="300" height="180" rx="16" fill="#FBEFEA"/><g transform="translate(150 92)"><g id="rose"></g><circle r="6" fill="#1B3139"/></g></svg>
+      <div class="tag" style="margin-top:12px">1858 · Florence Nightingale</div><h3 style="font-size:27px;margin-top:4px">El diagrama de rosa</h3><p style="font-size:19px;margin-top:6px">Un gráfico que convenció al gobierno británico y salvó vidas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 06 MÁQUINAS -->
+<section class="slide" style="--acc:#4A5D64" data-wipe="#4A5D64">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="on">1890 Máquinas</span><span>1970 Relacional</span><span>1990 DWH</span><span>2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Los datos se vuelven <span style="color:#2272B4">máquina</span></h2>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:360px;gap:28px">
+    <div class="card a" style="--d:.4s;padding:28px">
+      <svg viewBox="0 0 440 220" style="width:100%;height:220px"><rect width="440" height="220" rx="18" fill="#F6F1E6"/><g transform="rotate(-4 220 110)"><rect x="40" y="40" width="360" height="140" rx="10" fill="#EBD9B4"/><g id="punch"></g></g></svg>
+      <div class="tag" style="margin-top:14px">1890 · Herman Hollerith</div><h3 style="margin-top:4px">Tarjetas perforadas</h3><p style="font-size:20px;margin-top:8px">La tabuladora contó el censo de EE. UU. de 1890 en una fracción del tiempo. Su empresa terminaría siendo IBM.</p>
+    </div>
+    <div class="card a" style="--d:.6s;padding:28px">
+      <svg viewBox="0 0 440 220" style="width:100%;height:220px"><rect width="440" height="220" rx="18" fill="#EEF0F2"/><g id="eniac"></g></svg>
+      <div class="tag" style="margin-top:14px">1946 · ENIAC</div><h3 style="margin-top:4px">La computadora electrónica</h3><p style="font-size:20px;margin-top:8px">Ocupaba una habitación entera y calculaba miles de operaciones por segundo.</p>
+    </div>
+    <div class="card a" style="--d:.8s;padding:28px">
+      <svg viewBox="0 0 440 220" style="width:100%;height:220px"><rect width="440" height="220" rx="18" fill="#EAF1F8"/><g class="loop spin" style="transform-origin:140px 110px;animation-duration:3s"><circle cx="140" cy="110" r="70" fill="#1B3139"/><circle cx="140" cy="110" r="22" fill="#EAF1F8"/><g fill="#4A5D64"><circle cx="140" cy="62" r="12"/><circle cx="182" cy="134" r="12"/><circle cx="98" cy="134" r="12"/></g></g><g class="loop spin" style="transform-origin:300px 110px;animation-duration:3s"><circle cx="300" cy="110" r="70" fill="#1B3139"/><circle cx="300" cy="110" r="22" fill="#EAF1F8"/><g fill="#4A5D64"><circle cx="300" cy="62" r="12"/><circle cx="342" cy="134" r="12"/><circle cx="258" cy="134" r="12"/></g></g><path d="M140 180 H300" stroke="#8A6640" stroke-width="6"/></svg>
+      <div class="tag" style="margin-top:14px">Años 50 · UNIVAC</div><h3 style="margin-top:4px">Cintas magnéticas</h3><p style="font-size:20px;margin-top:8px">Por primera vez los datos se guardan y se leen a velocidad de máquina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 07 RELACIONAL -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="on">1970 Relacional</span><span>1990 DWH</span><span>2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:720px">
+    <h2 class="a" style="--d:.15s">1970: Codd ordena el mundo en <span class="t-blue">tablas</span></h2>
+    <p class="a" style="--d:.35s;margin-top:26px"><b>Edgar F. Codd</b>, en IBM, publica <i>A Relational Model of Data for Large Shared Data Banks</i>: datos en tablas relacionadas por llaves.</p>
+    <p class="a" style="--d:.55s;margin-top:18px">Nace <b>SQL</b> para conversar con ellas y, en 1979, la primera base de datos relacional comercial. Hasta hoy, <b>SQL es el idioma universal de los datos</b>.</p>
+  </div>
+  <div class="abs" style="left:900px;top:220px;width:900px">
+    <div style="display:flex;gap:40px;align-items:flex-start">
+      <div class="card a" data-fx="left" style="--d:.6s;padding:20px 24px;flex:1"><b class="mono" style="font-size:22px">CLIENTE</b>
+        <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:21px"><tr style="color:var(--muted);font-size:17px;text-align:left"><th>id</th><th>nombre</th><th>ciudad</th></tr><tr style="border-top:1px solid var(--oat3)"><td style="padding:7px 0;color:#2272B4;font-weight:700">1</td><td>Ana</td><td>Arequipa</td></tr><tr style="border-top:1px solid var(--oat3)"><td style="padding:7px 0;color:#2272B4;font-weight:700">2</td><td>Luis</td><td>Lima</td></tr></table></div>
+      <div class="card a" data-fx="right" style="--d:.8s;padding:20px 24px;flex:1"><b class="mono" style="font-size:22px">PEDIDO</b>
+        <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:21px"><tr style="color:var(--muted);font-size:17px;text-align:left"><th>id</th><th>cliente</th><th>monto</th></tr><tr style="border-top:1px solid var(--oat3)"><td style="padding:7px 0">101</td><td style="color:#2272B4;font-weight:700">1</td><td>S/ 250</td></tr><tr style="border-top:1px solid var(--oat3)"><td style="padding:7px 0">102</td><td style="color:#2272B4;font-weight:700">2</td><td>S/ 90</td></tr></table></div>
+    </div>
+    <svg viewBox="0 0 900 70" style="width:100%;height:70px"><path class="a" data-fx="draw" pathLength="1" style="--d:1.1s" d="M220 0 C220 50 680 50 680 0" fill="none" stroke="#2272B4" stroke-width="5" stroke-dasharray="1"/><g transform="translate(450 50)"><g class="a" data-fx="pop" style="--d:1.5s"><rect x="-70" y="-20" width="140" height="40" rx="20" fill="#2272B4"/><text y="8" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">JOIN por id</text></g></g></svg>
+    <div class="a" style="--d:1.7s;margin-top:20px;background:#1B3139;border-radius:18px;padding:22px 26px;font:500 25px 'DM Mono';color:#C8D3D6">
+      <div class="a" data-fx="type" style="--d:1.9s"><span style="color:#4C9BE8">SELECT</span> c.ciudad, <span style="color:#4C9BE8">SUM</span>(p.monto)</div>
+      <div class="a" data-fx="type" style="--d:2.5s"><span style="color:#4C9BE8">FROM</span> pedido p <span style="color:#4C9BE8">JOIN</span> cliente c <span style="color:#4C9BE8">ON</span> p.cliente = c.id</div>
+      <div class="a" data-fx="type" style="--d:3.1s"><span style="color:#4C9BE8">GROUP BY</span> c.ciudad;</div>
+    </div>
+  </div>
+</section>
+<!-- ================================================================ 03 HISTORIA · DWH -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="on">1990 DWH</span><span>2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:700px">
+    <h2 class="a" style="--d:.15s">1990<br>El <span class="t-blue">Data Warehouse</span></h2>
+    <p class="a" style="--d:.35s;margin-top:28px">Cada noche, las empresas copiaban los datos de sus sistemas a un <b>gran servidor central</b>, ordenado en tablas. Perfecto para reportes.</p>
+    <div class="col" style="margin-top:34px;gap:14px">
+      <div class="chip ga a" data-fx="left" style="--d:.8s;font-size:22px">✓ Ordenado y confiable</div>
+      <div class="chip new a" data-fx="left" style="--d:1s;font-size:22px">✕ Caro: licencias y hardware propietario</div>
+      <div class="chip new a" data-fx="left" style="--d:1.2s;font-size:22px">✕ Solo datos en tablas (nada de texto, audio o imágenes)</div>
+      <div class="chip new a" data-fx="left" style="--d:1.4s;font-size:22px">✕ ¿Más datos? Comprar un servidor más grande</div>
+    </div>
+  </div>
+  <svg class="abs" style="left:900px;top:170px;width:920px;height:780px" viewBox="0 0 920 780">
+    <!-- noche -->
+    <g class="a" data-fx="fade" style="--d:.2s"><circle cx="820" cy="80" r="44" fill="#FFF0CC"/><circle cx="840" cy="68" r="40" fill="#F9F7F4"/></g>
+    <g class="a" data-fx="pop" style="--d:.5s"><rect x="560" y="40" width="160" height="70" rx="16" fill="#1B3139"/><text x="640" y="88" text-anchor="middle" font-family="DM Mono" font-size="34" fill="#FFAB00">02:00</text></g>
+    <!-- fuentes -->
+    <g font-family="DM Sans" font-weight="700" font-size="22" text-anchor="middle">
+      <g transform="translate(90 170)"><g class="a" data-fx="pop" style="--d:.4s"><rect x="-70" y="-34" width="140" height="68" rx="14" fill="#fff"/><text y="8" fill="#1B3139">ERP</text></g></g>
+      <g transform="translate(260 170)"><g class="a" data-fx="pop" style="--d:.5s"><rect x="-70" y="-34" width="140" height="68" rx="14" fill="#fff"/><text y="8" fill="#1B3139">CRM</text></g></g>
+      <g transform="translate(430 170)"><g class="a" data-fx="pop" style="--d:.6s"><rect x="-70" y="-34" width="140" height="68" rx="14" fill="#fff"/><text y="8" fill="#1B3139">Ventas</text></g></g>
+    </g>
+    <!-- embudo ETL -->
+    <g class="a" data-fx="fade" style="--d:.8s">
+      <path d="M90 204 Q90 260 230 290 M260 204 V290 M430 204 Q430 260 290 290" stroke="#C3BBAE" stroke-width="4" fill="none" class="loop march"/>
+      <path d="M170 290 H350 L300 360 H220Z" fill="#2272B4"/><text x="260" y="330" text-anchor="middle" font-size="24" font-weight="800" fill="#fff">ETL</text>
+    </g>
+    <g class="flowbox">
+      <circle r="8" fill="#FFAB00" class="loop flow" style="offset-path:path('M90 204 Q90 260 230 290 L260 360 L260 420');--t:2.6s"/>
+      <circle r="8" fill="#00A972" class="loop flow" style="offset-path:path('M430 204 Q430 260 290 290 L260 360 L260 420');--t:2.6s;--fd:-1.3s"/>
+    </g>
+    <!-- gabinete -->
+    <g transform="translate(140 420)"><g class="a" data-fx="growy" style="--d:1s">
+      <rect width="240" height="320" rx="16" fill="#1B3139"/>
+      
+      <g></g>
+      <rect x="24" y="28" width="192" height="40" rx="8" fill="#2A4650"/><rect x="24" y="84" width="192" height="40" rx="8" fill="#2A4650"/><rect x="24" y="140" width="192" height="40" rx="8" fill="#2A4650"/><rect x="24" y="196" width="192" height="40" rx="8" fill="#2A4650"/>
+      <circle class="loop blink" cx="48" cy="48" r="7" fill="#00A972"/><circle class="loop blink" style="animation-delay:.3s" cx="48" cy="104" r="7" fill="#00A972"/><circle class="loop blink" style="animation-delay:.6s" cx="48" cy="160" r="7" fill="#FFAB00"/><circle class="loop blink" style="animation-delay:.9s" cx="48" cy="216" r="7" fill="#00A972"/>
+      <text x="120" y="290" text-anchor="middle" font-size="26" font-weight="800" fill="#F9F7F4">DATA WAREHOUSE</text>
+    </g></g>
+    <!-- precio -->
+    <g transform="translate(470 520)"><g class="a" data-fx="spin" style="--d:1.6s"><path d="M0 0 h120 l30 40 l-30 40 h-120z" fill="#FFAB00"/><circle cx="22" cy="40" r="9" fill="#F9F7F4"/><text x="80" y="52" text-anchor="middle" font-size="34" font-weight="800" fill="#1B3139">$$$</text></g></g>
+    <!-- uno más grande -->
+    <g transform="translate(680 330)"><g class="a" data-fx="growy" style="--d:2.1s">
+      <rect width="200" height="410" rx="16" fill="none" stroke="#B9B1A4" stroke-width="4" stroke-dasharray="12 10"/>
+      <text x="100" y="200" text-anchor="middle" font-size="22" font-weight="700" fill="#7D8B90">¿uno más</text><text x="100" y="230" text-anchor="middle" font-size="22" font-weight="700" fill="#7D8B90">grande?</text>
+    </g></g>
+  </svg>
+</section>
+
+<!-- ================================================================ 04 HISTORIA · GOOGLE -->
+<section class="slide" style="--acc:#4285F4" data-wipe="#4285F4">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="done">1990 DWH</span><span class="on">2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:700px">
+    <div class="a" data-fx="pop" style="--d:.1s;display:flex;align-items:center;gap:18px"><span data-si="google" style="--s:58px;--c:#4285F4"></span><span class="tag">Google · 2003–2004</span></div>
+    <h2 class="a" style="--d:.2s;margin-top:18px">Guardar <span class="t-blue">toda la web</span></h2>
+    <p class="a" style="--d:.4s;margin-top:26px">Ningún servidor alcanzaba. La idea de Google: <b>miles de computadoras baratas trabajando como una sola</b>. Publicó dos papers que cambiaron todo:</p>
+    <div class="grid2 a" style="--d:.6s;margin-top:30px">
+      <div class="card" style="padding:24px"><div class="tag">2003</div><h3>GFS</h3><p style="font-size:21px;margin-top:6px">Un “disco” hecho de miles de máquinas.</p></div>
+      <div class="card" style="padding:24px"><div class="tag">2004</div><h3>MapReduce</h3><p style="font-size:21px;margin-top:6px">Dividir el trabajo y luego juntar resultados.</p></div>
+    </div>
+  </div>
+  <svg class="abs" style="left:880px;top:170px;width:940px;height:780px" viewBox="0 0 940 780">
+    <!-- globo -->
+    <g transform="translate(150 170)">
+      <g class="a" data-fx="pop" style="--d:.3s">
+        <circle r="110" fill="#4285F4"/>
+        <g class="loop spin" style="animation-duration:12s"><path d="M-60 -60 q30 20 10 50 q-30 10 -20 40 q30 10 20 50" fill="none" stroke="#9CC2FA" stroke-width="16" stroke-linecap="round"/><path d="M40 -90 q-10 40 30 50 q30 20 0 60" fill="none" stroke="#9CC2FA" stroke-width="16" stroke-linecap="round"/></g>
+        <text y="152" text-anchor="middle" font-size="24" font-weight="700" fill="#1B3139">toda la web</text>
+      </g>
+    </g>
+    <path class="a loop march" data-fx="fade" style="--d:.8s" d="M280 170 H400" stroke="#4285F4" stroke-width="5" fill="none"/>
+    <!-- grilla de máquinas -->
+    <g transform="translate(420 40)">
+      <rect class="a" data-fx="fade" style="--d:2s" x="-20" y="-20" width="500" height="340" rx="26" fill="none" stroke="#4285F4" stroke-width="4" stroke-dasharray="14 10"/>
+      <g id="g-grid"></g>
+      <text class="a" data-fx="fade" style="--d:2.2s" x="230" y="350" text-anchor="middle" font-size="24" font-weight="700" fill="#2272B4">= 1 disco gigante (GFS)</text>
+    </g>
+    <!-- MapReduce: contar votos -->
+    <g transform="translate(60 470)">
+      <text class="a" data-fx="fade" style="--d:2.4s" x="0" y="0" font-size="26" font-weight="800" fill="#1B3139">MapReduce = contar votos de un país</text>
+      <g transform="translate(0 30)">
+        <g id="g-map"></g>
+        <g class="a" data-fx="fade" style="--d:3.6s"><path d="M70 120 Q70 170 400 190 M250 120 Q250 170 400 190 M430 120 Q430 170 400 190 M610 120 Q610 170 400 190" fill="none" stroke="#C3BBAE" stroke-width="4"/></g>
+        <g transform="translate(400 210)"><g class="a" data-fx="pop" style="--d:4s"><circle r="44" fill="#1B3139"/><text y="12" text-anchor="middle" font-size="36" font-weight="800" fill="#FFAB00">Σ</text></g></g>
+        <text class="a" data-fx="fade" style="--d:4.2s" x="470" y="222" font-size="22" font-weight="700" fill="#1B3139">Reduce: se suma todo</text>
+      </g>
+    </g>
+  </svg>
+</section>
+
+<!-- ================================================================ 05 HISTORIA · HADOOP -->
+<section class="slide" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="done">1990 DWH</span><span class="on">2003 Big Data</span><span>2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:720px">
+    <div class="a" data-fx="pop" style="--d:.1s;display:flex;align-items:center;gap:18px"><span data-si="apachehadoop" style="--s:62px;--c:#E8A400"></span><span class="tag">Open source · 2006</span></div>
+    <h2 class="a" style="--d:.2s;margin-top:18px">Hadoop: big data<br><span style="color:#E09600">para todos</span></h2>
+    <p class="a" style="--d:.4s;margin-top:26px"><b>Doug Cutting</b> y <b>Mike Cafarella</b> llevaron las ideas de Google al código abierto. El nombre viene del elefante de juguete del hijo de Cutting.</p>
+    <p class="a" style="--d:.6s;margin-top:18px">Por fin cualquier empresa podía procesar terabytes… pero tenía dos problemas:</p>
+    <div class="col" style="margin-top:22px;gap:14px">
+      <div class="chip new a" data-fx="left" style="--d:1.6s;font-size:22px">✕ Lento: cada paso se escribía en disco</div>
+      <div class="chip new a" data-fx="left" style="--d:1.8s;font-size:22px">✕ Complejo: un “zoológico” de herramientas que operar</div>
+    </div>
+  </div>
+  <svg class="abs" style="left:900px;top:160px;width:920px;height:800px" viewBox="0 0 920 800">
+    <circle cx="420" cy="360" r="300" fill="#FFF0CC"/>
+    <!-- elefante flat -->
+    <g transform="translate(110 150) scale(1.18)"><g class="a" data-fx="pop" style="--d:.4s"><g class="loop bob">
+      <rect x="70" y="210" width="44" height="110" rx="20" fill="#E8A400"/><rect x="250" y="210" width="44" height="110" rx="20" fill="#E8A400"/>
+      <ellipse cx="200" cy="200" rx="160" ry="110" fill="#FFC21A"/>
+      <rect x="120" y="230" width="44" height="100" rx="20" fill="#FFC21A"/><rect x="200" y="230" width="44" height="100" rx="20" fill="#FFC21A"/>
+      <path d="M40 180 q-40 10 -40 60" stroke="#E8A400" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <circle cx="370" cy="150" r="90" fill="#FFC21A"/>
+      <g class="loop wiggle" style="transform-origin:330px 140px"><ellipse cx="320" cy="150" rx="56" ry="76" fill="#E8A400"/></g>
+      <path d="M440 170 Q500 260 470 340 Q462 360 446 348 Q470 270 410 200Z" fill="#FFC21A"/>
+      <circle cx="400" cy="128" r="10" fill="#1B3139"/>
+      <path d="M420 205 q20 10 26 30" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g></g></g>
+    <!-- zoológico -->
+    <g font-size="26" font-weight="700" text-anchor="middle" font-family="DM Sans">
+      <g transform="translate(110 120)"><g class="a" data-fx="pop" style="--d:1s"><rect x="-80" y="-30" width="160" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">HDFS</text></g></g>
+      <g transform="translate(690 110)"><g class="a" data-fx="pop" style="--d:1.15s"><rect x="-80" y="-30" width="160" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">MapReduce</text></g></g>
+      <g transform="translate(800 240)"><g class="a" data-fx="pop" style="--d:1.3s"><rect x="-62" y="-30" width="124" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">Hive</text></g></g>
+      <g transform="translate(820 380)"><g class="a" data-fx="pop" style="--d:1.45s"><rect x="-62" y="-30" width="124" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">Pig</text></g></g>
+      <g transform="translate(790 520)"><g class="a" data-fx="pop" style="--d:1.6s"><rect x="-75" y="-30" width="150" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">HBase</text></g></g>
+      <g transform="translate(120 650)"><g class="a" data-fx="pop" style="--d:1.75s"><rect x="-75" y="-30" width="150" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">Oozie</text></g></g>
+      <g transform="translate(330 700)"><g class="a" data-fx="pop" style="--d:1.9s"><rect x="-75" y="-30" width="150" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">Sqoop</text></g></g>
+      <g transform="translate(560 690)"><g class="a" data-fx="pop" style="--d:2.05s"><rect x="-95" y="-30" width="190" height="60" rx="30" fill="#fff" stroke="#E8A400" stroke-width="3"/><text y="8" fill="#1B3139">ZooKeeper</text></g></g>
+    </g>
+  </svg>
+</section>
+
+<!-- ================================================================ 06 HISTORIA · SPARK -->
+<section class="slide" style="--acc:#E25A1C" data-wipe="#E25A1C">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="done">1990 DWH</span><span class="done">2003 Big Data</span><span class="on">2009 Spark</span><span>2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:760px">
+    <div class="a" data-fx="pop" style="--d:.1s;display:flex;align-items:center;gap:16px"><span data-si="apachespark" style="--s:64px;--c:#E25A1C"></span><span style="font:800 40px 'DM Sans';color:#E25A1C">Apache Spark</span></div>
+    <h2 class="a" style="--d:.2s;margin-top:18px">Spark: trabajar<br><span style="color:#E25A1C">en memoria</span></h2>
+    <p class="a" style="--d:.4s;margin-top:26px">En el <b>AMPLab de UC Berkeley</b>, <b>Matei Zaharia</b> creó Spark: en vez de escribir cada paso en disco, trabaja en memoria. Hasta <b>100× más rápido</b> que MapReduce en ciertas cargas.</p>
+    <p class="a" style="--d:.6s;margin-top:18px">Y un solo motor para todo:</p>
+    <div class="row a" style="--d:.8s;margin-top:18px;gap:12px;flex-wrap:wrap">
+      <span class="chip" style="font-size:22px">SQL</span><span class="chip" style="font-size:22px">Streaming</span><span class="chip" style="font-size:22px">Machine learning</span><span class="chip" style="font-size:22px">Grafos</span><span class="chip" style="font-size:22px">Python · Scala · R</span>
+    </div>
+  </div>
+  <!-- carrera: disco vs memoria -->
+  <div class="abs" style="left:960px;top:250px;width:840px">
+    <div class="card a" style="--d:.5s;padding:30px 34px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3>MapReduce</h3><span class="tag">disco → disco → disco</span></div>
+      <div style="position:relative;height:120px;margin-top:20px;border-radius:16px;background:var(--oat2)">
+        <div style="position:absolute;left:24%;top:30px;width:4px;height:60px;background:#C3BBAE"></div><div style="position:absolute;left:48%;top:30px;width:4px;height:60px;background:#C3BBAE"></div><div style="position:absolute;left:72%;top:30px;width:4px;height:60px;background:#C3BBAE"></div>
+        
+        <span data-icon="disk" style="position:absolute;left:24%;top:66px;width:48px;height:48px;margin-left:-22px;display:block"></span><span data-icon="disk" style="position:absolute;left:48%;top:66px;width:48px;height:48px;margin-left:-22px;display:block"></span><span data-icon="disk" style="position:absolute;left:72%;top:66px;width:48px;height:48px;margin-left:-22px;display:block"></span>
+        <div class="loop" style="position:absolute;top:26px;width:64px;height:64px;border-radius:50%;background:#7D8B90;display:grid;place-items:center;color:#fff;font:800 22px 'DM Sans';animation:mr-run 7s ease-in-out infinite"><span data-icon="hourglass" style="width:34px;height:34px;display:block"></span></div>
+      </div>
+    </div>
+    <div class="card a" style="--d:.8s;padding:30px 34px;margin-top:28px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="color:#E25A1C">Spark</h3><span class="tag">todo en memoria</span></div>
+      <div style="position:relative;height:120px;margin-top:20px;border-radius:16px;background:#FDE8DD">
+        <div class="loop" style="position:absolute;top:26px;width:64px;height:64px;border-radius:50%;background:#E25A1C;display:grid;place-items:center;color:#fff;font:800 28px 'DM Sans';animation:sp-run 1.6s linear infinite"><span data-icon="bolt" style="width:36px;height:36px;display:block"></span></div>
+      </div>
+    </div>
+    <div class="a" data-fx="pop" style="--d:1.4s;margin-top:30px;text-align:center"><span class="pill-btn" style="background:#E25A1C">Hasta 100× más rápido en memoria</span></div>
+  </div>
+</section>
+
+<!-- ================================================================ 12 NUBE Y LAKEHOUSE -->
+<section class="slide" style="--acc:#4C9BE8" data-wipe="#4C9BE8">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="done">1990 DWH</span><span class="done">2003 Big Data</span><span class="done">2009 Spark</span><span class="on">2012 Nube</span><span>2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <div style="position:absolute;left:120px;top:200px;width:720px">
+    <h2 class="a" style="--d:.15s">La nube: ya no compras servidores, <span class="t-blue">los alquilas por minuto</span></h2>
+    <p class="a" style="--d:.4s;margin-top:26px">Almacenamiento barato e infinito, cómputo que se enciende y se apaga. Los data warehouse se mudan a la nube y aparece el <b>lakehouse</b>: el orden del warehouse sobre el lago abierto.</p>
+    <div class="col" style="margin-top:28px;gap:12px">
+      <div class="chip a" data-fx="left" style="--d:.8s;font-size:21px">2006 · AWS lanza almacenamiento y cómputo bajo demanda</div>
+      <div class="chip a" data-fx="left" style="--d:1s;font-size:21px">2010–2014 · BigQuery, Redshift y Snowflake: el warehouse en la nube</div>
+      <div class="chip a" data-fx="left" style="--d:1.2s;font-size:21px">2019–2020 · Delta Lake, Iceberg y el lakehouse</div>
+    </div>
+  </div>
+  <svg class="abs" style="left:900px;top:190px;width:900px;height:720px" viewBox="0 0 900 720">
+    <g transform="translate(120 330)"><g class="a" data-fx="pop" style="--d:.4s"><rect x="-70" y="-100" width="140" height="200" rx="14" fill="#7D8B90"/><g fill="#5F6E73"><rect x="-50" y="-80" width="100" height="22" rx="6"/><rect x="-50" y="-44" width="100" height="22" rx="6"/><rect x="-50" y="-8" width="100" height="22" rx="6"/></g><path class="a" data-fx="draw" pathLength="1" style="--d:1s" d="M-90 -120 L90 120 M90 -120 L-90 120" stroke="#FF3621" stroke-width="12" stroke-linecap="round" fill="none"/></g></g>
+    <path class="loop march" d="M220 330 H360" stroke="#4C9BE8" stroke-width="5" fill="none"/>
+    <g class="a" data-fx="pop" style="--d:1.2s"><g class="loop float"><path d="M470 270 a70 70 0 0 1 130 -30 a60 60 0 0 1 110 40 a50 50 0 0 1 -10 100 H470 a60 60 0 0 1 0 -110z" fill="#4C9BE8"/><text x="590" y="330" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">NUBE</text></g></g>
+    <g transform="translate(0 470)">
+      <g class="a" data-fx="up" style="--d:1.6s"><rect x="380" y="0" width="230" height="90" rx="16" fill="#DDEBF7"/><text x="495" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="#1A5A8F">Almacenamiento</text><text x="495" y="70" text-anchor="middle" font-size="18" fill="#4A5D64">barato, ilimitado</text></g>
+      <g class="a" data-fx="up" style="--d:1.8s"><rect x="630" y="0" width="230" height="90" rx="16" fill="#D6F2E5"/><text x="745" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="#00744F">Cómputo</text><text x="745" y="70" text-anchor="middle" font-size="18" fill="#4A5D64">se paga por uso</text></g>
+      <text class="a" data-fx="fade" style="--d:2s" x="620" y="140" text-anchor="middle" font-size="22" font-weight="700" fill="#1B3139">separados = escalan cada uno a su ritmo</text>
+    </g>
+  </svg>
+</section>
+
+<!-- ================================================================ 13 IA -->
+<section class="slide" style="--acc:#6B5FD6" data-wipe="#6B5FD6">
+  <div class="chapters a" data-fx="fade"><span class="done">3000 a.C. Manual</span><span class="done">1890 Máquinas</span><span class="done">1970 Relacional</span><span class="done">1990 DWH</span><span class="done">2003 Big Data</span><span class="done">2009 Spark</span><span class="done">2012 Nube</span><span class="on">2017 IA</span></div>
+  <div class="kicker a">01 · De dónde venimos</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Del machine learning a la <span style="color:var(--violet)">IA agéntica</span></h2>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:350px;gap:28px">
+    <div class="card a" style="--d:.4s;padding:28px;border-top:8px solid #00A972">
+      <div class="tag">2010s</div><h3 style="margin-top:4px">Machine learning</h3>
+      <svg viewBox="0 0 440 200" style="width:100%;height:200px;margin-top:10px"><g fill="none" stroke="#C3BBAE" stroke-width="4"><path d="M220 40 L120 110 M220 40 L320 110 M120 110 L70 170 M120 110 L170 170 M320 110 L270 170 M320 110 L370 170"/></g><g class="a" data-fx="pop" style="--d:.8s"><rect x="160" y="16" width="120" height="44" rx="10" fill="#00A972"/><text x="220" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">¿Edad &gt; 30?</text></g><g class="a" data-fx="pop" style="--d:1s"><rect x="70" y="92" width="100" height="38" rx="10" fill="#3CCB97"/><rect x="270" y="92" width="100" height="38" rx="10" fill="#3CCB97"/></g><g class="a" data-fx="pop" style="--d:1.2s" font-size="26" font-weight="800" text-anchor="middle"><text x="70" y="190" fill="#00A972">✓</text><text x="170" y="190" fill="#FF3621">✕</text><text x="270" y="190" fill="#00A972">✓</text><text x="370" y="190" fill="#FFAB00">?</text></g></svg>
+      <p style="font-size:20px">Python, scikit-learn y Jupyter: modelos que predicen a partir de datos históricos.</p>
+    </div>
+    <div class="card a" style="--d:.6s;padding:28px;border-top:8px solid #2272B4">
+      <div class="tag">2012 – 2017</div><h3 style="margin-top:4px">Deep learning</h3>
+      <svg viewBox="0 0 440 200" style="width:100%;height:200px;margin-top:10px"><g id="nn"></g></svg>
+      <p style="font-size:20px">GPUs, redes neuronales profundas y, en 2017, el <b>Transformer</b>: la base de los LLM.</p>
+    </div>
+    <div class="card a" style="--d:.8s;padding:28px;border-top:8px solid #6B5FD6">
+      <div class="tag">2022 – 2026</div><h3 style="margin-top:4px">IA generativa y agentes</h3>
+      <svg viewBox="0 0 440 200" style="width:100%;height:200px;margin-top:10px"><g transform="translate(220 100)"><g class="loop spin" style="transform-origin:220px 100px;transform-box:view-box;animation-duration:10s"><g fill="#E6E3FA"><circle cx="0" cy="-80" r="20"/><circle cx="76" cy="25" r="20"/><circle cx="-76" cy="25" r="20"/></g></g><g class="a" data-fx="pop" style="--d:1s"><rect x="-46" y="-40" width="92" height="76" rx="22" fill="#6B5FD6"/><circle cx="-16" cy="-4" r="8" fill="#fff"/><circle cx="16" cy="-4" r="8" fill="#fff"/><rect x="-4" y="-62" width="8" height="22" fill="#6B5FD6"/><circle cy="-66" r="8" fill="#FFAB00"/></g></g></svg>
+      <p style="font-size:20px">ChatGPT (2022), RAG, MCP y sistemas multi-agente que planifican, buscan y actúan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 14 LÍNEA DE TIEMPO -->
+<section class="slide oat2" style="--acc:#6B5FD6">
+  <div class="kicker a">01 · Resumen</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">5.000 años en <span style="color:var(--violet)">una línea</span></h2>
+  <div class="abs" style="left:120px;right:120px;top:440px;height:440px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:440px" viewBox="0 0 1680 440"><path class="a" data-fx="draw" pathLength="1" style="--d:.4s" d="M20 210 H1660" stroke="#1B3139" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="1"/></svg>
+    <div id="tl" style="position:absolute;inset:0"></div>
+  </div>
+  <p class="abs a" style="--d:3.4s;left:120px;bottom:100px;font-size:28px">La pregunta nunca cambió: <b>¿qué pasó, por qué y qué hacemos ahora?</b> Cambió la velocidad para responderla.</p>
+</section>
+
+<!-- ================================================================ 15 PLATAFORMAS 2026 -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">02 · Dónde estamos</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px">
+    <h2 class="a" style="--d:.15s">Las plataformas de datos de 2026</h2>
+    <span class="tag a" style="--d:.5s">clic en cada una →</span>
+  </div>
+  <p class="a" style="--d:.3s;margin-top:12px">En orden alfabético: cada una tiene su fuerte. Lo importante es elegir según tu contexto, no por moda.</p>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:380px;gap:24px">
+    <div class="card clickable a" data-modal="aws" style="--d:.4s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><img src="assets/aws-logo.svg" alt="" style="width:70px"></div><div><h3>AWS</h3><p style="font-size:19px">S3, Redshift, Glue, EMR y Bedrock: piezas para armar a medida.</p></div></div>
+    <div class="card clickable a" data-modal="databricks" style="--d:.5s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><span data-dbmark style="width:62px;height:62px"></span></div><div><h3>Databricks</h3><p style="font-size:19px">Lakehouse: ingeniería, SQL, ML e IA en una plataforma abierta.</p></div></div>
+    <div class="card clickable a" data-modal="bigquery" style="--d:.6s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><span data-si="googlebigquery" style="--s:60px;--c:#4285F4"></span></div><div><h3>Google BigQuery</h3><p style="font-size:19px">Warehouse serverless con ML e IA de Google integrados.</p></div></div>
+    <div class="card clickable a" data-modal="fabric" style="--d:.7s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><img src="assets/fabric-logo.svg" alt="" style="width:60px"></div><div><h3>Microsoft Fabric</h3><p style="font-size:19px">Todo en uno SaaS con OneLake y Power BI nativo.</p></div></div>
+    <div class="card clickable a" data-modal="snowflake" style="--d:.8s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><img src="assets/snowflake-mark.svg" alt="" style="width:60px"></div><div><h3>Snowflake</h3><p style="font-size:19px">Data Cloud: warehouse simple, compartir datos e IA con Cortex.</p></div></div>
+    <div class="card clickable a" data-modal="oss" style="--d:.9s;display:flex;gap:20px;align-items:center"><div class="ico-tile" style="width:96px;height:96px"><span data-si="apachespark" style="--s:60px;--c:#E25A1C"></span></div><div><h3>Open source</h3><p style="font-size:19px">Spark, Kafka, Airflow, dbt, Iceberg y Delta: el motor debajo de todo.</p></div></div>
+  </div>
+  <p class="abs a mono" data-fx="fade" style="--d:1.4s;left:120px;bottom:96px;font-size:17px;color:var(--muted)">Todas se apoyan en ideas que vimos: SQL, cómputo distribuido, nube y formatos abiertos.</p>
+</section>
+
+<!-- ================================================================ 16 STACK MODERNO -->
+<section class="slide oat2" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">02 · Dónde estamos</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px">
+    <h2 class="a" style="--d:.15s">El stack de datos moderno, por capas</h2>
+    <span class="tag a" style="--d:.5s">clic en cada capa →</span>
+  </div>
+  <div class="abs" style="left:120px;right:120px;top:270px;display:flex;flex-direction:column;gap:9px" id="layers"></div>
+</section>
+
+<!-- ================================================================ 17 TENDENCIAS -->
+<section class="slide dark" style="--acc:#FFAB00" data-wipe="#1B3139">
+  <div class="kicker a">02 · Dónde estamos</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">6 tecnologías que marcan <span class="t-yellow">2026</span></h2>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:330px;gap:24px" id="trends"></div>
+</section>
+<!-- ================================================================ 18 ROLES -->
+<section class="slide" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">03 · Quién hace qué</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px">
+    <h2 class="a" style="--d:.15s">Los roles en el mundo de los datos</h2>
+    <span class="tag a" style="--d:.5s">clic en cada rol →</span>
+  </div>
+  <div class="abs" style="left:120px;right:120px;top:330px;display:grid;grid-template-columns:repeat(7,1fr);gap:18px" id="roles"></div>
+</section>
+
+<!-- ================================================================ 19 ANTES -->
+<section class="slide" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="kicker a">03 · Cómo se trabajaba</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">Antes: un analista, muchas consultas<br>y <span class="hl">un Excel por pregunta</span></h2>
+  <div class="abs" style="left:120px;top:380px;width:1680px;height:520px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:520px" viewBox="0 0 1680 520">
+      <g fill="none" stroke="#D9D3C7" stroke-width="5" stroke-linecap="round">
+        <path class="loop march" d="M300 120 C500 120 520 240 680 240"/><path class="loop march" d="M300 260 H680"/><path class="loop march" d="M300 400 C500 400 520 280 680 280"/>
+        <path class="loop march" d="M860 260 H1080"/><path class="loop march" d="M1280 260 H1440"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.4s" d="M1520 160 C1500 20 900 20 790 160" stroke="#FF3621" stroke-dasharray="1"/>
+      </g>
+      <g transform="translate(1150 40)"><text class="a" data-fx="fade" style="--d:2.6s" text-anchor="middle" font-size="22" font-weight="700" fill="#FF3621">“¿Y si lo ves por región?” … otra vez</text></g>
+    </svg>
+    <div class="abs col a" data-fx="left" style="--d:.3s;left:0;top:60px;gap:16px;width:300px">
+      <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700"><span data-icon="db" style="width:32px;height:32px;display:inline-block"></span>Ventas</div>
+      <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700"><span data-icon="db" style="width:32px;height:32px;display:inline-block"></span>Clientes</div>
+      <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700"><span data-icon="file" style="width:32px;height:32px;display:inline-block"></span>Hojas sueltas</div>
+    </div>
+    <div class="abs col a" data-fx="pop" style="--d:.8s;left:690px;top:120px;align-items:center;gap:6px"><div class="pp" data-person="style:short;shirt:#FFAB00;prop:laptop;skin:1;glasses:1"></div><b style="font-size:21px">Analista</b><span class="sub">SQL a mano</span></div>
+    <div class="abs a" data-fx="pop" style="--d:1.3s;left:1090px;top:170px;width:190px;height:180px;border-radius:18px;background:#D6F2E5;display:grid;place-items:center;font:800 64px 'DM Sans';color:#00744F">X<span style="position:absolute;bottom:14px;font:600 18px 'DM Sans';color:#00744F">reporte_v9.xlsx</span></div>
+    <div class="abs col a" data-fx="pop" style="--d:1.8s;left:1450px;top:120px;align-items:center;gap:6px"><div style="display:flex;gap:6px"><div class="pp sm" data-person="style:bald;shirt:#1B3139;skin:0"></div><div class="pp sm" data-person="style:side;shirt:#1B3139;skin:2;prop:think"></div></div><b style="font-size:21px">Gerencia</b></div>
+    <div class="abs row a" style="--d:3s;left:0;bottom:0;gap:14px"><span class="chip new">Lento: días por respuesta</span><span class="chip new">Cada quien con su número</span><span class="chip new">No escala</span></div>
+  </div>
+</section>
+<!-- ================================================================ 16 FLUJO DE TRABAJO POR ROLES -->
+<section class="slide" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">03 · Cómo se trabaja hoy</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Hoy: un sistema de datos, <span class="t-green">una sola verdad</span></h2>
+  <div class="abs" id="flow" style="left:120px;top:300px;width:1680px;height:600px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:600px" viewBox="0 0 1680 600">
+      <g fill="none" stroke="#D9D3C7" stroke-width="5" stroke-linecap="round">
+        <path id="fp1" class="a" data-fx="draw" pathLength="1" style="--d:.6s" d="M150 300 H270"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:1.2s" d="M370 300 H500"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.6s" d="M980 300 Q1040 300 1060 120 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.7s" d="M980 300 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.8s" d="M980 300 Q1040 300 1060 480 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 120 Q1430 120 1450 290 H1480"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 300 H1480"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 480 Q1430 480 1450 310 H1480"/>
+      </g>
+      <!-- paraguas Unity Catalog -->
+      <g class="a" data-fx="down" style="--d:2.2s">
+        <path d="M500 150 Q740 20 980 150 Q920 128 860 150 Q800 128 740 150 Q680 128 620 150 Q560 128 500 150Z" fill="#2272B4"/>
+        <rect x="737" y="146" width="6" height="40" fill="#1B3139"/>
+        <text x="740" y="112" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">UNITY CATALOG</text>
+      </g>
+    </svg>
+    <!-- partículas -->
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#FFAB00;offset-path:path('M150 300 H500 H980 Q1040 300 1060 120 H1370 Q1430 120 1450 290 H1480');--t:5s;--fd:3.8s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#00A972;offset-path:path('M150 300 H1480');--t:5s;--fd:4.6s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#FF3621;offset-path:path('M150 300 H500 H980 Q1040 300 1060 480 H1370 Q1430 480 1450 310 H1480');--t:5s;--fd:5.4s"></div>
+    <!-- fuentes -->
+    <div class="abs col a" data-fx="left" style="--d:.3s;left:0;top:130px;gap:12px;width:150px">
+      <div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="db" style="width:28px;height:28px;display:inline-block;flex:none"></span>ERP / BD</div><div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="saas" style="width:28px;height:28px;display:inline-block;flex:none"></span>SaaS</div>
+      <div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="file" style="width:28px;height:28px;display:inline-block;flex:none"></span>Archivos</div><div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="iot" style="width:28px;height:28px;display:inline-block;flex:none"></span>IoT</div>
+    </div>
+    <!-- data engineer -->
+    <div class="abs col a" data-fx="pop" style="--d:.9s;left:270px;top:250px;align-items:center;gap:6px">
+      <div class="ico-tile" data-icon="lakeflow" style="width:100px;height:100px"></div>
+    </div>
+    <div class="abs col a" data-fx="up" style="--d:1s;left:250px;top:370px;align-items:center;width:140px;gap:4px">
+      <div class="pp sm" data-person="style:short;shirt:#2272B4;prop:laptop;skin:1;hair:#2B2523"></div>
+      <b style="font-size:19px;text-align:center">Data Engineer</b><span class="sub" style="text-align:center">Lakeflow</span>
+    </div>
+    <!-- medallón -->
+    <div class="abs a" data-fx="pop" style="--d:1.5s;left:500px;top:250px;width:140px;height:100px;border-radius:18px;background:#E9CDB6;display:grid;place-items:center;font:800 24px 'DM Sans'">Bronce</div>
+    <div class="abs a" data-fx="pop" style="--d:1.75s;left:670px;top:250px;width:140px;height:100px;border-radius:18px;background:#DDE2E5;display:grid;place-items:center;font:800 24px 'DM Sans'">Plata</div>
+    <div class="abs a" data-fx="pop" style="--d:2s;left:840px;top:250px;width:140px;height:100px;border-radius:18px;background:#F5DE9C;display:grid;place-items:center;font:800 24px 'DM Sans'">Oro</div>
+    <div class="abs a" data-fx="fade" style="--d:2s;left:500px;top:370px;width:480px;text-align:center"><span class="tag">Lakehouse · Delta / Iceberg</span></div>
+    <div class="abs col a" data-fx="up" style="--d:2.4s;left:640px;top:420px;align-items:center;width:200px;gap:4px">
+      <div class="pp sm" data-person="style:long;shirt:#1B3139;prop:clip;skin:0;hair:#7A4A2A;acc:#2272B4"></div>
+      <b style="font-size:19px">Data Steward</b><span class="sub">permisos, calidad, linaje</span>
+    </div>
+    <!-- consumidores -->
+    <div class="abs a" data-fx="right" style="--d:3s;left:1110px;top:50px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:bun;shirt:#FFAB00;prop:tablet;skin:2;hair:#1A1412"></div><div><b style="font-size:20px">Analista</b><div class="sub">Databricks SQL · AI/BI</div></div></div></div>
+    <div class="abs a" data-fx="right" style="--d:3.15s;left:1110px;top:230px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:curly;shirt:#0194E2;prop:laptop;skin:3;hair:#1A1412;glasses:1"></div><div><b style="font-size:20px">Data Scientist</b><div class="sub">MLflow · Model Serving</div></div></div></div>
+    <div class="abs a" data-fx="right" style="--d:3.3s;left:1110px;top:410px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:side;shirt:#FF3621;prop:laptop;skin:0;hair:#3A2A1E"></div><div><b style="font-size:20px">AI Engineer</b><div class="sub">Agent Bricks · AI Search</div></div></div></div>
+    <!-- negocio -->
+    <div class="abs col a" data-fx="pop" style="--d:4s;left:1490px;top:150px;align-items:center;width:190px;gap:6px">
+      <div class="bubble" style="position:relative;font-size:19px;white-space:normal;text-align:center">“¿Cómo vamos este mes?”</div>
+      <div class="pp" data-person="style:short;shirt:#1B3139;prop:tablet;skin:2;hair:#2B2523;acc:#FF3621"></div>
+      <b style="font-size:20px">Negocio</b><span class="sub">Genie · dashboards · Teams</span>
+    </div>
+  </div>
+  <div class="abs" style="left:120px;right:120px;bottom:96px;display:flex;gap:12px;justify-content:space-between">
+    <span class="chip a" data-fx="pop" style="--d:4.4s;font-size:20px">1 · Ingerir</span><span class="chip a" data-fx="pop" style="--d:4.5s;font-size:20px">2 · Transformar</span><span class="chip a" data-fx="pop" style="--d:4.6s;font-size:20px">3 · Gobernar</span><span class="chip a" data-fx="pop" style="--d:4.7s;font-size:20px">4 · Analizar</span><span class="chip a" data-fx="pop" style="--d:4.8s;font-size:20px">5 · Predecir</span><span class="chip a" data-fx="pop" style="--d:4.9s;font-size:20px">6 · Automatizar con agentes</span><span class="chip new a" data-fx="pop" style="--d:5s;font-size:20px">7 · Decidir</span>
+  </div>
+</section>
+
+<!-- ================================================================ 21 LA IA CAMBIA EL TRABAJO -->
+<section class="slide" style="--acc:#6B5FD6" data-wipe="#6B5FD6">
+  <div class="kicker a">03 · Cómo se trabaja en 2026</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">La IA no reemplaza los roles: <span style="color:var(--violet)">cambia cómo trabajan</span></h2>
+  <div class="abs" style="left:120px;right:120px;top:350px">
+    <div style="display:grid;grid-template-columns:300px 1fr 70px 1fr;gap:18px 20px;align-items:center" id="aiwork"></div>
+  </div>
+</section>
+
+<!-- ================================================================ 21 CAMINO DE ADOPCIÓN -->
+<section class="slide oat2" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">04 · Para ti</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Tu ruta para empezar <span class="t-green">en datos</span></h2>
+  <div class="abs" style="left:120px;top:330px;width:1680px;height:560px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:560px" viewBox="0 0 1680 560">
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.4s" d="M40 170 C300 170 300 60 520 60 S760 190 900 120 S1180 40 1300 100 S1520 40 1640 60" fill="none" stroke="#D9D3C7" stroke-width="44" stroke-linecap="round"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.6s" d="M40 170 C300 170 300 60 520 60 S760 190 900 120 S1180 40 1300 100 S1520 40 1640 60" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="1" stroke-linecap="round"/>
+    </svg>
+    <div class="loop flow" style="position:absolute;left:0;top:0;offset-path:path('M40 170 C300 170 300 60 520 60 S760 190 900 120 S1180 40 1300 100 S1520 40 1640 60');--t:9s;--fd:1.5s;width:70px;offset-anchor:50% 96%"><div data-person="style:short;shirt:#00A972;prop:stand;skin:1" class="pp" style="width:70px"></div></div>
+    <div id="steps"></div>
+  </div>
+  <div class="abs a" style="--d:2.6s;left:120px;right:120px;bottom:92px;display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="tag" style="margin-right:6px">Para leer</span><span class="chip">Fundamentals of Data Engineering · Reis &amp; Housley</span><span class="chip">Designing Data-Intensive Applications · Kleppmann</span><span class="chip ga">Practica gratis: Databricks Free Edition</span><span class="chip" style="background:#FFE1DB">YouTube: Daniel Datashow</span></div>
+</section>
+
+<!-- ================================================================ 23 MADUREZ -->
+<section class="slide oat2" style="--acc:#FF3621" data-wipe="#FF3621">
+  <div class="kicker a">04 · Para tu empresa</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">¿En qué escalón está <span class="t-lava">tu empresa</span>?</h2>
+  <div class="abs" style="left:120px;right:120px;top:330px;height:600px" id="stairs"></div>
+</section>
+<!-- ================================================================ 22 EL MUNDO AVANZA -->
+<section class="slide dark no-foot" style="--acc:#FFAB00" data-wipe="#0B2026">
+  <div class="kicker a">El mundo avanza</div>
+  <h1 class="a" data-fx="blur" style="--d:.2s;margin-top:22px;font-size:104px;width:1500px">Tu competencia ya está<br><span class="t-yellow">conversando con sus datos.</span></h1>
+  <p class="lead a" style="--d:.6s;margin-top:28px;width:1300px">Las empresas que ganan no son las que tienen más datos, sino las que los convierten <b>más rápido</b> en decisiones.</p>
+  <!-- ciudad + camino que avanza -->
+  <div class="abs" style="left:0;right:0;bottom:0;height:420px;overflow:hidden">
+    <svg class="abs" style="left:0;bottom:120px;width:1920px;height:300px" viewBox="0 0 1920 300"><g id="city"></g></svg>
+    <div class="abs" style="left:0;right:0;bottom:0;height:120px;background:#0B2026"></div>
+    <div class="abs loop" style="left:0;bottom:30px;width:3840px;height:70px;display:flex;animation:march-left 22s linear infinite" id="signs"></div>
+    <div class="abs loop bob" style="left:880px;bottom:104px;width:120px;animation-duration:.6s"><div class="pp" style="width:120px" data-person="style:short;shirt:#FF3621;prop:both;skin:1"></div></div>
+  </div>
+  <div class="abs a" data-fx="pop" style="--d:1.2s;right:120px;top:120px"><span class="pill-btn" style="background:#FFAB00;color:#0B2026;font-size:30px;padding:18px 34px">No te quedes atrás →</span></div>
+</section>
+
+<!-- ================================================================ 23 TALENTO PARA TI -->
+<section class="slide" style="--acc:#1c6fd6" data-wipe="#1c6fd6">
+  <div style="position:absolute;left:120px;top:110px;width:560px">
+    <span class="a" data-fx="down" data-tpt style="--h:88px;display:inline-block"></span>
+    <div class="a" style="--d:.3s;margin-top:20px;display:flex;align-items:flex-end;gap:24px">
+      <div class="pp lg" data-person="style:short;shirt:#1c6fd6;prop:wave;skin:1;hair:#1A1412"></div>
+      <div class="bubble" style="position:relative;margin-bottom:170px;font-size:26px">¡Hola!</div>
+    </div>
+    <h2 class="a" style="--d:.5s;margin-top:10px;font-size:58px">Soy Daniel Portugal</h2>
+    <p class="a" style="--d:.65s;margin-top:10px;font-size:26px"><b>Field Engineering Leader</b> en Talento Para Ti. Te acompañamos a pasar de datos dispersos a <b>decisiones con IA</b>.</p>
+    <div class="a" style="--d:.8s;margin-top:22px;display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:14px;font-size:23px"><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:46px"><span>Fundador de <b>Data Wizard</b></span></div><div style="display:flex;align-items:center;gap:12px;font-size:23px"><img src="assets/youtube-logo.svg" alt="YouTube" style="height:30px;display:block"><span data-si="tiktok" style="--s:30px;--c:#0B0B0B"></span><span>Mi marca personal: <b>Daniel Datashow</b> en YouTube y TikTok</span></div></div>
+    <div class="a" style="--d:.9s;margin-top:30px;display:flex;align-items:center;gap:18px;background:#fff;border-radius:20px;padding:14px 22px;width:fit-content;box-shadow:var(--shadow)">
+      <img src="assets/databricks-partner.svg" style="height:64px" alt="Databricks Partner"><b style="font-size:22px">Talento Para Ti es<br>Partner de Databricks</b>
+    </div>
+  </div>
+  <div class="abs" style="left:780px;right:120px;top:120px">
+    <div class="kicker a" style="--d:.2s">Qué hacemos por tu empresa</div>
+    <div class="grid2" style="margin-top:26px;gap:22px">
+      <div class="card a" data-fx="right" style="--d:.5s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="lakeflow" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">Migración de plataformas</h3></div><p style="font-size:20px;margin-top:10px">De Redshift, Teradata, Oracle, SQL Server, Hadoop o Snowflake a Databricks, por etapas y sin detener la operación.</p></div>
+      <div class="card a" data-fx="right" style="--d:.65s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="lakehouse" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">Ingeniería de datos</h3></div><p style="font-size:20px;margin-top:10px">Lakehouse, pipelines con Lakeflow, arquitectura medallón y tiempo real.</p></div>
+      <div class="card a" data-fx="right" style="--d:.8s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="agentbricks" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">IA y agentes</h3></div><p style="font-size:20px;margin-top:10px">Asistentes sobre tus documentos, agentes con Agent Bricks, Genie para el negocio y memoria de agentes.</p></div>
+      <div class="card a" data-fx="right" style="--d:.95s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="uc" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">Gobierno y seguridad</h3></div><p style="font-size:20px;margin-top:10px">Unity Catalog: permisos, enmascarado, linaje y buenas prácticas de seguridad.</p></div>
+      <div class="card a" data-fx="right" style="--d:1.1s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="aibi" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">Analítica y FinOps</h3></div><p style="font-size:20px;margin-top:10px">Dashboards AI/BI, métricas gobernadas y optimización del costo de la plataforma.</p></div>
+      <div class="card a" data-fx="right" style="--d:1.25s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat);box-shadow:none"><span data-icon="dev" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:28px">Equipos y formación</h3></div><p style="font-size:20px;margin-top:10px">Talento especializado para tu proyecto y rutas de capacitación para tus equipos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 24 CIERRE -->
+<section class="slide no-foot" style="--acc:#FF3621" data-wipe="#FF3621">
+  <svg class="abs" style="left:0;top:0;width:1920px;height:1080px" viewBox="0 0 1920 1080"><g id="confetti"></g></svg>
+  <div style="position:absolute;left:0;right:0;top:220px;text-align:center">
+    <div class="kicker a" style="justify-content:center">¡Gracias, Iquitos! · ¿Preguntas?</div>
+    <h1 class="a" data-fx="blur" style="--d:.2s;margin-top:26px;font-size:150px">¿Conversamos?</h1>
+    <p class="lead a" style="--d:.5s;margin:30px auto 0;width:1100px">Revisemos juntos tu plataforma de datos actual y encontremos <b>tu primer caso de IA</b> con impacto en el negocio.</p>
+    <div class="a" style="--d:.8s;margin-top:54px;display:flex;justify-content:center;gap:20px">
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px"><span data-icon="mail" style="width:30px;height:30px;display:inline-block"></span>daniel.portugal@talentoparati.com</span>
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px;background:#1c6fd6">talentoparati.com</span>
+    </div>
+  </div>
+  <div class="abs a" data-fx="up" style="--d:1.1s;left:120px;right:120px;bottom:80px;display:flex;align-items:center;justify-content:space-between">
+    <span data-tpt style="--h:64px"></span>
+    <div style="display:flex;align-items:center;gap:16px"><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:64px"><div><b style="font-size:22px">Data Wizard</b><div style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:19px;color:var(--ink2)"><img src="assets/youtube-logo.svg" alt="YouTube" style="height:20px;display:block"><span data-si="tiktok" style="--s:20px;--c:#0B0B0B"></span>Daniel Datashow</div></div></div>
+    <div style="display:flex;align-items:center;gap:14px"><img src="assets/databricks-partner.svg" style="height:58px" alt=""><img src="assets/databricks-wordmark.png" style="height:34px" alt="Databricks"></div>
+  </div>
+</section>
+
+<img id="dw-src" src="assets/datawizard-logo.png" alt="" hidden>
+<img id="tpt-icon-src" src="assets/tpt-icon.png" alt="" hidden>
+<div id="wipe"><svg class="wlogo" viewBox="0 0 24 24"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#fff"/></svg></div>
+<div id="modal"><div class="scrim"></div><div class="box"></div></div>
+<div id="progress"></div>
+<div id="navbtns"><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Siguiente">→</button></div>
+<div id="hint">← → para avanzar · R repite la animación · F pantalla completa</div>
+</div></div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  let s = '';
+  // Portada: estaciones en el camino al Misti
+  const CL = [[400, 735, '#C9A27A', 'arcilla'], [270, 640, '#EBD9B4', 'tarjeta'], [520, 545, '#2272B4', 'SQL'], [300, 430, '#4C9BE8', 'nube'], [448, 312, '#1E8C55', 'IA']];
+  s = '';
+  CL.forEach(([x, y, c, t], i) => {
+    s += `<g transform="translate(${x} ${y})"><g class="a" data-fx="pop" style="--d:${(1.1 + i * .35).toFixed(2)}s"><circle r="34" fill="#fff"/><circle r="24" fill="${c}"/><text y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1B3139">${t}</text></g></g>`;
+  });
+  s += `<g transform="translate(448 312)"><g class="loop pulse"><circle r="40" fill="none" stroke="#6B5FD6" stroke-width="4"/></g></g>`;
+  $('climb').innerHTML = s;
+  // Iquitos: selva en capas (aguajes y copas) a los lados del Amazonas
+  s = '';
+  [['#3E9A5F', 290, .85], ['#2F7D4F', 340, .75]].forEach(([c, y, sc], L) => {
+    for (let x = -20; x < 900; x += 70) {
+      const yy = y + ((x * 13) % 40) + L * 20, r = (34 + (x % 3) * 8) * sc;
+      if (x > 360 && x < 520) continue;
+      s += `<g class="a" data-fx="pop" style="--d:${(.3 + L * .15 + x / 3000).toFixed(2)}s"><rect x="${x - 4}" y="${yy}" width="8" height="${70 * sc}" fill="#6B4A2B"/><circle cx="${x}" cy="${yy}" r="${r}" fill="${c}"/><circle cx="${x - r * .5}" cy="${yy + r * .3}" r="${r * .7}" fill="${c}"/></g>`;
+    }
+  });
+  [[110, 600], [760, 620], [60, 700]].forEach(([x, y], i) => {
+    s += `<g class="loop wiggle" style="transform-origin:${x}px ${y + 90}px;transform-box:view-box;animation-delay:-${i}s"><rect x="${x - 4}" y="${y}" width="8" height="90" fill="#8A6640"/>${[-60, -25, 15, 50].map(a => `<path d="M${x} ${y} q${a * .9} -30 ${a * 1.4} 10" stroke="#1E8C55" stroke-width="9" fill="none" stroke-linecap="round"/>`).join('')}</g>`;
+  });
+  $('jungle').innerHTML = s;
+  // Quipu
+  s = ''; const QC = ['#FF3621', '#FFAB00', '#2272B4', '#00A972', '#6B5FD6', '#B07A3A', '#FF3621', '#2272B4'];
+  QC.forEach((c, i) => {
+    const x = 56 + i * 26, len = 70 + (i * 37) % 60;
+    s += `<g class="a" data-fx="growy" style="--d:${(.6 + i * .08).toFixed(2)}s"><path d="M${x} 46 V${46 + len}" stroke="${c}" stroke-width="5" stroke-linecap="round"/>${[0, 1, 2].map(k => `<circle cx="${x}" cy="${70 + k * 22 + (i % 2) * 8}" r="6" fill="${c}"/>`).join('')}</g>`;
+  });
+  $('quipu').innerHTML = s;
+  // Diagrama de rosa de Nightingale
+  s = ''; const RV = [52, 40, 64, 30, 46, 70, 36, 58, 44, 62, 34, 50];
+  RV.forEach((r, i) => {
+    const a0 = (i * 30 - 90) * Math.PI / 180, a1 = ((i + 1) * 30 - 90) * Math.PI / 180;
+    const p = `M0 0 L${(r * Math.cos(a0)).toFixed(1)} ${(r * Math.sin(a0)).toFixed(1)} A${r} ${r} 0 0 1 ${(r * Math.cos(a1)).toFixed(1)} ${(r * Math.sin(a1)).toFixed(1)}Z`;
+    s += `<path class="a" data-fx="pop" style="--d:${(.7 + i * .06).toFixed(2)}s;transform-origin:0 0;transform-box:view-box" d="${p}" fill="${i % 3 === 0 ? '#4C9BE8' : i % 3 === 1 ? '#FF8A73' : '#C9D3D6'}" stroke="#fff" stroke-width="2"/>`;
+  });
+  $('rose').innerHTML = s;
+  // Tarjeta perforada
+  s = '';
+  for (let c = 0; c < 16; c++) for (let r = 0; r < 5; r++) {
+    if ((c * 7 + r * 3) % 4 === 0) s += `<rect class="a" data-fx="pop" style="--d:${(.6 + (c * 5 + r) * .012).toFixed(3)}s" x="${58 + c * 21}" y="${60 + r * 24}" width="9" height="15" rx="2" fill="#1B3139"/>`;
+  }
+  $('punch').innerHTML = s;
+  // ENIAC
+  s = '';
+  for (let i = 0; i < 6; i++) {
+    s += `<g class="a" data-fx="growy" style="--d:${(.7 + i * .1).toFixed(2)}s"><rect x="${30 + i * 66}" y="40" width="56" height="150" rx="6" fill="#1B3139"/>${[0, 1, 2, 3, 4, 5].map(k => `<circle class="loop blink" style="animation-delay:${((i + k) % 5) * .25}s" cx="${44 + i * 66 + (k % 2) * 28}" cy="${62 + Math.floor(k / 2) * 30}" r="5" fill="${k % 3 ? '#FFAB00' : '#3CCB97'}"/>`).join('')}<rect x="${36 + i * 66}" y="160" width="44" height="18" rx="4" fill="#4A5D64"/></g>`;
+  }
+  $('eniac').innerHTML = s;
+  // Red neuronal
+  s = ''; const L = [[3, 60], [4, 160], [4, 260], [2, 360]];
+  const pos = L.map(([n, x]) => Array.from({ length: n }, (_, k) => [x, 100 + (k - (n - 1) / 2) * 40]));
+  for (let a = 0; a < pos.length - 1; a++) pos[a].forEach(p => pos[a + 1].forEach(q => { s += `<path d="M${p[0]} ${p[1]} L${q[0]} ${q[1]}" stroke="#C7DBEE" stroke-width="2"/>`; }));
+  pos.forEach((col, a) => col.forEach(([x, y], k) => { s += `<circle class="a" data-fx="pop" style="--d:${(.8 + a * .2 + k * .04).toFixed(2)}s" cx="${x}" cy="${y}" r="13" fill="${['#3CCB97', '#2272B4', '#4C9BE8', '#FFAB00'][a]}"/>`; }));
+  s += `<circle class="loop flow" r="6" fill="#FF3621" style="offset-path:path('M60 100 L160 80 L260 120 L360 120');--t:1.6s"/>`;
+  $('nn').innerHTML = s;
+  // Línea de tiempo resumen
+  const T = [['3000 a.C.', 'Tablillas', 'Los primeros registros.', '#B07A3A'], ['1890', 'Tarjetas perforadas', 'El censo se vuelve máquina.', '#4A5D64'], ['1970', 'Modelo relacional', 'Tablas y SQL.', '#2272B4'], ['1990', 'Data warehouse', 'Reportes para el negocio.', '#2272B4'], ['2003', 'Big data', 'Google, Hadoop.', '#FFAB00'], ['2009', 'Spark', 'Todo en memoria.', '#E25A1C'], ['2012', 'Nube', 'Datos sin servidores propios.', '#4C9BE8'], ['2017', 'Transformers', 'Nace la IA generativa.', '#6B5FD6'], ['2026', 'Agentes', 'La IA que actúa.', '#FF3621']];
+  s = '';
+  T.forEach(([y, t, d, c], i) => {
+    const x = i * 180, up = i % 2 === 0, del = (.7 + i * .28).toFixed(2);
+    s += `<div class="a" data-fx="pop" style="--d:${del}s;position:absolute;left:${x + 96}px;top:186px;width:48px;height:48px;border-radius:50%;background:${c};border:8px solid #fff;box-shadow:var(--shadow)"></div>
+      <div class="a" data-fx="${up ? 'down' : 'up'}" style="--d:${(+del + .12).toFixed(2)}s;position:absolute;left:${x}px;${up ? 'top:0' : 'top:258px'};width:240px"><div class="card" style="padding:18px 20px;border-top:6px solid ${c}"><div style="font:800 32px 'DM Sans';color:${c}">${y}</div><div style="font-size:23px;font-weight:700;line-height:1.15;margin-top:2px">${t}</div><div style="font-size:18px;color:var(--ink2);margin-top:6px">${d}</div></div></div>`;
+  });
+  $('tl').innerHTML = s;
+  // Capas del stack moderno
+  const LY = [['l_src', 'Fuentes', 'ERP · SaaS · eventos · documentos', 'db'], ['l_ing', 'Ingesta', 'Fivetran · Airbyte · Kafka · CDC', 'lakeflow'], ['l_sto', 'Almacenamiento', 'S3 / ADLS / GCS · Delta · Iceberg', 'lakehouse'], ['l_pro', 'Transformación', 'Spark · SQL · dbt · calidad', 'geniecode'], ['l_orq', 'Orquestación', 'Airflow · Dagster · jobs nativos', 'zeroops'], ['l_gov', 'Gobierno', 'Catálogo · linaje · capa semántica', 'uc'], ['l_use', 'Consumo', 'Power BI · Tableau · notebooks · apps', 'aibi'], ['l_ai', 'IA y agentes', 'LLMs · RAG · vector search · MCP', 'agentbricks']];
+  s = '';
+  LY.forEach(([k, t, d, ic], i) => {
+    s += `<div class="card clickable a" data-fx="left" data-modal="${k}" style="--d:${(.3 + i * .12).toFixed(2)}s;display:flex;align-items:center;gap:24px;padding:9px 26px;${k === 'l_ai' ? 'outline:3px solid #6B5FD6;outline-offset:-3px' : ''}"><div class="ico-tile" style="width:54px;height:54px;box-shadow:none;background:var(--oat)"><span data-icon="${ic}" style="width:36px;height:36px;display:block"></span></div><b style="font-size:26px;width:280px">${t}</b><span style="font-size:21px;color:var(--ink2)">${d}</span><span style="margin-left:auto;font:600 18px 'DM Mono';color:var(--muted)">+</span></div>`;
+  });
+  $('layers').innerHTML = s;
+  // Tendencias 2026
+  const TR = [['agentbricks', 'Agentes de IA', 'Pasamos de chatbots que responden a agentes que planifican, usan herramientas y ejecutan tareas.'], ['lakeflow', 'Tiempo real', 'Fraude, logística y precios se deciden en segundos, no al día siguiente.'], ['lakehouse', 'Formatos abiertos', 'Delta e Iceberg: tus datos ya no quedan atados a un solo proveedor.'], ['ontology', 'Capa semántica', 'Métricas y definiciones oficiales que entienden personas e IA por igual.'], ['gateway', 'Gobierno de la IA', 'Permisos, costos y trazas para cada modelo y cada agente.'], ['genie', 'Datos en lenguaje natural', 'Cualquier persona pregunta a los datos sin escribir SQL.']];
+  s = '';
+  TR.forEach(([ic, t, d], i) => {
+    s += `<div class="card a" data-fx="flip" style="--d:${(.4 + i * .15).toFixed(2)}s;height:300px;display:flex;flex-direction:column;gap:12px"><div class="ico-tile" style="width:72px;height:72px;background:#2E4C56;box-shadow:none"><span data-icon="${ic}" style="width:46px;height:46px;display:block"></span></div><h3 style="color:#fff">${t}</h3><p style="font-size:21px">${d}</p></div>`;
+  });
+  $('trends').innerHTML = s;
+  // Roles
+  const RL = [['r_de', 'Data Engineer', 'construye las tuberías', 'style:short;shirt:#2272B4;prop:laptop;skin:1;hair:#2B2523', '#2272B4'], ['r_da', 'Data Analyst', 'responde preguntas', 'style:bun;shirt:#FFAB00;prop:tablet;skin:2;hair:#1A1412', '#FFAB00'], ['r_ds', 'Data Scientist', 'predice', 'style:long;shirt:#00A972;prop:clip;skin:0;hair:#7A4A2A;glasses:1', '#00A972'], ['r_mle', 'ML Engineer', 'lleva a producción', 'style:curly;shirt:#0E8A7D;prop:laptop;skin:3;hair:#1A1412', '#0E8A7D'], ['r_aie', 'AI Engineer', 'crea agentes', 'style:side;shirt:#6B5FD6;prop:laptop;skin:1;hair:#3A2A1E', '#6B5FD6'], ['r_arq', 'Data Architect', 'diseña el todo', 'style:bald;shirt:#1B3139;prop:point;skin:0;hair:#7A6A5A;beard:1', '#1B3139'], ['r_gov', 'Data Governance', 'cuida la confianza', 'style:short;shirt:#4A5D64;prop:clip;skin:2;hair:#2B2523', '#4A5D64']];
+  s = '';
+  RL.forEach(([k, t, d, pp, c], i) => {
+    s += `<div class="card clickable a" data-modal="${k}" style="--d:${(.3 + i * .12).toFixed(2)}s;padding:22px 14px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border-bottom:6px solid ${c}"><div class="pp" data-person="${pp}"></div><b style="font-size:22px;line-height:1.15">${t}</b><span class="sub">${d}</span></div>`;
+  });
+  $('roles').innerHTML = s;
+  // La IA cambia la forma de trabajar
+  const AW = [['Data Engineer', 'Escribe cada pipeline a mano', 'Describe el pipeline, el copiloto lo genera y él lo revisa'], ['Data Analyst', 'SQL ad hoc y un Excel por pregunta', 'El negocio pregunta en lenguaje natural; él cuida las métricas'], ['Data Scientist', 'Semanas probando modelos', 'Experimenta más rápido y se enfoca en el problema'], ['Negocio', 'Espera el reporte del lunes', 'Conversa con agentes sobre datos gobernados']];
+  s = `<span></span><span class="tag">Antes</span><span></span><span class="tag" style="color:#6B5FD6">Con IA en 2026</span>`;
+  AW.forEach(([r, a, b], i) => {
+    const d = (.4 + i * .3).toFixed(1);
+    s += `<b class="a" data-fx="left" style="--d:${d}s;font-size:27px">${r}</b><div class="card a" style="--d:${d}s;padding:18px 22px;font-size:21px;color:var(--ink2)">${a}</div><div class="a" data-fx="pop" style="--d:${(+d + .15).toFixed(2)}s;font-size:34px;text-align:center;color:#6B5FD6">→</div><div class="card a" data-fx="right" style="--d:${(+d + .2).toFixed(2)}s;padding:18px 22px;font-size:21px;border-left:6px solid #6B5FD6"><b>${b}</b></div>`;
+  });
+  $('aiwork').innerHTML = s;
+  // Escalera de madurez
+  const SM = [['Excel y reportes manuales', 'Cada área con su archivo.', '#C3BBAE'], ['Data warehouse y BI', 'Una verdad, pero lenta y cara.', '#4C9BE8'], ['Datos en la nube', 'Escala, pero sin gobierno claro.', '#2272B4'], ['Plataforma gobernada', 'Lakehouse, calidad y permisos.', '#00A972'], ['IA y agentes en producción', 'Decisiones en tiempo real.', '#FF3621']];
+  s = '';
+  SM.forEach(([t, d, c], i) => {
+    const x = i * 330, h = 140 + i * 90, del = (.4 + i * .3).toFixed(1);
+    s += `<div class="a" data-fx="growy" style="--d:${del}s;position:absolute;left:${x}px;bottom:0;width:310px;height:${h}px;border-radius:20px 20px 0 0;background:${c};padding:22px;color:${i ? '#fff' : '#1B3139'}"><div style="font:800 40px 'DM Sans'">${i + 1}</div><div style="font-size:24px;font-weight:700;line-height:1.15;margin-top:6px">${t}</div><div style="font-size:18px;margin-top:6px;opacity:.85">${d}</div></div>`;
+  });
+  s += `<div class="a" data-fx="pop" style="--d:2.2s;position:absolute;left:0;top:0;width:900px"><p style="font-size:28px">La mayoría de empresas está entre el <b>2</b> y el <b>3</b>. El salto a la IA no se da sin pasar por el <b>4</b>: datos confiables y gobernados.</p><span class="pill-btn" style="margin-top:20px;background:#FF3621">Te ayudamos a subir el siguiente escalón →</span></div>`;
+  $('stairs').innerHTML = s;
+
+
+  let k;
+  // Google: 12 máquinas que forman un disco
+  const g = document.getElementById('g-grid'); s = '';
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) {
+    const x = c * 118, y = r * 98, d = (.9 + (r * 4 + c) * .08).toFixed(2);
+    s += `<g transform="translate(${x} ${y})"><g class="a" data-fx="pop" style="--d:${d}s"><rect width="100" height="78" rx="12" fill="#fff"/><rect x="12" y="14" width="76" height="10" rx="5" fill="#DDEBF7"/><rect x="12" y="32" width="76" height="10" rx="5" fill="#DDEBF7"/><circle class="loop blink" style="animation-delay:${(c * .2 + r * .3).toFixed(1)}s" cx="20" cy="60" r="6" fill="#34A853"/><rect x="34" y="55" width="54" height="10" rx="5" fill="#EEEDE9"/></g></g>`;
+  }
+  g.innerHTML = s;
+  // MapReduce: 4 mesas que cuentan
+  const m = document.getElementById('g-map'); s = '';
+  [['Mesa 1', 128], ['Mesa 2', 97], ['Mesa 3', 143], ['Mesa 4', 112]].forEach(([n, v], i) => {
+    s += `<g transform="translate(${i * 180} 0)"><g class="a" data-fx="up" style="--d:${(2.6 + i * .15).toFixed(2)}s"><rect width="140" height="110" rx="16" fill="#fff"/><text x="70" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#7D8B90">${n}</text><text x="70" y="86" text-anchor="middle" font-size="40" font-weight="800" fill="#2272B4">${v}</text></g></g>`;
+  });
+  m.innerHTML = s;
+  // Camino de adopción
+  const ST = [['SQL', 'El idioma universal de los datos. Empieza aquí, sirve para todos los roles.'],
+    ['Python', 'El lenguaje por excelencia en datos: limpieza, automatización y modelos.'],
+    ['Visualización y BI', 'Power BI o Tableau: todo análisis termina en un tablero que se entiende.'],
+    ['Estadística y ML', 'Lo básico para entender los datos y predecir.'],
+    ['Nube, plataforma e IA', 'Una plataforma en la nube, un proyecto real y tus primeros agentes.']];
+  const stp = document.getElementById('steps'); s = '';
+  ST.forEach(([t, d], i) => {
+    const x = i * 342, del = (.8 + i * .3).toFixed(1);
+    s += `<div class="a" data-fx="pop" style="--d:${del}s;position:absolute;left:${x + 128}px;top:206px;width:56px;height:56px;border-radius:50%;background:${i === 4 ? '#FF3621' : '#00A972'};color:#fff;display:grid;place-items:center;font:800 26px 'DM Sans';border:6px solid #fff;box-shadow:var(--shadow)">${i + 1}</div>
+      <div class="card a" style="--d:${(+del + .1).toFixed(1)}s;position:absolute;left:${x}px;top:290px;width:312px;height:250px;padding:26px"><h3 style="font-size:29px">${t}</h3><p style="font-size:21px;margin-top:10px">${d}</p></div>`;
+  });
+  stp.innerHTML = s;
+  // Ciudad nocturna
+  const city = document.getElementById('city'); s = ''; let xx = 0; k = 7;
+  while (xx < 1920) {
+    k = (k * 37 + 11) % 97; const bw = 90 + k % 70, bh = 90 + (k * 3) % 190;
+    s += `<rect x="${xx}" y="${300 - bh}" width="${bw}" height="${bh}" fill="${k % 2 ? '#22404A' : '#1F3942'}"/>`;
+    for (let wy = 300 - bh + 18; wy < 290; wy += 30) for (let wx = xx + 14; wx < xx + bw - 20; wx += 26) {
+      k = (k * 31 + 7) % 101;
+      if (k % 3 === 0) s += `<rect class="loop blink" style="animation-duration:${(2 + k % 5)}s;animation-delay:-${k % 4}s" x="${wx}" y="${wy}" width="12" height="14" rx="2" fill="#FFAB00" opacity=".85"/>`;
+      else if (k % 3 === 1) s += `<rect x="${wx}" y="${wy}" width="12" height="14" rx="2" fill="#2E4C56"/>`;
+    }
+    xx += bw + 8;
+  }
+  city.innerHTML = s;
+  const SG = ['1990 · Data Warehouse', '2006 · Big Data', '2013 · Nube', '2020 · Lakehouse', '2023 · IA generativa', '2026 · Agentes', '¿Y tu empresa?'];
+  document.getElementById('signs').innerHTML = [...SG, ...SG].map((t, i) => `<div style="width:${3840 / 14}px;flex:none;display:flex;justify-content:center;align-items:center"><span style="background:${i % 7 === 6 ? '#FFAB00' : '#F9F7F4'};color:#0B2026;font:700 20px 'DM Sans';padding:10px 18px;border-radius:12px;white-space:nowrap">${t}</span></div>`).join('');
+  // Confeti del cierre
+  const cf = document.getElementById('confetti'); s = ''; k = 3;
+  for (let i = 0; i < 46; i++) {
+    k = (k * 53 + 17) % 211; const x = (k * 9.1) % 1920, y = (k * 5.3 + i * 23) % 1080, c = ['#FF3621', '#2272B4', '#00A972', '#FFAB00', '#6B5FD6'][i % 5];
+    if (y > 200 && y < 820 && x > 300 && x < 1620) continue;
+    const sh = i % 3 === 0 ? `<circle r="9" fill="${c}"/>` : i % 3 === 1 ? `<rect x="-8" y="-8" width="16" height="16" rx="3" fill="${c}" transform="rotate(${k % 90})"/>` : `<path d="M-10 6 L0 -10 L10 6Z" fill="${c}"/>`;
+    s += `<g transform="translate(${x.toFixed(0)} ${y.toFixed(0)})"><g class="a" data-fx="pop" style="--d:${(.2 + (i % 12) * .08).toFixed(2)}s"><g class="loop ${i % 2 ? 'float' : 'float2'}">${sh}</g></g></g>`;
+  }
+  cf.innerHTML = s;
+})();
+</script>
+<script src="deck.js?v=1.2"></script>
+</body>
+</html>

@@ -24,6 +24,18 @@ export const CATEGORIAS: Record<Categoria, { es: string; en: string }> = {
 
 export const PRESENTACIONES: Presentacion[] = [
 	{
+		slug: 'del-papel-a-la-ia-iquitos',
+		titulo: 'Del papel a la IA · Iquitos Data Fest',
+		descripcion: {
+			es: 'Edición Iquitos Data Fest 2026: la evolución de los datos navegando el Amazonas, de las tablillas a los agentes de IA.',
+			en: 'Iquitos Data Fest 2026 edition: the evolution of data sailing the Amazon, from clay tablets to AI agents.',
+		},
+		categoria: 'data-engineering',
+		fecha: '2026-10-25',
+		tags: ['Iquitos Data Fest', 'Historia', 'Plataformas', 'IA'],
+		slides: 26,
+	},
+	{
 		slug: 'del-papel-a-la-ia',
 		titulo: 'Del papel a la IA',
 		descripcion: {
