@@ -447,12 +447,6 @@
   <div class="abs" style="left:120px;right:120px;top:270px;display:flex;flex-direction:column;gap:9px" id="layers"></div>
 </section>
 
-<!-- ================================================================ 17 TENDENCIAS -->
-<section class="slide dark" style="--acc:#FFAB00" data-wipe="#1B3139">
-  <div class="kicker a">02 · Dónde estamos</div>
-  <h2 class="a" style="--d:.15s;margin-top:18px">6 tecnologías que marcan <span class="t-yellow">2026</span></h2>
-  <div class="grid3" style="position:absolute;left:120px;right:120px;top:330px;gap:24px" id="trends"></div>
-</section>
 <!-- ================================================================ 18 ROLES -->
 <section class="slide" style="--acc:#00A972" data-wipe="#00A972">
   <div class="kicker a">03 · Quién hace qué</div>
@@ -728,13 +722,6 @@
     s += `<div class="card clickable a" data-fx="left" data-modal="${k}" style="--d:${(.3 + i * .12).toFixed(2)}s;display:flex;align-items:center;gap:24px;padding:9px 26px;${k === 'l_ai' ? 'outline:3px solid #6B5FD6;outline-offset:-3px' : ''}"><div class="ico-tile" style="width:54px;height:54px;box-shadow:none;background:var(--oat)"><span data-icon="${ic}" style="width:36px;height:36px;display:block"></span></div><b style="font-size:26px;width:280px">${t}</b><span style="font-size:21px;color:var(--ink2)">${d}</span><span style="margin-left:auto;font:600 18px 'DM Mono';color:var(--muted)">+</span></div>`;
   });
   $('layers').innerHTML = s;
-  // Tendencias 2026
-  const TR = [['agentbricks', 'Agentes de IA', 'Pasamos de chatbots que responden a agentes que planifican, usan herramientas y ejecutan tareas.'], ['lakeflow', 'Tiempo real', 'Fraude, logística y precios se deciden en segundos, no al día siguiente.'], ['lakehouse', 'Formatos abiertos', 'Delta e Iceberg: tus datos ya no quedan atados a un solo proveedor.'], ['ontology', 'Capa semántica', 'Métricas y definiciones oficiales que entienden personas e IA por igual.'], ['gateway', 'Gobierno de la IA', 'Permisos, costos y trazas para cada modelo y cada agente.'], ['genie', 'Datos en lenguaje natural', 'Cualquier persona pregunta a los datos sin escribir SQL.']];
-  s = '';
-  TR.forEach(([ic, t, d], i) => {
-    s += `<div class="card a" data-fx="flip" style="--d:${(.4 + i * .15).toFixed(2)}s;height:300px;display:flex;flex-direction:column;gap:12px"><div class="ico-tile" style="width:72px;height:72px;background:#2E4C56;box-shadow:none"><span data-icon="${ic}" style="width:46px;height:46px;display:block"></span></div><h3 style="color:#fff">${t}</h3><p style="font-size:21px">${d}</p></div>`;
-  });
-  $('trends').innerHTML = s;
   // Roles
   const RL = [['r_de', 'Data Engineer', 'construye las tuberías', 'style:short;shirt:#2272B4;prop:laptop;skin:1;hair:#2B2523', '#2272B4'], ['r_da', 'Data Analyst', 'responde preguntas', 'style:bun;shirt:#FFAB00;prop:tablet;skin:2;hair:#1A1412', '#FFAB00'], ['r_ds', 'Data Scientist', 'predice', 'style:long;shirt:#00A972;prop:clip;skin:0;hair:#7A4A2A;glasses:1', '#00A972'], ['r_mle', 'ML Engineer', 'lleva a producción', 'style:curly;shirt:#0E8A7D;prop:laptop;skin:3;hair:#1A1412', '#0E8A7D'], ['r_aie', 'AI Engineer', 'crea agentes', 'style:side;shirt:#6B5FD6;prop:laptop;skin:1;hair:#3A2A1E', '#6B5FD6'], ['r_arq', 'Data Architect', 'diseña el todo', 'style:bald;shirt:#1B3139;prop:point;skin:0;hair:#7A6A5A;beard:1', '#1B3139'], ['r_gov', 'Data Governance', 'cuida la confianza', 'style:short;shirt:#4A5D64;prop:clip;skin:2;hair:#2B2523', '#4A5D64']];
   s = '';

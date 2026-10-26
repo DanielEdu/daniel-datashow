@@ -33,7 +33,7 @@ export const PRESENTACIONES: Presentacion[] = [
 		categoria: 'data-engineering',
 		fecha: '2026-10-25',
 		tags: ['Iquitos Data Fest', 'Historia', 'Plataformas', 'IA'],
-		slides: 26,
+		slides: 25,
 	},
 	{
 		slug: 'del-papel-a-la-ia',
@@ -45,7 +45,7 @@ export const PRESENTACIONES: Presentacion[] = [
 		categoria: 'data-engineering',
 		fecha: '2026-10-25',
 		tags: ['Historia', 'Plataformas', 'Roles', 'IA'],
-		slides: 26,
+		slides: 25,
 		destacada: true,
 	},
 	{
