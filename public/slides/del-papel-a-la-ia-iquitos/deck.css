@@ -358,3 +358,7 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 #progress { background:linear-gradient(90deg,#4ABAD9,#7C78EE,#B46DE0); }
 
 .event-cover { --ink2:#C6D4EC; }
+
+/* v1.4 · 2026-10-27: TPT junto al ponente; biografía con fondo oscuro. */
+.event-speaker { --ink2:#C6D4EC; }
+.event-speaker [data-si="tiktok"] { --c:#fff!important; }
