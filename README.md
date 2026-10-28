@@ -80,3 +80,5 @@ Versión 1.0 · Creado y actualizado: 2026-10-28.
 Cada GIF explicativo nuevo corresponde a un artículo nuevo con el mismo slug en `src/content/blog/es/` y `src/content/blog/en/`. La infografía se escribe en inglés; ambos artículos enlazan las referencias oficiales vigentes y llevan fecha de revisión. Comprobar nombres, renombres, disponibilidad, facturación y promociones antes de publicar.
 
 Usar `heroImage` para el PNG estático del catálogo, `heroAnimation` para el GIF original y `heroAlt` localizado. La vista del artículo permite pausar y descargar la animación; con movimiento reducido muestra el póster. El material queda centralizado en este repositorio. El ejemplo Genie y sus fuentes reproducibles viven en `scripts/blog/genie/`.
+
+El artículo LTAP usa `scripts/blog/ltap/` para el generador y las fuentes, y `public/images/blog/databricks-ltap/` para los entregables. Reconstruir con `node scripts/blog/ltap/render.mjs` (Python con Pillow; se puede seleccionar con `PYTHON`).
