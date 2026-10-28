@@ -362,3 +362,18 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 /* v1.4 · 2026-10-27: TPT junto al ponente; biografía con fondo oscuro. */
 .event-speaker { --ink2:#C6D4EC; }
 .event-speaker [data-si="tiktok"] { --c:#fff!important; }
+
+/* v1.7 · 2026-10-27: enlaces de comunidad y QR originales, sin recortar. */
+.event-close-copy { position:absolute;left:120px;top:170px;width:1000px; }
+.community-link { margin-top:36px;background:linear-gradient(100deg,#2378B0,#6653B9);font-size:30px;padding:20px 32px;text-decoration:none; }
+.community-qr { position:absolute;right:130px;top:240px;width:410px;display:flex;flex-direction:column;align-items:center;gap:24px;text-decoration:none;color:#C6D4EC;z-index:2; }
+.community-qr img { width:410px;height:410px;object-fit:contain;background:white;border:12px solid white;border-radius:24px; }
+.community-qr>span { font:500 17px "DM Mono",monospace;letter-spacing:.08em;text-align:center; }
+.speaker-qr { position:absolute;left:120px;top:730px;display:flex;align-items:center;gap:24px;width:490px; }
+.speaker-qr>img { width:210px;height:210px;object-fit:contain;border:8px solid white;border-radius:16px;background:white; }
+.speaker-qr>div { flex:1; }
+.speaker-qr .kicker { font-size:15px;letter-spacing:.05em; }
+.speaker-qr .kicker::before { display:none; }
+.speaker-qr p { font-size:22px;margin:12px 0; }
+.speaker-qr .mono { font-size:17px;color:#A7B9DC; }
+.community-link:focus-visible,.community-qr:focus-visible { outline:4px solid #63D7EE;outline-offset:8px; }
