@@ -60,3 +60,15 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+## Presentaciones
+
+Versión 1.0 · Creado y actualizado: 2026-10-27.
+
+Este repositorio es la ubicación central de las presentaciones. Mantener una sola copia de cada deck en `public/slides/<slug>/` y registrarlo en `src/data/presentaciones.ts`. Editar y crear las presentaciones aquí para que queden agrupadas en la web.
+
+- `databricks-para-todos/`
+- `del-papel-a-la-ia/`
+- `del-papel-a-la-ia-iquitos/`
+
+La guía de diseño reutilizable está en `public/slides/databricks-para-todos/DESIGN.md`. Los archivos de `public/` forman parte del sitio publicado.

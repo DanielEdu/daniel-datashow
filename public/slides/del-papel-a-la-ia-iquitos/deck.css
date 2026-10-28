@@ -327,3 +327,34 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 }
 
 @media print { #navbtns, #hint, #wipe { display: none !important; } }
+
+/* Iquitos Data Fest · v1.3 · creado y actualizado 2026-10-27.
+   Azul noche y red de datos; conserva el lienzo, las ilustraciones y las tarjetas. */
+:root { --oat:#F3F6FC; --oat2:#E8EEF9; --oat3:#D8E2F1; --navy:#13224C; --navy2:#080F26; --ink2:#455575; }
+.slide { background:radial-gradient(ellipse at 100% 0%,rgba(92,117,230,.1),transparent 55%),var(--oat); }
+.slide::before { background-image:radial-gradient(rgba(66,109,185,.14) 1.5px,transparent 1.5px); background-size:48px 48px; opacity:.55; }
+.slide.dark { background:radial-gradient(ellipse at 100% 15%,rgba(115,66,203,.23),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(42,139,201,.2),transparent 60%),#0D1938; }
+.slide.dark::before { opacity:.5; background-image:radial-gradient(rgba(116,183,248,.35) 1.6px,transparent 1.6px); background-size:48px 48px; mask-image:linear-gradient(90deg,transparent,#000); }
+.event-cover::after,.event-close::after { content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(28deg,transparent 72%,rgba(96,151,236,.12) 72.1%,transparent 72.25%),linear-gradient(145deg,transparent 68%,rgba(151,101,235,.12) 68.1%,transparent 68.25%); }
+.event-cover .lead { font-size:29px; color:#C6D4EC; }
+.event-cover .mono { color:#87DDF1!important; }
+.event-cover .kicker,.event-close .kicker { color:#8FD9ED; }
+.event-brand-row { position:absolute;left:120px;top:62px;display:flex;align-items:center;gap:34px; }
+.event-brand-divider { width:1px;height:58px;background:#536485; }
+.event-community { display:flex;align-items:center;gap:18px; }
+.event-community>img { height:100px;width:100px;object-fit:contain; }
+.event-community>div { display:flex;flex-direction:column;gap:10px; }
+.event-community span,.event-organizers>span { font:500 14px "DM Mono",monospace;letter-spacing:.18em;color:#A7B9DC; }
+.event-community strong { font:800 30px/1 Montserrat,sans-serif;color:white; }
+.event-community em { color:#FFD06B;font-style:normal; }
+.event-organizers { position:absolute;right:120px;bottom:46px;display:flex;flex-direction:column;gap:10px;align-items:flex-end; }
+.event-organizers>img { width:620px;height:150px;object-fit:contain; }
+.event-closing-brands { position:absolute;left:120px;right:120px;bottom:80px;display:flex;align-items:center;justify-content:space-between;gap:35px; }
+.event-closing-brands .event-organizers { position:static; }
+.event-closing-brands .event-organizers>img { width:610px;height:148px; }
+.event-footer-organizers { display:flex;align-items:center;gap:22px; }
+.event-footer-organizers img { width:235px;height:57px;object-fit:contain;background:#0D1938;border-radius:8px;padding:4px 8px; }
+.chrome-foot { bottom:25px; }
+#progress { background:linear-gradient(90deg,#4ABAD9,#7C78EE,#B46DE0); }
+
+.event-cover { --ink2:#C6D4EC; }
