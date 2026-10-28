@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import AnimatedDiagram from '../components/AnimatedDiagram.astro';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -8,18 +9,18 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroAnimation, heroAlt } = Astro.props;
 const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 ---
 
 <html lang={lang}>
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
-				margin: 0;
+				margin: 0 auto;
 			}
 			.hero-image {
 				width: 100%;
@@ -31,7 +32,7 @@ const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 				box-shadow: var(--box-shadow);
 			}
 			.prose {
-				width: 720px;
+				width: 860px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
@@ -53,6 +54,11 @@ const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 			.last-updated-on {
 				font-style: italic;
 			}
+            .prose :global(h2) { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-top: 2.2rem; }
+            .prose :global(table) { display: block; overflow-x: auto; border-collapse: collapse; font-size: .9em; line-height: 1.5; margin: 1.5rem 0; }
+            .prose :global(th), .prose :global(td) { padding: .8rem; border: 1px solid #334155; min-width: 130px; vertical-align: top; }
+            .prose :global(th) { background: #112a38; text-align: left; }
+            .prose :global(pre) { overflow-x: auto; }
 		</style>
 	</head>
 
@@ -61,7 +67,9 @@ const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && (heroAnimation
+						? <AnimatedDiagram animation={heroAnimation} poster={heroImage} alt={heroAlt || title} lang={lang} />
+						: <Image width={1020} height={510} src={heroImage} alt={heroAlt || ""} />)}
 				</div>
 				<div class="prose">
 					<div class="title">
@@ -70,7 +78,7 @@ const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										{lang === 'es' ? 'Actualizado el' : 'Last updated on'} <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}

@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from 'astro';
+interface Props { animation: string; poster: ImageMetadata; alt: string; lang?: 'es' | 'en'; }
+const { animation, poster, alt, lang = 'es' } = Astro.props;
+const labels = lang === 'es'
+  ? { pause: 'Pausar animación', play: 'Reproducir animación', download: 'Descargar GIF', caption: 'Infografía en inglés · Daniel DataShow' }
+  : { pause: 'Pause animation', play: 'Play animation', download: 'Download GIF', caption: 'English infographic · Daniel DataShow' };
+---
+<figure class="animated-diagram" data-animated-diagram data-gif={animation} data-poster={poster.src} data-play={labels.play} data-pause={labels.pause}>
+  <img src={poster.src} width={poster.width} height={poster.height} alt={alt} decoding="async" data-diagram-image />
+  <figcaption>
+    <span>{labels.caption}</span>
+    <div class="diagram-actions">
+      <button type="button" data-diagram-toggle aria-pressed="false" hidden>{labels.play}</button>
+      <a href={animation} download>{labels.download}</a>
+    </div>
+  </figcaption>
+</figure>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-animated-diagram]').forEach((figure) => {
+    const image = figure.querySelector<HTMLImageElement>('[data-diagram-image]');
+    const button = figure.querySelector<HTMLButtonElement>('[data-diagram-toggle]');
+    if (!image || !button) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let playing = false;
+    const update = (next: boolean) => {
+      playing = next;
+      image.src = (playing ? figure.dataset.gif : figure.dataset.poster)!;
+      button.textContent = (playing ? figure.dataset.pause : figure.dataset.play)!;
+      button.setAttribute('aria-pressed', String(playing));
+    };
+    button.hidden = false;
+    update(!reducedMotion.matches);
+    button.addEventListener('click', () => update(!playing));
+    reducedMotion.addEventListener('change', () => update(!reducedMotion.matches));
+  });
+</script>
+<style>
+  figure { margin: 0 auto; max-width: 1100px; padding: 0 1rem; }
+  img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid #29414b; }
+  figcaption { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .75rem 0; font-size: .85rem; color: #aab9ca; }
+  .diagram-actions { display: flex; align-items: center; gap: 1rem; }
+  button { border: 1px solid #476277; background: #122636; color: #e7eef8; border-radius: 8px; padding: .45rem .8rem; cursor: pointer; font: inherit; }
+  button:hover { background: #203b50; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #64c9ff; outline-offset: 4px; }
+  @media (max-width: 600px) { figcaption { align-items: flex-start; flex-direction: column; } }
+</style>
