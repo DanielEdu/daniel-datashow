@@ -1,0 +1,16 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import EventsSection from '../../../components/EventsSection.astro';
+import '../../../styles/home.css';
+---
+<!doctype html>
+<html lang="en">
+  <head><BaseHead title="Events · Daniel DataShow" description="Upcoming webinars and meetups about data and AI." /></head>
+  <body class="home-page">
+    <Header />
+    <main><EventsSection lang="en" full /></main>
+    <Footer />
+  </body>
+</html>

@@ -11,8 +11,8 @@ const toggleLang = lang === 'en' ? 'es' : 'en';
 const toggleHref = `/${toggleLang}${strippedPath === '/' ? '' : strippedPath}`;
 const labels =
 	lang === 'en'
-		? { home: 'Home', blog: 'Blog', talks: 'Talks', toggle: 'ES' }
-		: { home: 'Inicio', blog: 'Blog', talks: 'Presentaciones', toggle: 'EN' };
+		? { home: 'Home', blog: 'Blog', talks: 'Talks', events: 'Events', toggle: 'ES' }
+		: { home: 'Inicio', blog: 'Blog', talks: 'Presentaciones', events: 'Eventos', toggle: 'EN' };
 ---
 
 <header>
@@ -21,6 +21,7 @@ const labels =
 		<div class="internal-links">
 			<HeaderLink href={`${basePath}/`}>{labels.home}</HeaderLink>
 			<HeaderLink href={`${basePath}/presentaciones`}>{labels.talks}</HeaderLink>
+			<HeaderLink href={`${basePath}/eventos`}>{labels.events}</HeaderLink>
 			<HeaderLink href={`${basePath}/blog`}>{labels.blog}</HeaderLink>
 		</div>
 		<div class="actions">
@@ -181,7 +182,7 @@ const labels =
 		font-size: 1.1rem;
 		line-height: 1;
 	}
-	@media (max-width: 720px) {
+	@media (max-width: 900px) {
 		header {
 			padding: 0 0.9em;
 		}
@@ -214,4 +215,12 @@ const labels =
 			display: none;
 		}
 	}
+</style>
+
+<style>
+@media(max-width: 480px) {
+ nav { flex-wrap: wrap; }
+ .internal-links { order: 3; width: 100%; justify-content: center; }
+ .internal-links :global(a) { padding: .65em .7em; }
+}
 </style>

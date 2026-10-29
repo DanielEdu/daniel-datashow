@@ -1,0 +1,68 @@
+---
+import { proximosEventos, type EventLanguage } from '../data/eventos';
+interface Props { lang: EventLanguage; full?: boolean; }
+const { lang, full = false } = Astro.props;
+const en = lang === 'en';
+const events = proximosEventos();
+---
+<section class="events-section" id="eventos" aria-labelledby="events-title">
+  <div class="events-inner">
+    <div class="events-heading">
+      <div>
+        <span class="section-badge">{en ? 'Let’s meet' : 'Nos encontramos'}</span>
+        {full ? <h1 id="events-title">{en ? 'Upcoming events' : 'Próximos eventos'}</h1> : <h2 id="events-title">{en ? 'Upcoming events' : 'Próximos eventos'}</h2>}
+        <p class="events-intro">{en ? 'Webinars, meetups and conversations to learn about data and AI together.' : 'Webinars, meetups y conversaciones para aprender juntos sobre datos e IA.'}</p>
+      </div>
+      {!full && <a class="events-link" href={`/${lang}/eventos/`}>{en ? 'All events' : 'Ver eventos'} <span aria-hidden="true">→</span></a>}
+    </div>
+    {events.length === 0 && <p>{en ? 'New events will be announced here soon.' : 'Pronto anunciaremos nuevos encuentros aquí.'}</p>}
+    {events.map(event => (
+      <article class="event-card" id={event.slug}>
+        <a class="event-image" href={full ? event.image : `/${lang}/eventos/#${event.slug}`} aria-label={en ? `View ${event.title}` : `Ver ${event.title}`}>
+          <img src={event.image} alt={`Webinar Databricks para todos · Daniel Portugal · 12 ${en ? 'November' : 'de noviembre de'} 2026 · Talento Para Ti`} width="1254" height="1254" loading="lazy" />
+        </a>
+        <div class="event-content">
+          <div class="event-meta"><span>{event.type}</span><span>{en ? 'Live online' : 'En vivo · Online'}</span></div>
+          <time datetime={event.date}>{new Intl.DateTimeFormat(en ? 'en-US' : 'es-PE', { dateStyle: 'long', timeZone: 'America/Lima' }).format(new Date(`${event.date}T12:00:00-05:00`))}</time>
+          <h2>{event.title}</h2>
+          <p class="event-summary">{event.summary[lang]}</p>
+          <p class="event-speaker"><strong>Daniel Portugal</strong><br />Field Engineering Leader · Talento Para Ti</p>
+          {full && <div class="event-details">
+            {event.description[lang].map(paragraph => <p>{paragraph}</p>)}
+            <h3>{en ? 'What we’ll cover' : 'De qué hablaremos'}</h3>
+            <ul>{event.topics[lang].map(topic => <li>{topic}</li>)}</ul>
+            <p>{en ? 'Talk delivered in Spanish.' : 'Charla en español.'}</p>
+          </div>}
+          <p class="event-note">{event.time || (en ? 'Time to be confirmed.' : 'Horario por confirmar.')} {!event.registrationUrl && (en ? 'Registration details coming soon.' : 'Próximamente compartiremos el enlace de inscripción.')}</p>
+          {event.registrationUrl ? <a class="event-button" href={event.registrationUrl} target="_blank" rel="noreferrer">{en ? 'Register' : 'Inscribirme'} →</a> : !full && <a class="event-button" href={`/${lang}/eventos/#${event.slug}`}>{en ? 'Explore the event' : 'Conocer el evento'} →</a>}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<style>
+  .events-section { padding: 5rem 1.5rem; background: linear-gradient(145deg, #091827, #0d1117 70%); color: #f8fafc; }
+  .events-inner { max-width: 1160px; margin: auto; }
+  .events-heading { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+  .events-heading h1, .events-heading h2 { margin: 0 0 .7rem; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; color: #f8fafc; }
+  .events-intro { color: #a9bbce; max-width: 680px; margin: 0; }
+  .events-link { color: #5bc5ff; white-space: nowrap; }
+  .event-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); border: 1px solid #25364a; border-radius: 24px; overflow: hidden; background: #111c2a; margin-top: 2rem; }
+  .event-image { background: #071428; display: block; align-self: start; }
+  .event-image img { display: block; width: 100%; height: auto; border-radius: 0; }
+  .event-content { padding: clamp(1.5rem, 3vw, 2.5rem); min-width: 0; }
+  .event-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+  .event-meta span { font-size: .75rem; font-weight: 700; padding: .3rem .7rem; border-radius: 99px; background: #123449; color: #7edcfa; }
+  time { color: #f4b942; font-weight: 700; font-size: .9rem; }
+  .event-content h2 { color: #f8fafc; font-size: clamp(1.7rem, 3vw, 2.3rem); margin: .65rem 0 1rem; letter-spacing: -.035em; }
+  .event-summary { font-size: 1.05rem; color: #d5e1ed; }
+  .event-speaker { color: #a9bbce; font-size: .9rem; }
+  .event-speaker strong { color: #f8fafc; }
+  .event-details { border-top: 1px solid #293a4b; margin-top: 1.5rem; padding-top: .5rem; color: #c4d1df; font-size: .95rem; }
+  .event-details h3 { color: #f8fafc; font-size: 1.15rem; }
+  .event-details li { margin-bottom: .4rem; }
+  .event-note { color: #a9bbce; font-size: .85rem; }
+  .event-button { display: inline-block; padding: .7rem 1.1rem; background: #00a3ff; color: #03111b; border-radius: 10px; font-weight: 700; text-decoration: none; }
+  a:focus-visible { outline: 3px solid #f4b942; outline-offset: 4px; }
+  @media(max-width: 760px) { .events-section { padding: 3rem 1rem; } .events-heading { align-items: start; flex-direction: column; gap: 1rem; } .event-card { grid-template-columns: 1fr; } }
+</style>

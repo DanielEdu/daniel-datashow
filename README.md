@@ -82,3 +82,7 @@ Cada GIF explicativo nuevo corresponde a un artículo nuevo con el mismo slug en
 Usar `heroImage` para el PNG estático del catálogo, `heroAnimation` para el GIF original y `heroAlt` localizado. La vista del artículo permite pausar y descargar la animación; con movimiento reducido muestra el póster. El material queda centralizado en este repositorio. El ejemplo Genie y sus fuentes reproducibles viven en `scripts/blog/genie/`.
 
 El artículo LTAP usa `scripts/blog/ltap/` para el generador y las fuentes, y `public/images/blog/databricks-ltap/` para los entregables. Reconstruir con `node scripts/blog/ltap/render.mjs` (Python con Pillow; se puede seleccionar con `PYTHON`).
+
+## Eventos
+
+El catálogo compartido vive en `src/data/eventos.ts` y aparece en el inicio y en `/es/eventos/` y `/en/eventos/`. Agregar allí webinars, meetups y otros eventos, con imagen, descripción localizada y fecha. `time` y `registrationUrl` son opcionales; la interfaz muestra información pendiente hasta confirmarlos. Las imágenes viven en `public/images/events/`; se conserva el PNG original y se sirve WebP. La lista de próximos eventos se calcula al compilar con la fecha de Lima: reconstruir el sitio después de cada evento para actualizarla.
