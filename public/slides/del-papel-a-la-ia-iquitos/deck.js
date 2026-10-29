@@ -314,16 +314,41 @@ function openModal(key, isInd) {
 function closeModal() { modal.classList.remove('open'); }
 modal.querySelector('.scrim').onclick = closeModal;
 
+/* Pantalla completa: botón y atajo comparten el mismo estado. */
+const fullscreenButton = document.getElementById('fullscreen-toggle');
+const fullscreenStatus = document.getElementById('fullscreen-status');
+function syncFullscreen() {
+  const active = Boolean(document.fullscreenElement);
+  const label = active ? 'Salir de pantalla completa' : 'Pantalla completa';
+  fullscreenButton.querySelector('span').textContent = label;
+  fullscreenButton.setAttribute('aria-label', label);
+  fullscreenButton.setAttribute('aria-pressed', String(active));
+  fullscreenButton.title = `${label} (F)`;
+}
+async function toggleFullscreen() {
+  fullscreenStatus.textContent = '';
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+  } catch {
+    fullscreenStatus.textContent = 'No se pudo activar la pantalla completa. Usa la opción de pantalla completa de tu navegador.';
+  }
+}
+fullscreenButton.addEventListener('click', toggleFullscreen);
+document.addEventListener('fullscreenchange', syncFullscreen);
+syncFullscreen();
+
 /* teclado y botones */
 addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); return; }
   if (modal.classList.contains('open')) return;
+  if (e.target.closest?.('button, a, input, textarea, select')) return;
   if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1); }
   else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
   else if (e.key === 'Home') go(0);
   else if (e.key === 'End') go(slides.length - 1);
   else if (e.key.toLowerCase() === 'r') replay();
-  else if (e.key.toLowerCase() === 'f') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  else if (e.key.toLowerCase() === 'f') { toggleFullscreen(); }
 });
 document.getElementById('prev').onclick = () => go(cur - 1);
 document.getElementById('next').onclick = () => go(cur + 1);

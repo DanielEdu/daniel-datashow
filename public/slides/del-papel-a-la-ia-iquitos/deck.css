@@ -425,3 +425,10 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 .speaker-career li img.tall { height:32px; }
 .speaker-career li span { margin-left:8px;font-size:17px;font-weight:700; }
 .speaker-career li.txt { font-size:18px;font-weight:800; }
+
+#fullscreen-toggle { position:fixed;top:16px;right:16px;z-index:1000;display:flex;align-items:center;gap:8px;min-height:44px;padding:10px 14px;border:1px solid #ffffff40;border-radius:12px;background:#101b38e8;color:#fff;font:500 13px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 20px #0003; }
+#fullscreen-toggle:hover { background:#24385b; }
+#fullscreen-toggle:focus-visible { outline:3px solid #52d7ed;outline-offset:3px; }
+#fullscreen-status { position:fixed;top:66px;right:16px;z-index:1000;background:#101b38;color:#fff;border-radius:8px;font:14px 'DM Sans',sans-serif;max-width:280px; }
+#fullscreen-status:not(:empty) { padding:12px; }
+@media print { #fullscreen-toggle,#fullscreen-status { display:none; } }
