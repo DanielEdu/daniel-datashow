@@ -415,3 +415,13 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 .cover-lights i:nth-child(3) { left:92%;top:75%;animation-delay:4s!important; }
 @keyframes iq-data-light { 0% {opacity:0;transform:translate(-90px,90px) scale(.4)} 35% {opacity:.8} 70% {opacity:.5} 100% {opacity:0;transform:translate(110px,-110px) scale(1)} }
 @media(prefers-reduced-motion:reduce) { .event-cover .cover-lights i {animation:none!important} .event-cover .a {animation:none!important;opacity:1!important;transform:none!important;filter:none!important} }
+
+/* v2.0 · 2026-10-29: trayectoria con logos oficiales en fichas blancas. */
+.speaker-career ol { flex-wrap:nowrap;gap:0; }
+.speaker-career li { background:#FFFFFF;border-radius:10px;height:50px;padding:0 13px;color:#0B0B0B; }
+.speaker-career li+li { margin-left:26px;position:relative; }
+.speaker-career li+li::before { position:absolute;left:-21px;margin:0;font-size:18px;color:#8294C3; }
+.speaker-career li img { height:22px;width:auto;display:block; }
+.speaker-career li img.tall { height:32px; }
+.speaker-career li span { margin-left:8px;font-size:17px;font-weight:700; }
+.speaker-career li.txt { font-size:18px;font-weight:800; }
