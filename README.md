@@ -85,6 +85,8 @@ El artículo LTAP usa `scripts/blog/ltap/` para el generador y las fuentes, y `p
 
 El artículo de Lakehouse Federation usa `scripts/blog/federation/` para el generador y las fuentes, y `public/images/blog/databricks-lakehouse-federation/` para los entregables. Reconstruir con `node scripts/blog/federation/render.mjs`.
 
+El artículo de AI Search usa `scripts/blog/ai-search/` para el generador y las fuentes, y `public/images/blog/databricks-ai-search/` para los entregables. Reconstruir con `node scripts/blog/ai-search/render.mjs`.
+
 ## Eventos
 
 El catálogo compartido vive en `src/data/eventos.ts` y aparece en el inicio y en `/es/eventos/` y `/en/eventos/`. Agregar allí webinars, meetups y otros eventos, con imagen, descripción localizada y fecha. `time` y `registrationUrl` son opcionales; la interfaz muestra información pendiente hasta confirmarlos. Las imágenes viven en `public/images/events/`; se conserva el PNG original y se sirve WebP. La lista de próximos eventos se calcula al compilar con la fecha de Lima: reconstruir el sitio después de cada evento para actualizarla.
