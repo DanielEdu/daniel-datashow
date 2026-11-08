@@ -131,7 +131,7 @@ const SI = v => `https://cdn.jsdelivr.net/npm/simple-icons@13.0.0/icons/${v}.svg
 /* ------------------------------------------------------------------ */
 /* Contenido de los popups del stack 2026 y de industrias */
 /* ------------------------------------------------------------------ */
-const P = (n, chip, d, was) => ({ n, chip, d, was });
+const P = (n, chip, d, was, logos) => ({ n, chip, d, was, logos });
 const MODAL = {
   aibi: { t: 'AI/BI', s: 'Business Intelligence con IA incorporada: dashboards que también conversan.', ic: 'aibi', acc: C.lava, pieces: [
     P('AI/BI Dashboards', 'GA', 'Dashboards nativos sobre el lakehouse. Se arman también en lenguaje natural (datasets, gráficos, filtros) y traen “Ask Genie” activo por defecto.'),
@@ -227,12 +227,12 @@ const MODAL = {
     P('LTAP', 'Anunciado', 'Una sola copia del dato para lo transaccional y lo analítico, sin ETL entre ambos.'),
   ], ex: 'La app móvil consulta el saldo de puntos de un cliente en 5 ms desde Lakebase; el mismo dato llega al lakehouse para analítica sin un ETL aparte.' },
   infra: { t: 'Open Infrastructure', s: 'Formatos abiertos, cualquier nube, cualquier modelo, cualquier dato: tus datos siguen siendo tuyos.', ic: 'cloud', acc: C.green, pieces: [
-    P('Delta Lake', 'GA', 'Formato abierto de tablas con transacciones, versiones y viaje en el tiempo. Creado por Databricks y donado a la Linux Foundation.'),
-    P('Apache Iceberg v3', 'GA', 'Tablas Iceberg administradas, interoperables con Delta en la misma capa (UniForm).'),
-    P('Any Cloud', 'GA', 'AWS, Microsoft Azure (Azure Databricks) y Google Cloud, con la misma experiencia.'),
-    P('Any Model', 'GA', 'Modelos de Anthropic, OpenAI, Google, Meta y abiertos, o los tuyos.'),
-    P('Any Data', 'GA', 'Tablas, archivos, JSON, documentos, imágenes, audio y streaming en el mismo lugar.'),
-    P('Apache Spark', 'GA', 'El motor open source que dio origen a Databricks, hoy con Spark Declarative Pipelines.'),
+    P('Delta Lake', 'GA', 'Formato abierto de tablas con transacciones, versiones y viaje en el tiempo. Creado por Databricks y donado a la Linux Foundation.', null, `<img src="assets/deltalake-logo.svg" style="height:40px">`),
+    P('Apache Iceberg v3', 'GA', 'Tablas Iceberg administradas, interoperables con Delta en la misma capa (UniForm).', null, `<svg width="40" height="40" viewBox="0 0 48 48">${ICON.iceberg}</svg>`),
+    P('Any Cloud', 'GA', 'AWS, Microsoft Azure (Azure Databricks) y Google Cloud, con la misma experiencia.', null, `<img src="assets/aws-logo.svg" style="height:30px"><svg width="34" height="34" viewBox="0 0 48 48"><path d="M17 6h11L16 42H5z" fill="#0A5BA8"/><path d="M30 14l13 28H21l13-4z" fill="#2A8DE0"/></svg><img src="assets/google-cloud-logo.svg" style="height:24px">`),
+    P('Any Model', 'GA', 'Modelos de Anthropic, OpenAI, Google, Meta y abiertos, o los tuyos.', null, `<span class="si" style="--src:url(${SI('anthropic')});--s:30px;--c:#191919"></span><span class="si" style="--src:url(${SI('openai')});--s:30px;--c:#000"></span><span class="si" style="--src:url(${SI('googlegemini')});--s:30px;--c:#4285F4"></span><span class="si" style="--src:url(${SI('meta')});--s:30px;--c:#0467DF"></span>`),
+    P('Any Data', 'GA', 'Tablas, archivos, JSON, documentos, imágenes, audio y streaming en el mismo lugar.', null, `<span class="si" style="--src:url(${SI('apacheparquet')});--s:30px;--c:#50ABF1"></span><span class="si" style="--src:url(${SI('apachekafka')});--s:30px;--c:#231F20"></span><span class="si" style="--src:url(${SI('json')});--s:30px;--c:#000"></span>`),
+    P('Apache Spark', 'GA', 'El motor open source que dio origen a Databricks, hoy con Spark Declarative Pipelines.', null, `<span class="si" style="--src:url(${SI('apachespark')});--s:34px;--c:#E25A1C"></span>`),
   ], ex: 'Si algún día la empresa decide leer sus tablas con otro motor, puede hacerlo: los datos están en archivos Parquet con formato Delta o Iceberg en su propia cuenta de nube.' },
   extras: { t: 'Piezas que no salen en el diagrama', s: 'Servicios que completan la plataforma y conviene conocer.', ic: 'plus', acc: C.navy, pieces: [
     P('MLflow', 'GA', 'Ciclo de vida de modelos y agentes: experimentos, registro, evaluación y trazas. Open source.'),
@@ -399,7 +399,7 @@ function openModal(key, isInd) {
   modal.querySelector('.box').innerHTML = `
     <div class="mhead" style="--macc:${m.acc || C.green}"><span class="band"></span>${head}
       <div><h2>${m.t}</h2><div class="lead">${m.s}</div></div><button class="close" aria-label="Cerrar">×</button></div>
-    <div class="mbody${m.pieces.length > 6 ? ' dense' : ''}">${m.pieces.map((p, i) => `<div class="piece" style="animation-delay:${.08 + i * .07}s"><h4>${p.n}${p.chip ? ` <span class="chip ${chipCls(p.chip)}">${p.chip}</span>` : ''}</h4>${p.was ? `<div class="was">${p.was}</div>` : ''}<p>${p.d}</p></div>`).join('')}
+    <div class="mbody${m.pieces.length > 6 ? ' dense' : ''}">${m.pieces.map((p, i) => `<div class="piece" style="animation-delay:${.08 + i * .07}s"><h4>${p.n}${p.chip ? ` <span class="chip ${chipCls(p.chip)}">${p.chip}</span>` : ''}</h4>${p.was ? `<div class="was">${p.was}</div>` : ''}<p>${p.d}</p>${p.logos ? `<div style="display:flex;gap:14px;align-items:center;margin-top:12px;flex-wrap:wrap">${p.logos}</div>` : ''}</div>`).join('')}
       <div class="example" style="animation-delay:${.15 + m.pieces.length * .07}s"><span class="tag">Ejemplo</span><p>${m.ex}</p></div>
       ${m.foot ? `<div class="mfoot">${m.foot}</div>` : ''}${isInd ? '' : '<div class="mfoot">Estados a octubre 2026 · confirmar en release notes antes de comprometer un servicio en Preview o Beta.</div>'}</div>`;
   modal.querySelector('.close').onclick = closeModal;
