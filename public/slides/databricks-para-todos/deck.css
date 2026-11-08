@@ -327,3 +327,24 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 }
 
 @media print { #navbtns, #hint, #wipe { display: none !important; } }
+
+/* Slide del ponente (traído de la edición Iquitos) */
+.event-speaker { --ink2:#C6D4EC; }
+.event-speaker [data-si="tiktok"] { --c:#fff!important; }
+.speaker-qr { position:absolute;left:120px;top:730px;display:flex;align-items:center;gap:24px;width:490px; }
+.speaker-qr>img { width:210px;height:210px;object-fit:contain;border:8px solid white;border-radius:16px;background:white; }
+.speaker-qr>div { flex:1; }
+.speaker-qr .kicker { font-size:15px;letter-spacing:.05em; }
+.speaker-qr .kicker::before { display:none; }
+.speaker-qr p { font-size:22px;margin:12px 0; }
+.speaker-qr .mono { font-size:17px;color:#A7B9DC; }
+.speaker-career { margin-top:30px;padding-top:22px;border-top:1px solid rgba(169,184,218,.25); }
+.career-label { color:#63D7EE;font-size:17px;letter-spacing:.16em;margin-bottom:16px; }
+.speaker-career ol { display:flex;flex-wrap:nowrap;align-items:center;gap:0;list-style:none; }
+.speaker-career li { display:flex;align-items:center;white-space:nowrap;background:#FFFFFF;border-radius:10px;height:50px;padding:0 13px;color:#0B0B0B; }
+.speaker-career li+li { margin-left:26px;position:relative; }
+.speaker-career li+li::before { content:"→";position:absolute;left:-21px;margin:0;font-size:18px;color:#8294C3; }
+.speaker-career li img { height:22px;width:auto;display:block; }
+.speaker-career li img.tall { height:32px; }
+.speaker-career li span { margin-left:8px;font-size:17px;font-weight:700; }
+.speaker-career li.txt { font-size:18px;font-weight:800; }
