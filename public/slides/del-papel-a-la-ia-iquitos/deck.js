@@ -358,3 +358,15 @@ addEventListener('hashchange', () => { const n = (parseInt(location.hash.slice(1
 go((parseInt(location.hash.slice(1)) || 1) - 1, true);
 const hint = document.getElementById('hint');
 hint.classList.add('show'); setTimeout(() => hint.classList.remove('show'), 4200);
+
+// Oculta los controles después de tres segundos de inactividad.
+let controlsTimer;
+function revealControls() {
+  document.body.classList.remove('controls-idle');
+  clearTimeout(controlsTimer);
+  controlsTimer = setTimeout(() => document.body.classList.add('controls-idle'), 3000);
+}
+['pointermove', 'pointerdown', 'keydown', 'focusin'].forEach(event =>
+  document.addEventListener(event, revealControls, { passive: true }));
+document.addEventListener('fullscreenchange', revealControls);
+revealControls();

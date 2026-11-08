@@ -93,7 +93,7 @@ b, strong { color: var(--navy); font-weight: 700; }
 
 #progress { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--lava); width: 0; transition: width .6s var(--ease); z-index: 50; }
 #navbtns { position: absolute; right: 26px; bottom: 76px; display: flex; gap: 10px; z-index: 40; opacity: .0; transition: opacity .3s; }
-#stage:hover #navbtns { opacity: 1; }
+
 #navbtns button {
   width: 54px; height: 54px; border-radius: 50%; border: 0; background: var(--white); box-shadow: var(--shadow);
   font-size: 24px; color: var(--navy); cursor: pointer;
@@ -432,3 +432,11 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 #fullscreen-status { position:fixed;top:66px;right:16px;z-index:1000;background:#101b38;color:#fff;border-radius:8px;font:14px 'DM Sans',sans-serif;max-width:280px; }
 #fullscreen-status:not(:empty) { padding:12px; }
 @media print { #fullscreen-toggle,#fullscreen-status { display:none; } }
+
+/* Controles discretos, visibles solo durante la interacción. */
+#fullscreen-toggle, #navbtns button { background:rgba(16,27,56,.25);border:1px solid #ffffff30;box-shadow:none;backdrop-filter:blur(6px);color:#fff; }
+#fullscreen-toggle:hover, #navbtns button:hover { background:rgba(16,27,56,.55); }
+#fullscreen-toggle, #navbtns { opacity:.65;transition:opacity .35s ease; }
+body.controls-idle #fullscreen-toggle, body.controls-idle #navbtns { opacity:0;pointer-events:none; }
+body.controls-idle #fullscreen-toggle:focus-visible, body.controls-idle #navbtns:has(:focus-visible) { opacity:1;pointer-events:auto; }
+@media(prefers-reduced-motion:reduce) { #fullscreen-toggle, #navbtns { transition:none; } }

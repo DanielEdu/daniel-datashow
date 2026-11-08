@@ -58,7 +58,7 @@ export const PRESENTACIONES: Presentacion[] = [
 		categoria: 'databricks',
 		fecha: '2026-10-24',
 		tags: ['Lakehouse', 'Unity Catalog', 'Agent Bricks', 'Genie'],
-		slides: 24,
+		slides: 25,
 		destacada: true,
 	},
 ];
