@@ -353,7 +353,7 @@ function build() {
     const f = document.createElement('div');
     f.className = 'chrome-foot';
     const dark = s.classList.contains('dark');
-    f.innerHTML = `<span style="--h:38px;display:inline-flex;align-items:center;gap:16px">${tptLogo(dark)}<i style="width:2px;height:30px;background:${dark ? '#3A5560' : C.oat3}"></i>${dwLogo(dark)}</span><span>Databricks para todos</span><span class="num"><b>${String(i + 1).padStart(2, '0')}</b> / ${slides.length}</span>`;
+    f.innerHTML = `<span style="--h:38px;display:inline-flex;align-items:center;gap:16px">${tptLogo(dark)}</span><span>Databricks para todos</span><span class="num"><b>${String(i + 1).padStart(2, '0')}</b> / ${slides.length}</span>`;
     s.appendChild(f);
   });
 }
