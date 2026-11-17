@@ -24,6 +24,19 @@ export const CATEGORIAS: Record<Categoria, { es: string; en: string }> = {
 
 export const PRESENTACIONES: Presentacion[] = [
 	{
+		slug: 'de-sharepoint-a-un-agente',
+		titulo: 'De SharePoint a un agente de IA',
+		descripcion: {
+			es: 'RAG de punta a punta en Databricks: de la normativa en SharePoint a un agente que responde con fuente y respeta la vigencia. Dos caminos: Agent Bricks y Genie Agents.',
+			en: 'End-to-end RAG on Databricks: from regulations in SharePoint to an agent that answers with sources and respects what is in force. Two paths: Agent Bricks and Genie Agents.',
+		},
+		categoria: 'databricks',
+		fecha: '2026-11-17',
+		tags: ['RAG', 'Agent Bricks', 'AI Search', 'Genie Agents'],
+		slides: 11,
+		destacada: true,
+	},
+	{
 		slug: 'del-papel-a-la-ia-iquitos',
 		titulo: 'Del papel a la IA · Iquitos Data Fest',
 		descripcion: {

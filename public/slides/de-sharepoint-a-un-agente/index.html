@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De SharePoint a un agente de IA</title>
+<!-- v0.1 · creado 17-nov-2026 · actualizado 17-nov-2026 · Daniel Portugal · introducción de la demo RAG (evento DMC, 20-nov-2026)
+     Navegación: ← → / espacio · R repite la animación · F pantalla completa · clic en piezas para ver el detalle -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css?v=0.1">
+<style>
+  span[data-icon] > svg { width: 100%; height: 100%; display: block; }
+  .pp { width: 110px; } .pp svg { width: 100%; height: auto; display: block; }
+  .pp.sm { width: 84px; } .pp.lg { width: 150px; } .pp.xl { width: 200px; }
+  @keyframes truck { 0% { transform: translateX(-130px); } 100% { transform: translateX(380px); } }
+  @keyframes pump  { 0%,100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+  @keyframes cart  { 0%,100% { transform: translateX(0); } 50% { transform: translateX(40px); } }
+  @keyframes mr-run { 0% { left: 0%; } 14% { left: 22%; } 30% { left: 22%; } 44% { left: 46%; } 60% { left: 46%; } 74% { left: 70%; } 88% { left: 70%; } 100% { left: 92%; } }
+  @keyframes sp-run { 0% { left: 0%; } 100% { left: 92%; } }
+  @keyframes rot { to { transform: rotate(360deg); } }
+  @keyframes march-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes mask-on { 0%,30% { opacity: 0; } 40%,100% { opacity: 1; } }
+  @keyframes rewind { 0%,15% { left: 88%; } 45%,60% { left: 12%; } 90%,100% { left: 88%; } }
+  @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
+  @keyframes count { from { --n: 0; } to { --n: var(--to); } }
+  .counter { counter-reset: n var(--n); }
+  .counter::after { content: counter(n); }
+  .slide.active .counter { animation: count 3s var(--ease) var(--d, 0s) both; }
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ================================================================ 01 PORTADA -->
+<section class="slide no-foot" data-wipe="#FF3621">
+  <div class="a" data-fx="down" style="--d:.1s;position:absolute;left:120px;top:62px;display:flex;align-items:center;gap:26px"><span data-tpt style="--h:50px"></span><i style="width:2px;height:44px;background:var(--oat3)"></i><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:50px"></div>
+  <img class="a" data-fx="down" style="--d:.2s;position:absolute;right:120px;top:90px;height:40px" src="assets/databricks-wordmark.png" alt="Databricks">
+  <div style="position:absolute;left:120px;top:236px;width:960px">
+    <div class="kicker a" style="--d:.3s">RAG de punta a punta · Databricks</div>
+    <h1 class="a" data-fx="blur" style="--d:.45s;margin-top:28px;font-size:124px">De SharePoint<br><span class="t-lava">a un agente de IA</span></h1>
+    <p class="lead a" style="--d:.8s;margin-top:34px;width:860px">Cómo convertir los documentos de tu empresa en respuestas <b>con fuente</b>, sin que la IA invente. Un caso real: la normativa que rige a minas, plantas y fábricas en el Perú.</p>
+    <div class="a" style="--d:1.1s;margin-top:52px;display:flex;align-items:center;gap:22px">
+      <div class="pp sm" data-person="style:short;shirt:#1B3139;prop:wave;skin:1"></div>
+      <div><div style="font-size:30px;font-weight:700">Daniel Portugal</div><div style="font-size:23px;color:var(--ink2)">Field Engineering Leader · Talento Para Ti</div><div style="display:flex;align-items:center;gap:10px;margin-top:10px;font-size:21px;color:var(--ink2)"><span>Fundador de <b>Data Wizard</b></span><span style="color:var(--oat3);margin:0 4px">|</span><img src="assets/youtube-logo.svg" alt="YouTube" style="height:22px;display:block"><span data-si="tiktok" style="--s:22px;--c:#0B0B0B"></span><b>Daniel Datashow</b></div></div>
+    </div>
+  </div>
+  <!-- ilustración: los documentos viajan hasta el agente y salen como respuesta con cita -->
+  <svg class="abs" style="left:1060px;top:170px;width:760px;height:800px" viewBox="0 0 760 800">
+    <circle cx="380" cy="400" r="330" fill="#EEEDE9"/>
+    <g class="loop spin" style="animation-duration:46s"><circle cx="380" cy="400" r="300" fill="none" stroke="#D9D3C7" stroke-width="3" stroke-dasharray="4 14"/></g>
+    <path class="loop march" d="M190 250 C 260 250 260 400 330 400" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+    <path class="loop march" d="M190 400 H330" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+    <path class="loop march" d="M190 550 C 260 550 260 400 330 400" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+    <path class="loop march" d="M430 400 C 500 400 500 300 560 300" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+    <circle r="9" fill="#2272B4" class="loop flow" style="offset-path:path('M190 250 C 260 250 260 400 330 400');--t:2.4s"/>
+    <circle r="9" fill="#00A972" class="loop flow" style="offset-path:path('M190 400 H330');--t:2.4s;--fd:-.8s"/>
+    <circle r="9" fill="#FFAB00" class="loop flow" style="offset-path:path('M190 550 C 260 550 260 400 330 400');--t:2.4s;--fd:-1.6s"/>
+    <circle r="9" fill="#FF3621" class="loop flow" style="offset-path:path('M430 400 C 500 400 500 300 560 300');--t:2s;--fd:-.4s"/>
+    <!-- 3 documentos -->
+    <g transform="translate(110 200)"><g class="a" data-fx="left" style="--d:.5s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#C7DBEE" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#2272B4"/></g></g>
+    <g transform="translate(110 350)"><g class="a" data-fx="left" style="--d:.65s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#C9E8DA" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#00A972"/></g></g>
+    <g transform="translate(110 500)"><g class="a" data-fx="left" style="--d:.8s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#F5DE9C" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#FFAB00"/></g></g>
+    <!-- centro: Databricks -->
+    <g transform="translate(380 400)"><g class="a" data-fx="pop" style="--d:1s"><circle r="62" fill="#fff"/><circle r="62" fill="none" stroke="#FF3621" stroke-width="4" opacity=".3"/><g transform="translate(-30 -30) scale(2.5)"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#FF3621"/></g></g></g>
+    <!-- respuesta con cita -->
+    <g transform="translate(560 220)"><g class="a" data-fx="pop" style="--d:1.4s"><rect width="170" height="150" rx="22" fill="#1B3139"/><path d="M30 150 l-6 26 30-26z" fill="#1B3139"/><path d="M24 34h96M24 56h120M24 78h80" stroke="#4A5D64" stroke-width="8" stroke-linecap="round"/><rect x="24" y="100" width="100" height="28" rx="14" fill="#00A972"/><text x="74" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">fuente ✓</text></g></g>
+    <g class="loop float"><circle cx="560" cy="600" r="10" fill="#6B5FD6"/></g>
+    <g class="loop float2"><rect x="260" y="140" width="16" height="16" rx="4" fill="#FFAB00"/></g>
+  </svg>
+  <div class="a mono" data-fx="fade" style="--d:1.6s;position:absolute;left:120px;bottom:44px;font-size:17px;color:var(--muted)">usa ← → para avanzar · clic en las piezas para ver el detalle</div>
+</section>
+
+<!-- ================================================================ 02 PONENTE -->
+<section class="slide dark event-speaker" style="--acc:#63D7EE" data-wipe="#13224C">
+  <div class="kicker a">Sobre el ponente</div>
+  <div class="abs a" data-fx="pop" style="--d:.2s;left:120px;top:190px;width:480px;height:500px;border-radius:30px;padding:3px;background:linear-gradient(160deg,#2272B4,#6B5FD6)">
+    <img src="assets/daniel-portrait.webp" alt="Daniel Portugal" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:28px;display:block">
+  </div>
+  <div style="position:absolute;left:680px;top:190px;width:1120px">
+    <h2 class="a" style="--d:.3s">Daniel Portugal Revilla</h2>
+    <div class="col" style="margin-top:26px;gap:14px">
+      <div class="a" data-fx="left" style="--d:.5s;display:flex;align-items:center;gap:18px;font-size:28px"><span data-tpt="dark" style="--h:46px"></span><span><b>Field Engineering Leader</b> en Talento Para Ti</span></div>
+      <div class="a" data-fx="left" style="--d:.65s;display:flex;align-items:center;gap:18px;font-size:28px"><span>Fundador de <b>Data Wizard</b> y <b>Data Engineering LATAM</b></span></div>
+      <div class="a" data-fx="left" style="--d:.8s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/youtube-logo.svg" alt="" style="height:34px"><span data-si="tiktok" style="--s:32px;--c:#0B0B0B"></span><span>Creador de <b>Daniel Datashow</b> en YouTube y TikTok</span></div>
+    </div>
+    <p class="a" style="--d:1s;margin-top:34px;width:1050px;font-size:27px">Ingeniero de datos con más de 9 años transformando datos en decisiones: arquitecturas lakehouse, streaming en tiempo real y plataformas como Databricks, Snowflake y BigQuery. Bachiller en Ingeniería de Sistemas por la UCSM, Arequipa.</p>
+    <div class="a" style="--d:1.4s;margin-top:36px;display:flex;gap:16px">
+      <span class="pill-btn" style="background:#0A66C2">in/danielportugalr</span><span class="pill-btn">datawizard.tech</span><span class="pill-btn" style="background:#FF0000">@DanielDatashow</span>
+    </div>
+    <div class="a speaker-career" style="--d:1.6s;display:none">
+      <div class="mono career-label">MI TRAYECTORIA</div>
+      <ol aria-label="Trayectoria de empresas, en orden">
+        <li><img src="assets/trayectoria/nttdata.svg" alt="NTT DATA (ex everis)"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi Bank" class="tall"></li><li><img src="assets/trayectoria/chiper.png" alt="Chiper" class="tall"></li><li><img src="assets/trayectoria/globant.svg" alt="Globant"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi" class="tall"></li><li><img src="assets/trayectoria/yape.svg" alt="Yape" class="tall"></li><li><img src="assets/tpt-icon.png" alt="" class="tall"><span>Talento Para Ti</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="a speaker-qr" style="--d:1.4s"><img src="assets/qr-linkedin.png" alt="QR de LinkedIn de Daniel Portugal"><div><span class="kicker">Sigamos conectados</span><p>Encuéntrame en LinkedIn</p><span class="mono">Daniel Portugal</span></div></div>
+</section>
+
+<!-- ================================================================ 03 TALENTO PARA TI (alineado a la carta comercial v2.7) -->
+<section class="slide dark" style="--acc:#5fd3f3;background:radial-gradient(ellipse at 100% 0%,rgba(28,111,214,.35),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(15,180,214,.18),transparent 55%),#0a1440" data-wipe="#163a8f">
+  <div style="position:absolute;left:120px;top:70px;right:120px;display:flex;align-items:center;justify-content:space-between">
+    <img class="a" data-fx="down" src="assets/tpt-logo-claro.png" alt="Talento Para Ti" style="height:78px">
+    <div class="a" data-fx="down" style="--d:.2s;display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:10px 18px"><img src="assets/databricks-partner.svg" style="height:52px" alt=""><b style="font-size:19px;color:#0a1440">Partner de<br>Databricks</b></div>
+  </div>
+  <div style="position:absolute;left:120px;top:200px;width:1680px">
+    <div class="kicker a" style="--d:.25s;color:#9be9fb">Talento Para Ti</div>
+    <h2 class="a" style="--d:.35s;margin-top:14px;font-size:58px;color:#fff">Datos e inteligencia artificial sobre Databricks,<br><span style="color:#5fd3f3">de la arquitectura a la operación</span></h2>
+    <div class="grid3" style="margin-top:34px;gap:22px"><div class="card a" data-fx="up" style="--d:0.50s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="lakeflow" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Proyectos de implementación</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Llevamos sus casos de uso a producción: migración a Databricks, agentes de IA, machine learning y MLOps, entregados como código.</p></div><div class="card a" data-fx="up" style="--d:0.65s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="dev" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Entrenamiento</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Rutas por perfil y preparación para las certificaciones oficiales de Databricks, con clases en vivo, proyecto real y mentoría.</p></div><div class="card a" data-fx="up" style="--d:0.80s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="customerlake" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Staffing especializado</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Ingenieros y arquitectos certificados que se suman a su equipo, por proyecto o por horas, con el respaldo de TPT.</p></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:34px;margin-top:34px"><div class="a" data-fx="up" style="--d:1.00s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">Plataforma</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Arquitectura en Databricks</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Integración de fuentes</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Lakehouse por capas</div></div><div class="a" data-fx="up" style="--d:1.15s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">Gobierno y operación</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Gobierno y seguridad con Unity Catalog</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Monitoreo y operación</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Rendimiento y costo</div></div><div class="a" data-fx="up" style="--d:1.30s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">IA y personas</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· IA aplicada y RAG</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Machine learning y MLflow</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Formación por perfil</div></div><div><b class="a" style="--d:1.4s;font-size:23px;color:#9be9fb;display:block;margin-bottom:12px">Cómo empezamos</b><div style="display:flex;flex-direction:column;gap:10px"><div class="a" data-fx="pop" style="--d:1.50s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">1</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Diagnóstico de plataforma</span></div><div class="a" data-fx="pop" style="--d:1.65s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">2</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Prueba de concepto en ambiente espejo</span></div><div class="a" data-fx="pop" style="--d:1.80s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">3</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Formación por perfil</span></div><div class="a" data-fx="pop" style="--d:1.95s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">4</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Migración o implementación</span></div></div></div></div>
+  </div>
+</section>
+
+<!-- ================================================================ 04 EL PROBLEMA -->
+<section class="slide" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="kicker a">El problema</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px;width:1600px">La normativa ya está en tu empresa.<br>Encontrar la respuesta <span class="hl">a tiempo</span>, no.</h2>
+  <div class="abs" style="left:120px;right:120px;top:400px;height:480px">
+    <!-- jefa de seguridad -->
+    <div class="abs a" data-fx="up" style="--d:.4s;left:0;top:10px;width:360px;display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div class="pp xl loop bob" data-person="style:helmet;shirt:#FFAB00;prop:tablet;skin:2"></div>
+      <b style="font-size:26px">Jefa de seguridad</b><div class="tag">Unidad minera</div>
+    </div>
+    <div class="abs bubble a" data-fx="pop" style="--d:.9s;left:330px;top:20px">¿Sigue vigente este reglamento?</div>
+    <div class="abs bubble a" data-fx="pop" style="--d:1.1s;left:380px;top:120px">¿Cuál es el límite de plomo en efluentes?</div>
+    <div class="abs bubble a" data-fx="pop" style="--d:1.3s;left:350px;top:220px">¿Qué nos exige el IPERC?</div>
+    <!-- biblioteca de SharePoint -->
+    <div class="abs card a" data-fx="right" style="--d:.6s;left:900px;top:20px;width:780px;height:440px;padding:26px 30px">
+      <div style="display:flex;align-items:center;gap:14px"><img src="assets/sharepoint-logo.svg" alt="SharePoint" style="height:44px;display:block"><b style="font-size:27px">Normativa Minería Industria</b><span class="tag" style="margin-left:auto">25 archivos</span></div>
+      <div style="margin-top:18px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px" id="pdfgrid"></div>
+      <p style="margin-top:16px;font-size:21px">Leyes, decretos y reglamentos en PDF. Algunos escaneados, otros de 186 páginas, y uno <b>ya derogado</b>.</p>
+    </div>
+  </div>
+  <div class="abs a" style="--d:2.2s;left:120px;bottom:110px;right:120px;display:flex;justify-content:space-between;align-items:center">
+    <p style="font-size:30px">Buscar a mano toma horas. Citar la norma equivocada cuesta <b>una multa, una paralización o algo peor</b>.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 05 CHAT GENÉRICO vs AGENTE CON TUS DOCUMENTOS -->
+<section class="slide oat2" style="--acc:#FF3621" data-wipe="#1B3139">
+  <div class="kicker a">¿Y si le pregunto a un chat de IA?</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Responde seguro.<br>El problema es <span class="t-lava">de dónde lo sacó</span>.</h2>
+  <div class="grid2 abs" style="left:120px;right:120px;top:400px;gap:40px">
+    <div class="card a" data-fx="left" style="--d:.4s;padding:34px;height:470px">
+      <div style="display:flex;align-items:center;gap:14px"><div class="ico-tile" style="width:64px;height:64px;background:var(--oat2);box-shadow:none"><span data-icon="genie" style="width:42px;height:42px;display:block;filter:grayscale(1)"></span></div><h3 style="font-size:34px">Chat genérico</h3><span class="chip new" style="margin-left:auto">sin fuente</span></div>
+      <div class="bubble a" data-fx="pop" style="--d:.9s;position:relative;margin-top:26px;white-space:normal;font-weight:500;font-size:23px;background:var(--oat2)">«¿Sigue vigente el DS 055-2010-EM?»</div>
+      <p class="a" style="--d:1.2s;margin-top:28px;font-size:25px">«Sí, el <b>DS 055-2010-EM</b> regula la seguridad y salud ocupacional en minería…»</p>
+      <div class="a" style="--d:1.6s;margin-top:22px;display:flex;flex-direction:column;gap:12px;font-size:22px;color:var(--ink2)">
+        <div>✕ &nbsp;Fue derogado en 2016 y no lo sabe</div><div>✕ &nbsp;No dice de qué documento sale</div><div>✕ &nbsp;No conoce tus archivos internos</div>
+      </div>
+    </div>
+    <div class="card a" data-fx="right" style="--d:.6s;padding:34px;height:470px;outline:5px solid var(--green);outline-offset:-5px">
+      <div style="display:flex;align-items:center;gap:14px"><div class="ico-tile" style="width:64px;height:64px;background:var(--green-soft);box-shadow:none"><span data-icon="agentbricks" style="width:42px;height:42px;display:block"></span></div><h3 style="font-size:34px">Agente con tu normativa</h3><span class="chip ga" style="margin-left:auto">con fuente</span></div>
+      <div class="bubble a" data-fx="pop" style="--d:1.1s;position:relative;margin-top:26px;white-space:normal;font-weight:500;font-size:23px;background:var(--oat2)">«¿Sigue vigente el DS 055-2010-EM?»</div>
+      <p class="a" style="--d:1.4s;margin-top:28px;font-size:25px">«No. El reglamento vigente es el <b>DS 024-2016-EM</b>, que derogó al DS 055-2010-EM. <span style="color:var(--green);font-weight:700">[1]</span>»</p>
+      <div class="a" style="--d:1.8s;margin-top:22px;display:flex;flex-direction:column;gap:12px;font-size:22px;color:var(--ink2)">
+        <div style="color:#00744F">✓ &nbsp;Distingue lo vigente de lo derogado</div><div style="color:#00744F">✓ &nbsp;Cita el documento de donde sale</div><div style="color:#00744F">✓ &nbsp;Si no está en tus archivos, lo dice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 06 QUÉ ES RAG -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">La idea en una palabra</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">RAG: primero <span style="color:var(--blue)">busca</span>,<br>después <span class="t-lava">responde</span></h2>
+  <p class="a" style="--d:.35s;margin-top:22px;width:1300px">Como un buen analista: antes de opinar, va a la biblioteca, saca las páginas que importan y responde con ellas sobre la mesa.</p>
+  <div class="grid3 abs" style="left:120px;right:120px;top:520px;gap:30px">
+    <div class="card a" data-fx="up" style="--d:.5s;padding:30px">
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--blue);line-height:.9">R</span><div><b style="font-size:30px">Recuperar</b><div class="tag">Retrieval</div></div></div>
+      <p style="margin-top:14px;font-size:23px">Busca en tus documentos los fragmentos que responden la pregunta, por palabras y por significado.</p>
+    </div>
+    <div class="card a" data-fx="up" style="--d:.8s;padding:30px">
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--green);line-height:.9">A</span><div><b style="font-size:30px">Aumentar</b><div class="tag">Augmented</div></div></div>
+      <p style="margin-top:14px;font-size:23px">Le entrega al modelo esos fragmentos junto con la pregunta, y le prohíbe salirse de ellos.</p>
+    </div>
+    <div class="card a" data-fx="up" style="--d:1.1s;padding:30px">
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--lava);line-height:.9">G</span><div><b style="font-size:30px">Generar</b><div class="tag">Generation</div></div></div>
+      <p style="margin-top:14px;font-size:23px">El modelo redacta la respuesta y cita el documento de donde salió cada dato.</p>
+    </div>
+  </div>
+  <div class="abs a" data-fx="fade" style="--d:1.6s;left:120px;right:120px;bottom:120px;font-size:27px;color:var(--ink2)">El modelo pone el lenguaje. <b>Tus documentos ponen la verdad.</b></div>
+</section>
+
+<!-- ================================================================ 07 EL CAMINO DEL DATO (piezas clicables) -->
+<section class="slide" style="--acc:#FF3621" data-wipe="#FF3621">
+  <div class="kicker a">De punta a punta en Databricks</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Seis piezas, <span class="t-lava">una sola plataforma</span></h2>
+  <div class="abs a" data-fx="fade" style="--d:2.4s;right:120px;top:120px;font:500 18px 'DM Mono';color:var(--muted)">haz clic en cada pieza para ver el detalle</div>
+  <div class="abs" style="left:120px;right:120px;top:380px;height:330px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:330px" viewBox="0 0 1680 330">
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.4s" d="M100 120 H1580" stroke="#D9D3C7" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path class="loop march" d="M100 120 H1580" stroke="#FF3621" stroke-width="3" fill="none" opacity=".5"/>
+      <circle r="10" fill="#FF3621" class="loop flow" style="offset-path:path('M100 120 H1580');--t:6s"/>
+      <circle r="10" fill="#2272B4" class="loop flow" style="offset-path:path('M100 120 H1580');--t:6s;--fd:-3s"/>
+    </svg>
+    <div id="pipeline" style="position:absolute;inset:0"></div>
+  </div>
+  <div class="abs card a" data-fx="up" style="--d:2.2s;left:120px;right:120px;bottom:110px;display:flex;align-items:center;gap:22px;padding:22px 30px">
+    <div class="ico-tile" style="width:64px;height:64px;box-shadow:none;background:var(--oat)"><span data-icon="uc" style="width:44px;height:44px;display:block"></span></div>
+    <div style="flex:1"><b style="font-size:26px">Por debajo de todo: Unity Catalog y MLflow</b><div style="font-size:21px;color:var(--ink2)">Quién puede ver qué documento, de dónde viene cada respuesta y cuánto cuesta.</div></div>
+    <span class="pill-btn clickable" data-modal="gobierno">ver detalle</span>
+  </div>
+</section>
+
+<!-- ================================================================ 08 DOS CAMINOS -->
+<section class="slide dark" style="--acc:#FFAB00" data-wipe="#1B3139">
+  <div class="kicker a">Hoy vamos a ver dos caminos</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Construirlo pieza por pieza<br>o <span style="color:#FFAB00">usar lo que ya trae la plataforma</span></h2>
+  <div class="grid2 abs" style="left:120px;right:120px;top:410px;gap:40px">
+    <div class="card a" data-fx="left" style="--d:.4s;padding:32px 34px;outline:4px solid #FF3621;outline-offset:-4px">
+      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="agentbricks" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#FFB4A8">Camino 1 · protagonista</div><h3 style="font-size:34px;color:#fff">RAG construido</h3></div><span class="chip beta" style="margin-left:auto">CLI en Beta</span></div>
+      <p style="margin-top:18px;font-size:23px">Agente propio con el <b>Agent Bricks CLI</b>, sobre nuestro índice de <b>AI Search</b>.</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:22px;color:#C9D6DA"><div>· La vigencia es un <b>filtro en el código</b>, no un ruego al modelo</div><div>· Controlas cómo se lee, se corta y se busca</div><div>· Se despliega como Databricks App, con trazas en MLflow</div></div>
+    </div>
+    <div class="card a" data-fx="right" style="--d:.6s;padding:32px 34px">
+      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="genieagents" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#9be9fb">Camino 2 · contraste</div><h3 style="font-size:34px;color:#fff">RAG administrado</h3></div><span class="chip pre" style="margin-left:auto">Public Preview</span></div>
+      <p style="margin-top:18px;font-size:23px">Un <b>Genie Agent</b> con los PDF en un volumen y el catálogo de normas como tabla.</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:22px;color:#C9D6DA"><div>· Databricks lee, indexa y cita la página</div><div>· Listo en minutos, sin código</div><div>· Menos control sobre cómo busca</div></div>
+    </div>
+  </div>
+  <div class="abs a" data-fx="up" style="--d:1.4s;left:120px;right:120px;bottom:110px;display:flex;align-items:center;gap:20px">
+    <span class="pill-btn" style="background:#FFAB00;color:#1B3139">La idea</span>
+    <p style="font-size:26px;color:#E8EAF6">Lo administrado resuelve el caso simple. Cuando hay <b>reglas de negocio</b> (vigencia, permisos, auditoría), se construye.</p>
+  </div>
+  <div class="abs mono a" data-fx="fade" style="--d:2s;right:120px;top:120px;font-size:16px;color:#7D9AA3;text-align:right">Knowledge Assistant, el atajo anterior,<br>pasó a legacy: ya no se pueden crear nuevos.</div>
+</section>
+
+<!-- ================================================================ 09 LA VIGENCIA NO ES UN PROMPT -->
+<section class="slide" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">La regla de negocio que no se negocia</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">La vigencia no se le pide al modelo:<br><span style="color:var(--green)">se filtra antes de que lo vea</span></h2>
+  <div class="abs" style="left:120px;right:120px;top:420px;height:440px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:440px" viewBox="0 0 1680 440">
+      <path class="loop march" d="M470 130 H700" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+      <path class="loop march" d="M470 330 H700" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+      <path class="loop march" d="M980 230 H1210" stroke="#00A972" stroke-width="5" fill="none"/>
+      <circle r="9" fill="#00A972" class="loop flow" style="offset-path:path('M470 130 H700 L760 230 H1210');--t:3s"/>
+    </svg>
+    <div class="abs card a" data-fx="left" style="--d:.4s;left:0;top:40px;width:470px;padding:22px 26px;display:flex;align-items:center;gap:18px">
+      <span data-icon="file" style="width:60px;height:60px;display:block;flex:none"></span><div><b style="font-size:25px">DS 024-2016-EM</b><div style="font-size:19px;color:var(--ink2)">Reglamento SSO en minería</div><span class="chip ga" style="margin-top:8px">Vigente</span></div>
+    </div>
+    <div class="abs card a" data-fx="left" style="--d:.6s;left:0;top:240px;width:470px;padding:22px 26px;display:flex;align-items:center;gap:18px;opacity:.95">
+      <span data-icon="file" style="width:60px;height:60px;display:block;flex:none;filter:grayscale(1)"></span><div><b style="font-size:25px;text-decoration:line-through;text-decoration-color:#FF3621">DS 055-2010-EM</b><div style="font-size:19px;color:var(--ink2)">El reglamento anterior</div><span class="chip new" style="margin-top:8px">Derogado en 2016</span></div>
+    </div>
+    <div class="abs a" data-fx="pop" style="--d:1s;left:700px;top:60px;width:280px;height:340px;border-radius:28px;background:#1B3139;color:#F9F7F4;padding:26px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+      <div class="tag" style="color:#A9BCC2">filtro en el código</div>
+      <div style="font:500 22px/1.5 'DM Mono'">si vigencia ≠ "Vigente":<br>&nbsp;&nbsp;<span style="color:#FF6B57">descartar</span></div>
+      <div style="font-size:19px;color:#A9BCC2">Se aplica a lo recuperado, antes de llegar al modelo.</div>
+    </div>
+    <div class="abs a" data-fx="pop" style="--d:1.2s;left:566px;top:302px;font:800 44px 'DM Sans';color:#FF3621;background:#F9F7F4;padding:0 8px">✕</div>
+    <div class="abs card a" data-fx="right" style="--d:1.4s;left:1210px;top:110px;width:470px;padding:26px 28px;outline:4px solid var(--green);outline-offset:-4px">
+      <div class="tag">Al modelo solo llega</div>
+      <b style="display:block;font-size:27px;margin-top:8px">DS 024-2016-EM, vigente</b>
+      <p style="font-size:20px;margin-top:8px">Si alguien pide la historia, se habilita a propósito y la respuesta marca cuál es cuál.</p>
+    </div>
+  </div>
+  <div class="abs a" data-fx="fade" style="--d:1.8s;left:120px;right:120px;bottom:110px;font-size:26px;color:var(--ink2)">La metadata viaja desde las columnas de SharePoint hasta el índice. <b>Sin metadata, no hay regla que aplicar.</b></div>
+</section>
+
+<!-- ================================================================ 10 EL CASO EN CIFRAS -->
+<section class="slide oat2" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">El caso de hoy</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Normativa peruana para <span style="color:var(--blue)">minería e industria</span>,<br>solo de fuentes oficiales</h2>
+  <div class="grid4 abs" style="left:120px;right:120px;top:400px;gap:24px">
+    <div class="card a" data-fx="flip" style="--d:.4s;padding:26px"><div class="counter" style="--to:25;font:800 80px 'DM Sans';color:#2272B4"></div><p style="font-size:21px;margin-top:4px">normas en PDF, desde gob.pe, el Congreso y los ministerios</p></div>
+    <div class="card a" data-fx="flip" style="--d:.55s;padding:26px"><div class="counter" style="--to:751;--d:.6s;font:800 80px 'DM Sans';color:#00A972"></div><p style="font-size:21px;margin-top:4px">fragmentos indexados en AI Search, cada uno con su metadata</p></div>
+    <div class="card a" data-fx="flip" style="--d:.7s;padding:26px"><div style="font:800 80px 'DM Sans';color:#FFAB00">2</div><p style="font-size:21px;margin-top:4px">PDF escaneados, sin texto: los leyó el OCR de <b>ai_parse_document</b></p></div>
+    <div class="card a" data-fx="flip" style="--d:.85s;padding:26px"><div style="font:800 80px 'DM Sans';color:#FF3621">1</div><p style="font-size:21px;margin-top:4px">norma derogada, puesta a propósito para probar la vigencia</p></div>
+  </div>
+  <div class="abs a" style="--d:1.2s;left:120px;right:120px;top:700px">
+    <div class="tag">Qué cubre</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+      <span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Seguridad y salud en el trabajo</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Seguridad minera</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Cierre de minas y pasivos</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Estándares de agua, aire, suelo y ruido</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Límites de efluentes</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Residuos sólidos</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Industria manufacturera</span><span class="chip" style="font-size:21px;padding:10px 18px;background:#fff">Explosivos e insumos químicos</span>
+    </div>
+  </div>
+  <div class="abs mono a" data-fx="fade" style="--d:1.8s;left:120px;bottom:110px;font-size:16px;color:var(--muted)">Material de demostración con normas públicas. No reemplaza la asesoría legal ni al área de seguridad o ambiente.</div>
+</section>
+
+<!-- ================================================================ 11 LO QUE VAMOS A VER EN VIVO -->
+<section class="slide dark" style="--acc:#FF3621;background:radial-gradient(ellipse at 100% 0%,rgba(255,54,33,.22),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(28,111,214,.3),transparent 55%),#0a1440" data-wipe="#FF3621">
+  <div class="kicker a">Demo en vivo</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px;color:#fff">Cuatro preguntas para ponerlo a prueba</h2>
+  <div class="abs" style="left:120px;right:120px;top:360px;display:flex;flex-direction:column;gap:22px">
+    <div class="a" data-fx="left" style="--d:.4s;display:flex;align-items:center;gap:24px"><span style="width:64px;height:64px;border-radius:50%;background:#2272B4;color:#fff;display:grid;place-items:center;font:800 30px 'DM Sans';flex:none">1</span><div><b style="font-size:32px;color:#fff">¿Qué debe contener el IPERC?</b><div style="font-size:21px;color:#A9BCC2">Una respuesta con cita del reglamento</div></div></div>
+    <div class="a" data-fx="left" style="--d:.6s;display:flex;align-items:center;gap:24px"><span style="width:64px;height:64px;border-radius:50%;background:#00A972;color:#fff;display:grid;place-items:center;font:800 30px 'DM Sans';flex:none">2</span><div><b style="font-size:32px;color:#fff">¿Cuál es el límite de plomo en efluentes minero-metalúrgicos?</b><div style="font-size:21px;color:#A9BCC2">Un valor exacto, con su unidad, que sale de un PDF escaneado</div></div></div>
+    <div class="a" data-fx="left" style="--d:.8s;display:flex;align-items:center;gap:24px"><span style="width:64px;height:64px;border-radius:50%;background:#FFAB00;color:#1B3139;display:grid;place-items:center;font:800 30px 'DM Sans';flex:none">3</span><div><b style="font-size:32px;color:#fff">¿Sigue vigente el DS 055-2010-EM?</b><div style="font-size:21px;color:#A9BCC2">La trampa de la vigencia</div></div></div>
+    <div class="a" data-fx="left" style="--d:1s;display:flex;align-items:center;gap:24px"><span style="width:64px;height:64px;border-radius:50%;background:#FF3621;color:#fff;display:grid;place-items:center;font:800 30px 'DM Sans';flex:none">4</span><div><b style="font-size:32px;color:#fff">¿Cuál es la tasa del impuesto a la renta minero?</b><div style="font-size:21px;color:#A9BCC2">Fuera de sus documentos: tiene que decir que no sabe</div></div></div>
+  </div>
+  <div class="abs a" data-fx="pop" style="--d:1.5s;right:120px;bottom:120px;display:flex;align-items:center;gap:18px">
+    <span class="pill-btn" style="font-size:28px;padding:18px 34px;background:#FF3621">Vamos a Databricks →</span>
+  </div>
+  <div class="abs a loop float" data-fx="pop" style="--d:1.2s;right:200px;top:330px"><div class="pp xl" data-person="style:short;shirt:#FF3621;prop:laptop;skin:1"></div></div>
+</section>
+
+<img id="dw-src" src="assets/datawizard-logo.png" alt="" hidden>
+<img id="tpt-icon-src" src="assets/tpt-icon.png" alt="" hidden>
+<div id="wipe"><svg class="wlogo" viewBox="0 0 24 24"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#fff"/></svg></div>
+<div id="modal"><div class="scrim"></div><div class="box"></div></div>
+<div id="progress"></div>
+<div id="navbtns"><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Siguiente">→</button></div>
+<div id="hint">← → para avanzar · R repite la animación · F pantalla completa</div>
+</div></div>
+
+<script>
+/* Bloques generados antes de arrancar el motor */
+(function () {
+  // Biblioteca de SharePoint: 25 PDF (uno derogado)
+  const g = document.getElementById('pdfgrid'); let s = '';
+  for (let i = 0; i < 15; i++) {
+    const der = i === 6, d = (.8 + i * .05).toFixed(2);
+    s += `<div class="a" data-fx="pop" style="--d:${d}s;height:62px;border-radius:12px;background:${der ? '#FFE1DB' : '#F4F2EE'};display:flex;align-items:center;gap:10px;padding:0 12px;font:600 15px 'DM Mono';color:${der ? '#B3200F' : '#4A5D64'}"><svg width="24" height="30" viewBox="0 0 24 30"><path d="M2 2h13l7 7v19H2z" fill="${der ? '#FF3621' : '#C3BBAE'}"/><path d="M15 2v7h7z" fill="#fff" opacity=".6"/></svg>${der ? 'derogado' : 'PDF'}</div>`;
+  }
+  g.innerHTML = s + `<div class="a" data-fx="fade" style="--d:1.7s;grid-column:span 5;font:500 17px 'DM Mono';color:#7D8B90">+ 10 archivos más · columnas: tipo, entidad, vigencia, fechas, tema</div>`;
+  // Camino del dato: 6 piezas clicables sobre la línea
+  const P = [
+    ['sharepoint', 'img:assets/sharepoint-logo.svg', 'SharePoint', 'La fuente', '#038489'],
+    ['lakeflow', 'lakeflow', 'Lakeflow Connect', 'Ingesta', '#FF3621'],
+    ['parse', 'file', 'ai_parse_document', 'Lectura y OCR', '#00A972'],
+    ['fragmentos', 'data', 'Fragmentos', 'ai_prep_search', '#2272B4'],
+    ['aisearch', 'search', 'AI Search', 'Índice híbrido', '#FF3621'],
+    ['agente', 'agentbricks', 'Agente', 'Agent Bricks · Genie', '#6B5FD6']];
+  const pl = document.getElementById('pipeline'); s = '';
+  P.forEach(([k, ic, t, sub, c], i) => {
+    const x = 100 + i * 296, d = (.6 + i * .25).toFixed(2);
+    const ico = ic.startsWith('img:') ? `<img src="${ic.slice(4)}" alt="" style="width:66px;height:66px;display:block">` : `<span data-icon="${ic}" style="width:62px;height:62px;display:block"></span>`;
+    s += `<div class="a clickable" data-fx="pop" data-modal="${k}" style="--d:${d}s;position:absolute;left:${x - 62}px;top:58px;width:124px;height:124px;border-radius:30px;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center;border:4px solid ${c}">${ico}</div>
+      <div class="a" data-fx="up" style="--d:${(+d + .15).toFixed(2)}s;position:absolute;left:${x - 130}px;top:206px;width:260px;text-align:center"><b style="font-size:26px;display:block">${t}</b><span class="tag">${sub}</span></div>`;
+  });
+  pl.innerHTML = s;
+})();
+</script>
+<script src="deck.js?v=0.1"></script>
+</body>
+</html>
