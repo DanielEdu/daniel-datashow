@@ -165,26 +165,60 @@
   </div>
 </section>
 
-<!-- ================================================================ 06 QUÉ ES RAG -->
+<!-- ================================================================ 06 QUÉ ES RAG (flujo visual) -->
 <section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
-  <div class="kicker a">La idea en una palabra</div>
-  <h2 class="a" style="--d:.15s;margin-top:20px">RAG: primero <span style="color:var(--blue)">busca</span>,<br>después <span class="t-lava">responde</span></h2>
-  <p class="a" style="--d:.35s;margin-top:22px;width:1300px">Como un buen analista: antes de opinar, va a la biblioteca, saca las páginas que importan y responde con ellas sobre la mesa.</p>
-  <div class="grid3 abs" style="left:120px;right:120px;top:520px;gap:30px">
-    <div class="card a" data-fx="up" style="--d:.5s;padding:30px">
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--blue);line-height:.9">R</span><div><b style="font-size:30px">Recuperar</b><div class="tag">Retrieval</div></div></div>
-      <p style="margin-top:14px;font-size:23px">Busca en tus documentos los fragmentos que responden la pregunta, por palabras y por significado.</p>
+  <div class="kicker a">¿Qué es RAG?</div>
+  <h2 class="a" style="--d:.15s;margin-top:18px">Antes de responder, <span style="color:var(--blue)">busca</span> en tus documentos</h2>
+  <p class="a" style="--d:.3s;margin-top:14px;width:1500px;font-size:25px">RAG (<i>Retrieval-Augmented Generation</i>) no le enseña nada nuevo al modelo: en cada pregunta le pone delante las páginas correctas y le exige responder solo con ellas.</p>
+  <div class="abs" style="left:120px;right:120px;top:400px;height:470px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:470px" viewBox="0 0 1680 470">
+      <path class="loop march" d="M250 250 H340" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+      <path class="loop march" d="M770 250 H860" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+      <path class="loop march" d="M1260 250 H1330" stroke="#C3BBAE" stroke-width="5" fill="none"/>
+      <circle r="9" fill="#2272B4" class="loop flow" style="offset-path:path('M250 250 H340');--t:1.6s"/>
+      <circle r="9" fill="#00A972" class="loop flow" style="offset-path:path('M770 250 H860');--t:1.6s;--fd:-.5s"/>
+      <circle r="9" fill="#FF3621" class="loop flow" style="offset-path:path('M1260 250 H1330');--t:1.6s;--fd:-1s"/>
+    </svg>
+    <!-- 0 · la pregunta -->
+    <div class="abs a" data-fx="up" style="--d:.4s;left:0;top:110px;width:250px;display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div class="pp lg loop bob" data-person="style:helmet;shirt:#FFAB00;prop:tablet;skin:2"></div>
+      <div class="tag">La pregunta</div>
     </div>
-    <div class="card a" data-fx="up" style="--d:.8s;padding:30px">
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--green);line-height:.9">A</span><div><b style="font-size:30px">Aumentar</b><div class="tag">Augmented</div></div></div>
-      <p style="margin-top:14px;font-size:23px">Le entrega al modelo esos fragmentos junto con la pregunta, y le prohíbe salirse de ellos.</p>
+    <div class="abs bubble a" data-fx="pop" style="--d:.7s;left:0;top:0;white-space:normal;width:300px;font-size:21px">¿Cuál es el límite de plomo en efluentes mineros?</div>
+    <!-- R · recuperar -->
+    <div class="abs card a" data-fx="up" style="--d:.9s;left:340px;top:40px;width:430px;height:420px;padding:22px 24px">
+      <div style="display:flex;align-items:center;gap:12px"><span style="font:800 54px 'DM Sans';color:var(--blue);line-height:.9">R</span><div><b style="font-size:25px">Recuperar</b><div class="tag">busca en tus documentos</div></div><span data-icon="search" style="width:40px;height:40px;display:block;margin-left:auto"></span></div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+        <div class="a" data-fx="left" style="--d:1.2s;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:#D6F2E5;font-size:17px"><b style="color:#00744F">0,93</b><span>DS 010-2010-MINAM · Anexo 01 · Plomo Total…</span></div>
+        <div class="a" data-fx="left" style="--d:1.35s;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:#D6F2E5;font-size:17px"><b style="color:#00744F">0,88</b><span>DS 010-2010-MINAM · límites máximos…</span></div>
+        <div class="a" data-fx="left" style="--d:1.5s;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:#D6F2E5;font-size:17px"><b style="color:#00744F">0,71</b><span>DS 040-2014-EM · efluentes…</span></div>
+        <div class="a" data-fx="fade" style="--d:1.65s;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:#F4F2EE;font-size:17px;color:#9AA5A9"><b>0,22</b><span>Ley 28090 · cierre de minas…</span></div>
+      </div>
+      <p style="font-size:17px;margin-top:12px">De 751 fragmentos, se quedan los más parecidos a la pregunta.</p>
     </div>
-    <div class="card a" data-fx="up" style="--d:1.1s;padding:30px">
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font:800 96px 'DM Sans';color:var(--lava);line-height:.9">G</span><div><b style="font-size:30px">Generar</b><div class="tag">Generation</div></div></div>
-      <p style="margin-top:14px;font-size:23px">El modelo redacta la respuesta y cita el documento de donde salió cada dato.</p>
+    <!-- A · aumentar -->
+    <div class="abs a" data-fx="up" style="--d:1.9s;left:860px;top:40px;width:400px;height:420px;border-radius:26px;background:#1B3139;color:#F9F7F4;padding:22px 24px">
+      <div style="display:flex;align-items:center;gap:12px"><span style="font:800 54px 'DM Sans';color:#3CCB97;line-height:.9">A</span><div><b style="font-size:25px;color:#fff">Aumentar</b><div class="tag" style="color:#A9BCC2">arma la instrucción</div></div></div>
+      <div style="margin-top:16px;font:500 16px/1.55 'DM Mono';color:#C9D6DA">
+        <div><span style="color:#FFAB00">PREGUNTA:</span> ¿límite de plomo en efluentes?</div>
+        <div style="margin-top:10px"><span style="color:#3CCB97">CONTEXTO:</span><br>[1] DS 010-2010-MINAM, Anexo 01: Plomo Total · mg/L · 0,2 · 0,16<br>[2] …</div>
+        <div style="margin-top:10px"><span style="color:#FF6B57">REGLA:</span> responde solo con el contexto y cita [n]. Si no está, dilo.</div>
+      </div>
+    </div>
+    <!-- G · generar -->
+    <div class="abs a" data-fx="up" style="--d:2.6s;left:1330px;top:40px;width:350px;height:420px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px"><span style="font:800 54px 'DM Sans';color:var(--lava);line-height:.9">G</span><div><b style="font-size:25px">Generar</b><div class="tag">el modelo redacta</div></div><span data-icon="model" style="width:44px;height:44px;display:block;margin-left:auto"></span></div>
+      <div class="card a" data-fx="pop" style="--d:3s;padding:20px 22px;outline:4px solid var(--green);outline-offset:-4px">
+        <p style="font-size:21px;color:var(--navy)">El LMP de plomo total es <b>0,2 mg/L</b> en cualquier momento y <b>0,16 mg/L</b> como promedio anual <b style="color:var(--green)">[1]</b>.</p>
+        <div class="tag" style="margin-top:12px">[1] DS 010-2010-MINAM · Anexo 01</div>
+      </div>
+      <div class="a" data-fx="fade" style="--d:3.3s;font-size:18px;color:var(--ink2)">Respuesta con fuente, que cualquiera puede verificar.</div>
     </div>
   </div>
-  <div class="abs a" data-fx="fade" style="--d:1.6s;left:120px;right:120px;bottom:120px;font-size:27px;color:var(--ink2)">El modelo pone el lenguaje. <b>Tus documentos ponen la verdad.</b></div>
+  <div class="abs a" data-fx="up" style="--d:3.5s;left:120px;right:120px;bottom:104px;display:flex;gap:24px">
+    <div style="flex:1;padding:14px 22px;border-radius:16px;background:var(--lava-soft);font-size:21px"><b style="color:#B3200F">Sin RAG:</b> el modelo responde de memoria, con datos viejos o inventados.</div>
+    <div style="flex:1;padding:14px 22px;border-radius:16px;background:var(--green-soft);font-size:21px"><b style="color:#00744F">Con RAG:</b> responde con tus documentos de hoy y te dice de dónde sale.</div>
+  </div>
 </section>
 
 <!-- ================================================================ 07 EL CAMINO DEL DATO (piezas clicables) -->
