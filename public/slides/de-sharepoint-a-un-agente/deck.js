@@ -161,7 +161,7 @@ const MODAL = {
   agente: { t: 'El agente', s: 'La pieza que conversa: recibe la pregunta, busca, filtra y responde con cita.', ic: 'agentbricks', acc: C.violet, pieces: [
     P('Agent Bricks CLI', 'Beta', 'Camino 1: agente en código (LangGraph) con una herramienta de búsqueda propia y el filtro de vigencia.'),
     P('Databricks Apps', 'GA', 'El agente se despliega como una app con su propia identidad y chat incluido.'),
-    P('Genie Agents sobre volúmenes', 'Public Preview', 'Camino 2: Databricks lee y cita los PDF del volumen; la vigencia sale de una tabla.'),
+    P('Genie Agents sobre volúmenes', 'Public Preview', 'Lo que viene: Databricks lee, indexa y cita los PDF de un volumen sin código. Aún no está habilitado en todos los workspaces.'),
     P('Knowledge Assistant', 'Legacy', 'El atajo anterior para preguntar a documentos. Desde octubre de 2026 ya no se pueden crear nuevos.'),
   ], ex: 'Ante «¿sigue vigente el DS 055-2010-EM?», el agente busca, descarta lo derogado y responde que rige el DS 024-2016-EM, citando el fragmento.' },
   gobierno: { t: 'Unity Catalog y MLflow', s: 'Lo que convierte una demo en algo que una empresa puede poner en producción.', ic: 'uc', acc: C.blue, pieces: [

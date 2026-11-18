@@ -278,18 +278,18 @@
 
 <!-- ================================================================ 08 DOS CAMINOS -->
 <section class="slide dark" style="--acc:#FFAB00" data-wipe="#1B3139">
-  <div class="kicker a">Hoy vamos a ver dos caminos</div>
-  <h2 class="a" style="--d:.15s;margin-top:20px">Construirlo pieza por pieza<br>o <span style="color:#FFAB00">usar lo que ya trae la plataforma</span></h2>
+  <div class="kicker a">El camino de hoy y el que viene</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Hoy lo construimos pieza por pieza.<br><span style="color:#FFAB00">Pronto, la plataforma lo hará sola.</span></h2>
   <div class="grid2 abs" style="left:120px;right:120px;top:410px;gap:40px">
     <div class="card a" data-fx="left" style="--d:.4s;padding:32px 34px;outline:4px solid #FF3621;outline-offset:-4px">
-      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="agentbricks" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#FFB4A8">Camino 1 · protagonista</div><h3 style="font-size:34px;color:#fff">RAG construido</h3></div><span class="chip beta" style="margin-left:auto">CLI en Beta</span></div>
+      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="agentbricks" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#FFB4A8">Lo que vamos a ver en vivo</div><h3 style="font-size:34px;color:#fff">RAG construido</h3></div><span class="chip beta" style="margin-left:auto">CLI en Beta</span></div>
       <p style="margin-top:18px;font-size:23px">Agente propio con el <b>Agent Bricks CLI</b>, sobre nuestro índice de <b>AI Search</b>.</p>
       <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:22px;color:#C9D6DA"><div>· La vigencia es un <b>filtro en el código</b>, no un ruego al modelo</div><div>· Controlas cómo se lee, se corta y se busca</div><div>· Se despliega como Databricks App, con trazas en MLflow</div></div>
     </div>
-    <div class="card a" data-fx="right" style="--d:.6s;padding:32px 34px">
-      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="genieagents" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#9be9fb">Camino 2 · contraste</div><h3 style="font-size:34px;color:#fff">RAG administrado</h3></div><span class="chip pre" style="margin-left:auto">Public Preview</span></div>
-      <p style="margin-top:18px;font-size:23px">Un <b>Genie Agent</b> con los PDF en un volumen y el catálogo de normas como tabla.</p>
-      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:22px;color:#C9D6DA"><div>· Databricks lee, indexa y cita la página</div><div>· Listo en minutos, sin código</div><div>· Menos control sobre cómo busca</div></div>
+    <div class="card a" data-fx="right" style="--d:.6s;padding:32px 34px;border:2px dashed #4A6670;background:rgba(35,63,72,.55)">
+      <div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:64px;height:64px;box-shadow:none"><span data-icon="genieagents" style="width:42px;height:42px;display:block"></span></div><div><div class="tag" style="color:#9be9fb">Lo que viene</div><h3 style="font-size:34px;color:#fff">RAG administrado</h3></div><span class="chip pre" style="margin-left:auto;flex-direction:column;gap:2px;padding:8px 16px;text-align:center;line-height:1.15;flex:none">Public Preview<small style="font-size:13px;font-weight:500">aún no en todos los workspaces</small></span></div>
+      <p style="margin-top:18px;font-size:23px">Adjuntas a un <b>Genie Agent</b> un volumen con tus PDF y Databricks hace solo el chunking, los embeddings, el índice y las citas.</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:22px;color:#C9D6DA"><div>· Responde citando el archivo y la página</div><div>· Cruza documentos con tablas (por ejemplo, la vigencia)</div><div>· Listo en minutos, sin código, con menos control sobre cómo busca</div><div style="color:#7D9AA3;font-size:19px">Llegó en noviembre de 2026; se habilita por etapas según nube y región.</div></div>
     </div>
   </div>
   <div class="abs a" data-fx="up" style="--d:1.4s;left:120px;right:120px;bottom:110px;display:flex;align-items:center;gap:20px">
@@ -425,7 +425,7 @@
     ['parse', 'file', 'ai_parse_document', 'Lectura y OCR', '#00A972'],
     ['fragmentos', 'data', 'Fragmentos', 'ai_prep_search', '#2272B4'],
     ['aisearch', 'search', 'AI Search', 'Índice híbrido', '#FF3621'],
-    ['agente', 'agentbricks', 'Agente', 'Agent Bricks · Genie', '#6B5FD6']];
+    ['agente', 'agentbricks', 'Agente', 'Agent Bricks CLI', '#6B5FD6']];
   const pl = document.getElementById('pipeline'); s = '';
   P.forEach(([k, ic, t, sub, c], i) => {
     const x = 100 + i * 296, d = (.6 + i * .25).toFixed(2);
