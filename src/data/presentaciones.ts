@@ -33,7 +33,7 @@ export const PRESENTACIONES: Presentacion[] = [
 		categoria: 'databricks',
 		fecha: '2026-11-17',
 		tags: ['RAG', 'Agent Bricks', 'AI Search', 'Genie Agents'],
-		slides: 17,
+		slides: 16,
 		destacada: true,
 	},
 	{
