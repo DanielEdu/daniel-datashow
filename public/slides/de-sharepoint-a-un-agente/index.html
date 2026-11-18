@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>De SharePoint a un agente de IA</title>
-<!-- v0.1 · creado 17-nov-2026 · actualizado 17-nov-2026 · Daniel Portugal · introducción de la demo RAG (evento DMC, 20-nov-2026)
+<!-- v0.2 · creado 17-nov-2026 · actualizado 17-nov-2026 · Daniel Portugal · introducción de la demo RAG (evento DMC, 20-nov-2026)
      Navegación: ← → / espacio · R repite la animación · F pantalla completa · clic en piezas para ver el detalle -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
@@ -32,47 +32,24 @@
 <body>
 <div id="viewport"><div id="stage">
 
+<!-- ================================================================ 00 APERTURA DEL EVENTO -->
+<section class="slide no-foot" data-wipe="#0a1440" style="padding:0;background:#0a1440 url(assets/evento/portada-logo-centro.webp) center/cover no-repeat">
+  <div class="a mono" data-fx="fade" style="--d:1.2s;position:absolute;right:60px;bottom:30px;font-size:15px;color:rgba(255,255,255,.55)">usa ← → para avanzar</div>
+</section>
+
 <!-- ================================================================ 01 PORTADA -->
-<section class="slide no-foot" data-wipe="#FF3621">
-  <div class="a" data-fx="down" style="--d:.1s;position:absolute;left:120px;top:62px;display:flex;align-items:center;gap:26px"><span data-tpt style="--h:50px"></span><i style="width:2px;height:44px;background:var(--oat3)"></i><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:50px"></div>
-  <img class="a" data-fx="down" style="--d:.2s;position:absolute;right:120px;top:90px;height:40px" src="assets/databricks-wordmark.png" alt="Databricks">
-  <div style="position:absolute;left:120px;top:236px;width:960px">
-    <div class="kicker a" style="--d:.3s">RAG de punta a punta · Databricks</div>
-    <h1 class="a" data-fx="blur" style="--d:.45s;margin-top:28px;font-size:124px">De SharePoint<br><span class="t-lava">a un agente de IA</span></h1>
-    <p class="lead a" style="--d:.8s;margin-top:34px;width:860px">Cómo convertir los documentos de tu empresa en respuestas <b>con fuente</b>, sin que la IA invente. Un caso real: la normativa que rige a minas, plantas y fábricas en el Perú.</p>
-    <div class="a" style="--d:1.1s;margin-top:52px;display:flex;align-items:center;gap:22px">
-      <div class="pp sm" data-person="style:short;shirt:#1B3139;prop:wave;skin:1"></div>
-      <div><div style="font-size:30px;font-weight:700">Daniel Portugal</div><div style="font-size:23px;color:var(--ink2)">Field Engineering Leader · Talento Para Ti</div><div style="display:flex;align-items:center;gap:10px;margin-top:10px;font-size:21px;color:var(--ink2)"><span>Fundador de <b>Data Wizard</b></span><span style="color:var(--oat3);margin:0 4px">|</span><img src="assets/youtube-logo.svg" alt="YouTube" style="height:22px;display:block"><span data-si="tiktok" style="--s:22px;--c:#0B0B0B"></span><b>Daniel Datashow</b></div></div>
-    </div>
+<section class="slide no-foot" data-wipe="#0a1440" style="background:#0a1440 url(assets/evento/portada-logo-esquina.webp) center/cover no-repeat">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 32% 56%,rgba(6,16,52,.82),rgba(6,16,52,.35) 60%,transparent 80%)"></div>
+  <div style="position:absolute;left:120px;top:430px;width:1100px">
+    <div class="kicker a" style="--d:.3s;--acc:#22D3EE;color:#9be9fb">RAG de punta a punta · Databricks</div>
+    <h1 class="a" data-fx="blur" style="--d:.45s;margin-top:24px;font-size:116px;color:#fff;text-shadow:0 6px 40px rgba(0,0,0,.45)">De SharePoint<br><span style="background:linear-gradient(90deg,#22C55E,#22D3EE 45%,#3B82F6);-webkit-background-clip:text;background-clip:text;color:transparent">a un agente de IA</span></h1>
+    <p class="lead a" style="--d:.8s;margin-top:26px;width:900px;color:#DCE6F5;text-shadow:0 2px 16px rgba(0,0,0,.5)">Documentos que responden con fuente, sin que la IA invente. Un caso real con la normativa de minas, plantas y fábricas del Perú.</p>
+    <div class="a" style="--d:1.1s;margin-top:30px;font-size:26px;color:#fff"><b style="color:#fff">Daniel Portugal</b> <span style="color:#9be9fb">· Field Engineering Leader · TALENTO PARA TI</span></div>
   </div>
-  <!-- ilustración: los documentos viajan hasta el agente y salen como respuesta con cita -->
-  <svg class="abs" style="left:1060px;top:170px;width:760px;height:800px" viewBox="0 0 760 800">
-    <circle cx="380" cy="400" r="330" fill="#EEEDE9"/>
-    <g class="loop spin" style="animation-duration:46s"><circle cx="380" cy="400" r="300" fill="none" stroke="#D9D3C7" stroke-width="3" stroke-dasharray="4 14"/></g>
-    <path class="loop march" d="M190 250 C 260 250 260 400 330 400" stroke="#C3BBAE" stroke-width="5" fill="none"/>
-    <path class="loop march" d="M190 400 H330" stroke="#C3BBAE" stroke-width="5" fill="none"/>
-    <path class="loop march" d="M190 550 C 260 550 260 400 330 400" stroke="#C3BBAE" stroke-width="5" fill="none"/>
-    <path class="loop march" d="M430 400 C 500 400 500 300 560 300" stroke="#C3BBAE" stroke-width="5" fill="none"/>
-    <circle r="9" fill="#2272B4" class="loop flow" style="offset-path:path('M190 250 C 260 250 260 400 330 400');--t:2.4s"/>
-    <circle r="9" fill="#00A972" class="loop flow" style="offset-path:path('M190 400 H330');--t:2.4s;--fd:-.8s"/>
-    <circle r="9" fill="#FFAB00" class="loop flow" style="offset-path:path('M190 550 C 260 550 260 400 330 400');--t:2.4s;--fd:-1.6s"/>
-    <circle r="9" fill="#FF3621" class="loop flow" style="offset-path:path('M430 400 C 500 400 500 300 560 300');--t:2s;--fd:-.4s"/>
-    <!-- 3 documentos -->
-    <g transform="translate(110 200)"><g class="a" data-fx="left" style="--d:.5s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#C7DBEE" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#2272B4"/></g></g>
-    <g transform="translate(110 350)"><g class="a" data-fx="left" style="--d:.65s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#C9E8DA" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#00A972"/></g></g>
-    <g transform="translate(110 500)"><g class="a" data-fx="left" style="--d:.8s"><rect width="80" height="100" rx="10" fill="#fff"/><path d="M14 22h52M14 38h52M14 54h52M14 70h34" stroke="#F5DE9C" stroke-width="6" stroke-linecap="round"/><rect x="0" y="0" width="80" height="12" rx="6" fill="#FFAB00"/></g></g>
-    <!-- centro: Databricks -->
-    <g transform="translate(380 400)"><g class="a" data-fx="pop" style="--d:1s"><circle r="62" fill="#fff"/><circle r="62" fill="none" stroke="#FF3621" stroke-width="4" opacity=".3"/><g transform="translate(-30 -30) scale(2.5)"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#FF3621"/></g></g></g>
-    <!-- respuesta con cita -->
-    <g transform="translate(560 220)"><g class="a" data-fx="pop" style="--d:1.4s"><rect width="170" height="150" rx="22" fill="#1B3139"/><path d="M30 150 l-6 26 30-26z" fill="#1B3139"/><path d="M24 34h96M24 56h120M24 78h80" stroke="#4A5D64" stroke-width="8" stroke-linecap="round"/><rect x="24" y="100" width="100" height="28" rx="14" fill="#00A972"/><text x="74" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">fuente ✓</text></g></g>
-    <g class="loop float"><circle cx="560" cy="600" r="10" fill="#6B5FD6"/></g>
-    <g class="loop float2"><rect x="260" y="140" width="16" height="16" rx="4" fill="#FFAB00"/></g>
-  </svg>
-  <div class="a mono" data-fx="fade" style="--d:1.6s;position:absolute;left:120px;bottom:44px;font-size:17px;color:var(--muted)">usa ← → para avanzar · clic en las piezas para ver el detalle</div>
 </section>
 
 <!-- ================================================================ 02 PONENTE -->
-<section class="slide dark event-speaker" style="--acc:#63D7EE" data-wipe="#13224C">
+<section class="slide dark event-speaker" style="--acc:#63D7EE;background:#0b1f5c url(assets/evento/fondo-degradado.webp) center/cover no-repeat" data-wipe="#0b1f5c">
   <div class="kicker a">Sobre el ponente</div>
   <div class="abs a" data-fx="pop" style="--d:.2s;left:120px;top:190px;width:480px;height:500px;border-radius:30px;padding:3px;background:linear-gradient(160deg,#2272B4,#6B5FD6)">
     <img src="assets/daniel-portrait.webp" alt="Daniel Portugal" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:28px;display:block">
@@ -80,7 +57,7 @@
   <div style="position:absolute;left:680px;top:190px;width:1120px">
     <h2 class="a" style="--d:.3s">Daniel Portugal Revilla</h2>
     <div class="col" style="margin-top:26px;gap:14px">
-      <div class="a" data-fx="left" style="--d:.5s;display:flex;align-items:center;gap:18px;font-size:28px"><span data-tpt="dark" style="--h:46px"></span><span><b>Field Engineering Leader</b> en Talento Para Ti</span></div>
+      <div class="a" data-fx="left" style="--d:.5s;display:flex;align-items:center;gap:18px;font-size:28px"><span data-tpt="dark" style="--h:46px"></span><span><b>Field Engineering Leader</b> en TALENTO PARA TI</span></div>
       <div class="a" data-fx="left" style="--d:.65s;display:flex;align-items:center;gap:18px;font-size:28px"><span>Fundador de <b>Data Wizard</b> y <b>Data Engineering LATAM</b></span></div>
       <div class="a" data-fx="left" style="--d:.8s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/youtube-logo.svg" alt="" style="height:34px"><span data-si="tiktok" style="--s:32px;--c:#0B0B0B"></span><span>Creador de <b>Daniel Datashow</b> en YouTube y TikTok</span></div>
     </div>
@@ -88,10 +65,10 @@
     <div class="a" style="--d:1.4s;margin-top:36px;display:flex;gap:16px">
       <span class="pill-btn" style="background:#0A66C2">in/danielportugalr</span><span class="pill-btn">datawizard.tech</span><span class="pill-btn" style="background:#FF0000">@DanielDatashow</span>
     </div>
-    <div class="a speaker-career" style="--d:1.6s;display:none">
+    <div class="a speaker-career" style="--d:1.6s">
       <div class="mono career-label">MI TRAYECTORIA</div>
       <ol aria-label="Trayectoria de empresas, en orden">
-        <li><img src="assets/trayectoria/nttdata.svg" alt="NTT DATA (ex everis)"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi Bank" class="tall"></li><li><img src="assets/trayectoria/chiper.png" alt="Chiper" class="tall"></li><li><img src="assets/trayectoria/globant.svg" alt="Globant"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi" class="tall"></li><li><img src="assets/trayectoria/yape.svg" alt="Yape" class="tall"></li><li><img src="assets/tpt-icon.png" alt="" class="tall"><span>Talento Para Ti</span></li>
+        <li><img src="assets/trayectoria/nttdata.svg" alt="NTT DATA (ex everis)"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi Bank" class="tall"></li><li><img src="assets/trayectoria/chiper.png" alt="Chiper" class="tall"></li><li><img src="assets/trayectoria/globant.svg" alt="Globant"></li><li><img src="assets/trayectoria/rappi.svg" alt="Rappi" class="tall"></li><li><img src="assets/trayectoria/yape.svg" alt="Yape" class="tall"></li><li><img src="assets/tpt-icon.png" alt="" class="tall"><span>TALENTO PARA TI</span></li>
       </ol>
     </div>
   </div>
@@ -101,11 +78,11 @@
 <!-- ================================================================ 03 TALENTO PARA TI (alineado a la carta comercial v2.7) -->
 <section class="slide dark" style="--acc:#5fd3f3;background:radial-gradient(ellipse at 100% 0%,rgba(28,111,214,.35),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(15,180,214,.18),transparent 55%),#0a1440" data-wipe="#163a8f">
   <div style="position:absolute;left:120px;top:70px;right:120px;display:flex;align-items:center;justify-content:space-between">
-    <img class="a" data-fx="down" src="assets/tpt-logo-claro.png" alt="Talento Para Ti" style="height:78px">
+    <img class="a" data-fx="down" src="assets/tpt-logo-claro.png" alt="TALENTO PARA TI" style="height:78px">
     <div class="a" data-fx="down" style="--d:.2s;display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:10px 18px"><img src="assets/databricks-partner.svg" style="height:52px" alt=""><b style="font-size:19px;color:#0a1440">Partner de<br>Databricks</b></div>
   </div>
   <div style="position:absolute;left:120px;top:200px;width:1680px">
-    <div class="kicker a" style="--d:.25s;color:#9be9fb">Talento Para Ti</div>
+    <div class="kicker a" style="--d:.25s;color:#9be9fb">TALENTO PARA TI</div>
     <h2 class="a" style="--d:.35s;margin-top:14px;font-size:58px;color:#fff">Datos e inteligencia artificial sobre Databricks,<br><span style="color:#5fd3f3">de la arquitectura a la operación</span></h2>
     <div class="grid3" style="margin-top:34px;gap:22px"><div class="card a" data-fx="up" style="--d:0.50s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="lakeflow" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Proyectos de implementación</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Llevamos sus casos de uso a producción: migración a Databricks, agentes de IA, machine learning y MLOps, entregados como código.</p></div><div class="card a" data-fx="up" style="--d:0.65s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="dev" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Entrenamiento</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Rutas por perfil y preparación para las certificaciones oficiales de Databricks, con clases en vivo, proyecto real y mentoría.</p></div><div class="card a" data-fx="up" style="--d:0.80s;background:rgba(255,255,255,.06);border:1px solid rgba(95,211,243,.28);padding:26px"><div style="display:flex;gap:14px;align-items:center"><div class="ico-tile" style="width:58px;height:58px;background:#fff;box-shadow:none"><span data-icon="customerlake" style="width:38px;height:38px;display:block"></span></div><h3 style="color:#fff;font-size:27px">Staffing especializado</h3></div><p style="font-size:19px;margin-top:12px;color:#C9D6F2">Ingenieros y arquitectos certificados que se suman a su equipo, por proyecto o por horas, con el respaldo de TPT.</p></div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:34px;margin-top:34px"><div class="a" data-fx="up" style="--d:1.00s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">Plataforma</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Arquitectura en Databricks</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Integración de fuentes</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Lakehouse por capas</div></div><div class="a" data-fx="up" style="--d:1.15s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">Gobierno y operación</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Gobierno y seguridad con Unity Catalog</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Monitoreo y operación</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Rendimiento y costo</div></div><div class="a" data-fx="up" style="--d:1.30s;border-top:4px solid #5fd3f3;padding-top:14px"><b style="font-size:23px;color:#9be9fb">IA y personas</b><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· IA aplicada y RAG</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Machine learning y MLflow</div><div style="font-size:19px;color:#E8EAF6;margin-top:8px">· Formación por perfil</div></div><div><b class="a" style="--d:1.4s;font-size:23px;color:#9be9fb;display:block;margin-bottom:12px">Cómo empezamos</b><div style="display:flex;flex-direction:column;gap:10px"><div class="a" data-fx="pop" style="--d:1.50s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">1</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Diagnóstico de plataforma</span></div><div class="a" data-fx="pop" style="--d:1.65s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">2</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Prueba de concepto en ambiente espejo</span></div><div class="a" data-fx="pop" style="--d:1.80s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">3</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Formación por perfil</span></div><div class="a" data-fx="pop" style="--d:1.95s;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#1c6fd6;color:#fff;display:grid;place-items:center;font:800 19px DM Sans;flex:none">4</span><span style="font-size:19px;color:#E8EAF6;font-weight:600">Migración o implementación</span></div></div></div></div>
@@ -294,6 +271,28 @@
   <div class="abs a loop float" data-fx="pop" style="--d:1.2s;right:200px;top:330px"><div class="pp xl" data-person="style:short;shirt:#FF3621;prop:laptop;skin:1"></div></div>
 </section>
 
+
+<!-- ================================================================ 13 CIERRE · EL SIGUIENTE PASO -->
+<section class="slide dark no-foot" style="--acc:#22D3EE;background:#0b1f5c url(assets/evento/fondo-degradado.webp) center/cover no-repeat" data-wipe="#0b1f5c">
+  <svg class="abs" style="left:0;top:0;width:1920px;height:1080px" viewBox="0 0 1920 1080"><g id="confetti"></g></svg>
+  <div style="position:absolute;left:0;right:0;top:170px;text-align:center">
+    <div class="kicker a" style="justify-content:center;color:#9be9fb">El siguiente paso</div>
+    <h1 class="a" data-fx="blur" style="--d:.2s;margin-top:24px;font-size:140px;color:#fff">¿Conversamos?</h1>
+    <p class="lead a" style="--d:.5s;margin:28px auto 0;width:1180px;color:#DCE6F5">Llevamos tus documentos a un agente que responde con fuente, sobre Databricks. <b style="color:#fff">Una prueba de concepto con tus propios archivos, en semanas.</b></p>
+    <div class="a" style="--d:.8s;margin-top:44px;display:flex;justify-content:center;gap:20px">
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px;background:#fff;color:#0a1440"><span data-icon="mail" style="width:30px;height:30px;display:inline-block;filter:invert(1)"></span>daniel.portugal@talentoparati.com</span>
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px;background:#1c6fd6">talentoparati.com</span>
+    </div>
+    <div class="a" style="--d:1s;margin-top:34px;display:flex;justify-content:center;gap:28px;font-size:22px;color:#C9D6F2"><span>Diagnóstico de tu plataforma</span><span style="color:#5fd3f3">·</span><span>Prueba de concepto en ambiente espejo</span><span style="color:#5fd3f3">·</span><span>Formación por perfil</span></div>
+  </div>
+  <div class="abs a" data-fx="up" style="--d:1.2s;left:120px;right:120px;bottom:70px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:26px"><img src="assets/tpt-logo-claro.png" alt="TALENTO PARA TI" style="height:64px"><i style="width:2px;height:54px;background:rgba(255,255,255,.3)"></i><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:64px"><div><b style="font-size:22px;color:#fff">Data Wizard</b><div style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:19px;color:#C9D6F2"><img src="assets/youtube-logo.svg" alt="YouTube" style="height:20px;display:block"><span data-si="tiktok" style="--s:20px;--c:#fff"></span>Daniel Datashow</div></div></div>
+    <div style="display:flex;align-items:center;gap:16px;background:#fff;border-radius:16px;padding:10px 18px"><img src="assets/databricks-partner.svg" style="height:52px" alt=""><b style="font-size:19px;color:#0a1440">Partner de<br>Databricks</b></div>
+  </div>
+</section>
+
+<img id="ev-summit" src="assets/evento/summit-2026.webp" alt="" hidden>
+<img id="ev-dmc" src="assets/evento/dmc-institute.webp" alt="" hidden>
 <img id="dw-src" src="assets/datawizard-logo.png" alt="" hidden>
 <img id="tpt-icon-src" src="assets/tpt-icon.png" alt="" hidden>
 <div id="wipe"><svg class="wlogo" viewBox="0 0 24 24"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#fff"/></svg></div>
@@ -329,6 +328,15 @@
       <div class="a" data-fx="up" style="--d:${(+d + .15).toFixed(2)}s;position:absolute;left:${x - 130}px;top:206px;width:260px;text-align:center"><b style="font-size:26px;display:block">${t}</b><span class="tag">${sub}</span></div>`;
   });
   pl.innerHTML = s;
+  // Confeti del cierre, con los colores del evento
+  const cf = document.getElementById('confetti'); s = ''; let k = 3;
+  for (let i = 0; i < 46; i++) {
+    k = (k * 53 + 17) % 211; const x = (k * 9.1) % 1920, y = (k * 5.3 + i * 23) % 1080, c = ['#22C55E', '#22D3EE', '#3B82F6', '#FFFFFF', '#5fd3f3'][i % 5];
+    if ((y > 120 && y < 860 && x > 260 && x < 1660) || y > 880) continue;
+    const sh = i % 3 === 0 ? `<circle r="9" fill="${c}"/>` : i % 3 === 1 ? `<rect x="-8" y="-8" width="16" height="16" rx="3" fill="${c}" transform="rotate(${k % 90})"/>` : `<path d="M-10 6 L0 -10 L10 6Z" fill="${c}"/>`;
+    s += `<g transform="translate(${x.toFixed(0)} ${y.toFixed(0)})"><g class="a" data-fx="pop" style="--d:${(.2 + (i % 12) * .08).toFixed(2)}s"><g class="loop ${i % 2 ? 'float' : 'float2'}">${sh}</g></g></g>`;
+  }
+  cf.innerHTML = s;
 })();
 </script>
 <script src="deck.js?v=0.1"></script>

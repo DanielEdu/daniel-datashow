@@ -231,7 +231,8 @@ function build() {
     const f = document.createElement('div');
     f.className = 'chrome-foot';
     const dark = s.classList.contains('dark');
-    f.innerHTML = `<span style="--h:38px;display:inline-flex;align-items:center;gap:16px">${tptLogo(dark)}<i style="width:2px;height:30px;background:${dark ? '#3A5560' : C.oat3}"></i>${dwLogo(dark)}</span><span>De SharePoint a un agente de IA</span><span class="num"><b>${String(i + 1).padStart(2, '0')}</b> / ${slides.length}</span>`;
+    const ev = id => (document.getElementById(id) || {}).src || '';
+    f.innerHTML = `<span style="display:inline-flex;align-items:center;gap:18px;background:${dark ? 'transparent' : '#0a1440'};border-radius:12px;padding:${dark ? '0' : '9px 16px'}"><img src="${ev('ev-summit')}" alt="Data & AI Summit 2026" style="height:20px;display:block"><i style="width:1px;height:22px;background:rgba(255,255,255,.35)"></i><img src="${ev('ev-dmc')}" alt="DMC Institute" style="height:22px;display:block"></span><span>De SharePoint a un agente de IA</span><span class="num"><b>${String(i + 1).padStart(2, '0')}</b> / ${slides.length}</span>`;
     s.appendChild(f);
   });
 }
