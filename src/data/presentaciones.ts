@@ -24,6 +24,18 @@ export const CATEGORIAS: Record<Categoria, { es: string; en: string }> = {
 
 export const PRESENTACIONES: Presentacion[] = [
 	{
+		slug: 'databricks-para-negocio',
+		titulo: 'Databricks para negocio',
+		descripcion: {
+			es: 'Databricks explicado sin código para perfiles de negocio y producto: lakehouse con analogías, qué cambia con Power BI, Genie, dashboards AI/BI, Unity Catalog, Apps, agentes, cómo cobra y si tu empresa lo necesita.',
+			en: 'Databricks explained without code for business and product roles: the lakehouse through analogies, what changes with Power BI, Genie, AI/BI dashboards, Unity Catalog, Apps, agents, pricing and whether your company needs it.',
+		},
+		categoria: 'databricks',
+		fecha: '2026-11-20',
+		tags: ['Negocio', 'Genie', 'Power BI', 'Unity Catalog'],
+		slides: 23,
+	},
+	{
 		slug: 'de-sharepoint-a-un-agente',
 		titulo: 'De SharePoint a un agente de IA',
 		descripcion: {

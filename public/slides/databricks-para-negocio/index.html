@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Databricks para negocio</title>
+<!-- v1.0 · creado 20-nov-2026 · actualizado 20-nov-2026 · Daniel Portugal · Data Wizard / Daniel Datashow
+     Versión de «Databricks para todos» para perfiles de negocio y producto (SQL básico, Excel, Power BI).
+     Nombres de productos validados contra el catálogo del vault (renombres 2026). Empresas de los ejemplos: hipotéticas.
+     Navegación: ← → / espacio · R repite la animación · F pantalla completa · clic en piezas para ver el detalle -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css?v=1.0">
+<style>
+  span[data-icon] > svg, div[data-icon] > svg { width: 100%; height: 100%; display: block; }
+  .pp { width: 110px; } .pp svg { width: 100%; height: auto; display: block; }
+  .pp.sm { width: 84px; } .pp.lg { width: 150px; } .pp.xl { width: 200px; }
+  @keyframes truck { 0% { transform: translateX(-130px); } 100% { transform: translateX(380px); } }
+  @keyframes pump  { 0%,100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+  @keyframes cart  { 0%,100% { transform: translateX(0); } 50% { transform: translateX(40px); } }
+  @keyframes mask-on { 0%,30% { opacity: 0; } 40%,100% { opacity: 1; } }
+  @keyframes approve { 0%,35% { opacity: 0; transform: scale(.6); } 45%,100% { opacity: 1; transform: none; } }
+  @keyframes hide-on-approve { 0%,35% { opacity: 1; } 45%,100% { opacity: 0; } }
+  @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
+  @keyframes count { from { --n: 0; } to { --n: var(--to); } }
+  .counter { counter-reset: n var(--n); }
+  .counter::after { content: counter(n); }
+  .slide.active .counter { animation: count 3s var(--ease) var(--d, 0s) both; }
+  .ic { display: inline-block; flex: none; }
+  .li { display: flex; gap: 16px; align-items: flex-start; }
+  .li .ic { width: 34px; height: 34px; margin-top: 2px; }
+  .li p { font-size: 22px; line-height: 1.38; }
+  .mock { background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); overflow: hidden; }
+  .mock-bar { height: 66px; background: var(--navy); display: flex; align-items: center; gap: 14px; padding: 0 26px; color: #fff; }
+  .mock-bar .dots { display: flex; gap: 8px; } .mock-bar .dots i { width: 12px; height: 12px; border-radius: 50%; background: #4A6670; display: block; }
+  .mock-bar .ttl { font: 700 22px "DM Sans"; } .mock-bar .meta { margin-left: auto; font: 500 16px "DM Mono"; color: #A9BCC2; }
+  .code { font: 500 22px/1.6 "DM Mono"; color: var(--navy); }
+  .code .k { color: var(--blue); font-weight: 700; } .code .s { color: #00744F; } .code .n { color: #B3200F; }
+  .kpi { background: var(--oat); border-radius: 18px; padding: 16px 20px; }
+  .kpi .tag { font-size: 15px; } .kpi b { font: 800 40px "DM Sans"; display: block; margin-top: 4px; }
+  .step-n { width: 52px; height: 52px; border-radius: 50%; color: #fff; display: grid; place-items: center; font: 800 24px "DM Sans"; flex: none; }
+  .gl h3 { font-size: 27px; } .gl p { font-size: 19px; line-height: 1.35; margin-top: 8px; } .gl .tag { font-size: 14px; }
+  .box-t { width: 100%; border-collapse: collapse; font-size: 20px; }
+  .box-t th { color: var(--muted); font-size: 16px; text-align: left; padding: 8px 0; font-weight: 600; }
+  .box-t td { padding: 10px 0; border-top: 1px solid var(--oat3); }
+  .big-li .li p { font-size: 25px; } .big-li .li .ic { width: 38px; height: 38px; } .big-li .col { gap: 26px !important; }
+  .ex-tag { font: 500 15px "DM Mono"; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ================================================================ 01 PORTADA -->
+<section class="slide no-foot" data-wipe="#FF3621">
+  <div class="a" data-fx="down" style="--d:.1s;position:absolute;left:120px;top:62px;display:flex;align-items:center;gap:26px"><span data-tpt style="--h:50px"></span><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:54px"></div>
+  <img class="a" data-fx="down" style="--d:.2s;position:absolute;right:120px;top:90px;height:40px" src="assets/databricks-wordmark.png" alt="Databricks">
+  <div style="position:absolute;left:120px;top:250px;width:900px">
+    <div class="kicker a" style="--d:.3s">Data + AI · para negocio y producto</div>
+    <h1 class="a" data-fx="blur" style="--d:.45s;margin-top:28px;font-size:136px">Databricks<br><span class="t-lava">para negocio</span></h1>
+    <p class="lead a" style="--d:.8s;margin-top:34px;width:820px">La plataforma de datos e IA explicada sin código: qué problema resuelve, qué vas a usar tú y cómo saber si tu empresa la necesita.</p>
+    <div class="a" style="--d:1.1s;margin-top:56px;display:flex;align-items:center;gap:22px">
+      <div class="pp sm" data-person="style:short;shirt:#1B3139;prop:wave;skin:1"></div>
+      <div><div style="font-size:30px;font-weight:700">Daniel Portugal</div><div style="font-size:23px;color:var(--ink2)">Field Engineering Leader · Talento Para Ti</div><div style="display:flex;align-items:center;gap:10px;margin-top:10px;font-size:21px;color:var(--ink2)"><span>Fundador de <b>Data Wizard</b></span><span style="color:var(--oat3);margin:0 4px">|</span><img src="assets/youtube-logo.svg" alt="YouTube" style="height:22px;display:block"><span data-si="tiktok" style="--s:22px;--c:#0B0B0B"></span><b>Daniel Datashow</b></div></div>
+    </div>
+  </div>
+  <svg class="abs" style="left:1000px;top:150px;width:820px;height:820px" viewBox="0 0 820 820">
+    <circle cx="410" cy="400" r="330" fill="#EEEDE9"/>
+    <g class="loop spin" style="animation-duration:40s"><circle cx="410" cy="400" r="300" fill="none" stroke="#D9D3C7" stroke-width="3" stroke-dasharray="4 14"/></g>
+    <g class="loop spin" style="animation-duration:30s">
+      <g transform="translate(410 100)"><circle r="40" fill="#fff"/><path d="M-20 14v-10M-8 14v-22M4 14v-16M16 14v-28" stroke="#2272B4" stroke-width="8" stroke-linecap="round"/></g>
+      <g transform="translate(710 400)"><circle r="40" fill="#fff"/><rect x="-22" y="-16" width="44" height="28" rx="10" fill="#FF3621"/><path d="M-12 12l-4 10 12-10z" fill="#FF3621"/><circle cx="-8" cy="-2" r="3.4" fill="#fff"/><circle cx="8" cy="-2" r="3.4" fill="#fff"/></g>
+      <g transform="translate(410 700)"><circle r="40" fill="#fff"/><rect x="-22" y="-18" width="44" height="36" rx="6" fill="#00A972"/><path d="M-14 -6h28M-14 4h28M-14 12h16" stroke="#fff" stroke-width="3.4"/></g>
+      <g transform="translate(110 400)"><circle r="40" fill="#fff"/><circle cx="0" cy="-2" r="16" fill="none" stroke="#FFAB00" stroke-width="7"/><path d="M11 10l10 10" stroke="#FFAB00" stroke-width="8" stroke-linecap="round"/></g>
+    </g>
+    <g transform="translate(410 400)">
+      <g class="a" data-fx="pop" style="--d:1.9s"><circle r="200" fill="none" stroke="#FF3621" stroke-width="3" opacity=".25"/></g>
+      <g transform="translate(-160 -160) scale(13.333)"><g class="a" data-fx="pop" style="--d:.4s">
+        <path class="a" data-fx="draw" pathLength="1" style="--d:.5s" d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="none" stroke="#FF3621" stroke-width=".22" stroke-linejoin="round"/>
+        <path class="a" data-fx="fade" style="--d:1.5s" d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#FF3621"/>
+      </g></g>
+    </g>
+    <g class="loop float"><circle cx="560" cy="250" r="8" fill="#2272B4"/></g>
+    <g class="loop float2"><circle cx="250" cy="560" r="10" fill="#00A972"/></g>
+    <g class="loop float"><rect x="600" y="560" width="16" height="16" rx="4" fill="#FFAB00"/></g>
+  </svg>
+  <div class="a mono" data-fx="fade" style="--d:1.6s;position:absolute;left:120px;bottom:44px;font-size:17px;color:var(--muted)">usa ← → para avanzar · clic en las piezas para ver el detalle</div>
+</section>
+
+<!-- ================================================================ 02 PONENTE -->
+<section class="slide dark event-speaker" style="--acc:#63D7EE" data-wipe="#13224C">
+  <div class="kicker a">Sobre el ponente</div>
+  <div class="abs a" data-fx="pop" style="--d:.2s;left:120px;top:190px;width:480px;height:500px;border-radius:30px;padding:3px;background:linear-gradient(160deg,#2272B4,#6B5FD6)">
+    <img src="assets/daniel-portrait.webp" alt="Daniel Portugal" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:28px;display:block">
+  </div>
+  <div style="position:absolute;left:680px;top:190px;width:1120px">
+    <h2 class="a" style="--d:.3s">Daniel Portugal Revilla</h2>
+    <div class="col" style="margin-top:26px;gap:14px">
+      <div class="a" data-fx="left" style="--d:.5s;display:flex;align-items:center;gap:18px;font-size:28px"><span data-tpt="dark" style="--h:46px"></span><span><b>Field Engineering Leader</b> en Talento Para Ti</span></div>
+      <div class="a" data-fx="left" style="--d:.65s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/datawizard-logo.png" alt="" style="height:46px"><span>Fundador de <b>Data Wizard</b> y <b>Data Engineering LATAM</b></span></div>
+      <div class="a" data-fx="left" style="--d:.8s;display:flex;align-items:center;gap:18px;font-size:28px"><img src="assets/youtube-logo.svg" alt="" style="height:34px"><span data-si="tiktok" style="--s:32px;--c:#fff"></span><span>Creador de <b>Daniel Datashow</b> en YouTube y TikTok</span></div>
+    </div>
+    <p class="a" style="--d:1s;margin-top:34px;width:1050px;font-size:27px">Ingeniero de datos con más de 9 años transformando datos en decisiones: arquitecturas lakehouse, streaming en tiempo real y plataformas como Databricks, Snowflake y BigQuery. Bachiller en Ingeniería de Sistemas por la UCSM, Arequipa.</p>
+    <div class="a" style="--d:1.4s;margin-top:36px;display:flex;gap:16px">
+      <span class="pill-btn" style="background:#0A66C2">in/danielportugalr</span><span class="pill-btn" style="background:#2E4C56">datawizard.tech</span><span class="pill-btn" style="background:#FF0000">@DanielDatashow</span>
+    </div>
+  </div>
+  <div class="a speaker-qr" style="--d:1.4s"><img src="assets/qr-linkedin.png" alt="QR de LinkedIn de Daniel Portugal"><div><span class="kicker">Sigamos conectados</span><p>Encuéntrame en LinkedIn</p><span class="mono">Daniel Portugal</span></div></div>
+</section>
+
+<!-- ================================================================ 03 ¿PARA QUIÉN? -->
+<section class="slide" style="--acc:#FFAB00">
+  <div class="kicker a">Antes de empezar</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Si usas Excel, Power BI o algo de SQL,<br><span class="hl">esta charla es para ti</span></h2>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:400px;gap:40px">
+    <div class="a" data-fx="up" style="--d:.4s;position:relative">
+      <div class="bubble a" data-fx="pop" style="--d:1s;position:relative;white-space:normal;margin-bottom:22px;font-size:23px">“Databricks ya está en mi empresa y no sé por dónde empezar.”</div>
+      <div class="card" style="display:flex;align-items:flex-end;gap:20px;height:250px"><div class="pp loop bob" data-person="style:long;shirt:#00A972;prop:laptop;skin:0;hair:#5A3A22"></div><div><div class="tag">Analista de negocio</div><h3 style="font-size:28px;margin-top:6px">Quiere aprovechar lo que ya pagaron</h3></div></div>
+    </div>
+    <div class="a" data-fx="up" style="--d:.55s;position:relative">
+      <div class="bubble a" data-fx="pop" style="--d:1.15s;position:relative;white-space:normal;margin-bottom:22px;font-size:23px">“Escucho «Databricks» en todos lados. ¿Lo necesitamos?”</div>
+      <div class="card" style="display:flex;align-items:flex-end;gap:20px;height:250px"><div class="pp loop bob" style="animation-delay:-.5s" data-person="style:side;shirt:#1B3139;prop:think;skin:2;hair:#2B2523"></div><div><div class="tag">Gerente o product owner</div><h3 style="font-size:28px;margin-top:6px">Tiene que decidir si invertir</h3></div></div>
+    </div>
+    <div class="a" data-fx="up" style="--d:.7s;position:relative">
+      <div class="bubble a" data-fx="pop" style="--d:1.3s;position:relative;white-space:normal;margin-bottom:22px;font-size:23px">“Hago tableros en Power BI y consultas básicas.”</div>
+      <div class="card" style="display:flex;align-items:flex-end;gap:20px;height:250px"><div class="pp loop bob" style="animation-delay:-1s" data-person="style:bun;shirt:#2272B4;prop:tablet;skin:1;hair:#1A1412"></div><div><div class="tag">Analista BI</div><h3 style="font-size:28px;margin-top:6px">Quiere saber qué cambia para su trabajo</h3></div></div>
+    </div>
+  </div>
+  <div class="abs a" style="--d:1.7s;left:120px;right:120px;bottom:104px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <span class="tag" style="margin-right:6px">Hoy te llevas</span>
+    <span class="chip">Qué resuelve</span><span class="chip">Qué vas a usar tú</span><span class="chip">Quién hace qué</span><span class="chip">Cómo cobra</span><span class="chip">Si tu empresa lo necesita</span><span class="chip new">Qué preguntarle a TI</span>
+  </div>
+</section>
+
+<!-- ================================================================ 04 EL PROBLEMA -->
+<section class="slide" style="--acc:#FF3621">
+  <div class="kicker a">El problema, en lenguaje de negocio</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Una pregunta simple:<br><span class="hl">¿cuánto vendimos ayer?</span></h2>
+  <div class="abs a" data-fx="up" style="--d:.4s;left:120px;top:350px;width:300px;display:flex;flex-direction:column;align-items:center;gap:14px">
+    <div class="bubble" style="position:relative;white-space:normal;text-align:center;font-size:22px">“Lo necesito para el directorio de las 9.”</div>
+    <div class="pp lg" data-person="style:short;shirt:#1B3139;prop:clip;skin:2;hair:#2B2523;acc:#FF3621"></div>
+    <b style="font-size:22px">Gerente general</b>
+  </div>
+  <div class="abs" style="left:500px;right:120px;top:380px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px">
+    <div class="card a" data-fx="pop" style="--d:.9s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="pp sm" data-person="style:long;shirt:#00A972;prop:laptop;skin:0;hair:#5A3A22" style="width:64px"></div><div><div class="tag">Ventas</div><b style="font-size:22px">Excel de las tiendas</b></div></div><div class="mono" style="font-size:58px;font-weight:500;margin-top:18px;color:var(--navy)">S/ 1,24 M</div><p style="font-size:19px;margin-top:6px">Corte a las 6 p.m.</p></div>
+    <div class="card a" data-fx="pop" style="--d:1.1s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="pp sm" data-person="style:bald;shirt:#2272B4;prop:clip;skin:2;hair:#222" style="width:64px"></div><div><div class="tag">Finanzas</div><b style="font-size:22px">ERP contable</b></div></div><div class="mono" style="font-size:58px;font-weight:500;margin-top:18px;color:var(--navy)">S/ 1,19 M</div><p style="font-size:19px;margin-top:6px">Ya descuenta devoluciones</p></div>
+    <div class="card a" data-fx="pop" style="--d:1.3s;padding:26px"><div style="display:flex;gap:16px;align-items:center"><div class="pp sm" data-person="style:bun;shirt:#FF3621;prop:tablet;skin:1;hair:#2B2523" style="width:64px"></div><div><div class="tag">Marketing</div><b style="font-size:22px">Tienda web + CRM</b></div></div><div class="mono" style="font-size:58px;font-weight:500;margin-top:18px;color:var(--navy)">S/ 1,31 M</div><p style="font-size:19px;margin-top:6px">Incluye pedidos aún sin pagar</p></div>
+  </div>
+  <div class="abs a" data-fx="fade" style="--d:1.6s;left:500px;right:120px;top:735px;font:800 30px 'DM Sans';color:var(--lava);text-align:center">Tres respuestas. Ninguna está mal.</div>
+  <div class="abs a" style="--d:2s;left:120px;right:120px;bottom:104px">
+    <p style="font-size:27px">Cada área mira <b>otra fuente, otro horario y otra definición</b> de «venta». El costo: días armando reportes, reuniones para discutir el número en vez de la decisión, y una IA que no puede ayudar si los datos se contradicen.</p>
+    <div class="ex-tag" style="margin-top:12px">Ejemplo hipotético · Tiendas Quipu, cadena de 120 tiendas</div>
+  </div>
+</section>
+
+<!-- ================================================================ 05 DATABRICKS EN UNA FRASE -->
+<section class="slide dark" style="--acc:#FF3621" data-wipe="#1B3139">
+  <div class="kicker a">Databricks en una frase</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px;font-size:66px">Un solo lugar para <span class="t-lava">guardar, ordenar, proteger y usar</span><br>los datos de la empresa</h2>
+  <div class="grid4" style="position:absolute;left:120px;right:120px;top:390px;gap:26px">
+    <div class="card a" data-fx="flip" style="--d:.4s;height:420px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:16px"><span class="step-n" style="background:#00A972">1</span><span data-icon="data" class="ic" style="width:60px;height:60px"></span></div>
+      <h3 style="color:#fff;font-size:40px">Guardar</h3><p style="font-size:22px">Los datos de todos los sistemas llegan a un solo lugar, solos y a su hora.</p>
+      <div class="mono" style="margin-top:auto;font-size:17px;color:#A9BCC2;line-height:1.4">Ej.: ventas de 120 tiendas, la web y el ERP, cada noche.</div>
+    </div>
+    <div class="card a" data-fx="flip" style="--d:.6s;height:420px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:16px"><span class="step-n" style="background:#2272B4">2</span><span data-icon="lakeflow" class="ic" style="width:60px;height:60px"></span></div>
+      <h3 style="color:#fff;font-size:40px">Ordenar</h3><p style="font-size:22px">Se limpian, se unifican y se calculan con las mismas reglas para todos.</p>
+      <div class="mono" style="margin-top:auto;font-size:17px;color:#A9BCC2;line-height:1.4">Ej.: una venta es una venta, venga de la tienda o de la web.</div>
+    </div>
+    <div class="card a" data-fx="flip" style="--d:.8s;height:420px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:16px"><span class="step-n" style="background:#6B5FD6">3</span><span data-icon="uc" class="ic" style="width:60px;height:60px"></span></div>
+      <h3 style="color:#fff;font-size:40px">Proteger</h3><p style="font-size:22px">Cada persona ve solo lo que le corresponde, y queda registro de todo.</p>
+      <div class="mono" style="margin-top:auto;font-size:17px;color:#A9BCC2;line-height:1.4">Ej.: el jefe de tienda ve su tienda; el gerente, todas.</div>
+    </div>
+    <div class="card a" data-fx="flip" style="--d:1s;height:420px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:16px"><span class="step-n" style="background:#FF3621">4</span><span data-icon="genie" class="ic" style="width:60px;height:60px"></span></div>
+      <h3 style="color:#fff;font-size:40px">Usar</h3><p style="font-size:22px">Tableros, Power BI, preguntas en español, predicciones y agentes de IA.</p>
+      <div class="mono" style="margin-top:auto;font-size:17px;color:#A9BCC2;line-height:1.4">Ej.: «¿qué tiendas se van a quedar sin stock el viernes?»</div>
+    </div>
+  </div>
+  <div class="abs a" style="--d:1.6s;left:120px;right:120px;bottom:100px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <span class="chip" style="background:#2E4C56;color:#fff">Es un servicio en la nube: AWS, Microsoft Azure o Google Cloud</span><span class="chip" style="background:#2E4C56;color:#fff">Se usa desde el navegador, no se instala</span><span class="chip" style="background:#2E4C56;color:#fff">Los datos se quedan en la nube de tu empresa</span>
+  </div>
+</section>
+
+<!-- ================================================================ 06 LAKEHOUSE (ANALOGÍA) -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">La palabra que vas a escuchar: lakehouse</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Un almacén que también es <span class="t-blue">supermercado</span></h2>
+  <div class="abs" style="left:120px;right:120px;top:290px;display:grid;grid-template-columns:1fr 80px 1fr 80px 1.15fr;align-items:center">
+    <div class="card a" style="--d:.4s;text-align:center;padding:30px;height:540px">
+      <svg viewBox="0 0 300 200" style="width:100%;height:190px"><rect x="40" y="70" width="220" height="120" fill="#1B3139"/><rect x="30" y="56" width="240" height="20" rx="4" fill="#2272B4"/>
+        <g fill="#4C9BE8"><rect x="58" y="92" width="50" height="12" rx="3"/><rect x="125" y="92" width="50" height="12" rx="3"/><rect x="192" y="92" width="50" height="12" rx="3"/></g>
+        <g fill="#FFAB00"><rect x="58" y="120" width="50" height="12" rx="3"/><rect x="125" y="120" width="50" height="12" rx="3"/><rect x="192" y="120" width="50" height="12" rx="3"/></g>
+        <g fill="#3CCB97"><rect x="58" y="148" width="50" height="12" rx="3"/><rect x="125" y="148" width="50" height="12" rx="3"/><rect x="192" y="148" width="50" height="12" rx="3"/></g>
+        <g class="loop float"><circle cx="262" cy="36" r="26" fill="#FFAB00"/><text x="262" y="46" text-anchor="middle" font-size="28" font-weight="800" fill="#1B3139">$</text></g></svg>
+      <div class="tag" style="margin-top:6px">Data warehouse</div>
+      <h3 style="margin-top:4px">Como un supermercado</h3><p style="font-size:21px;margin-top:10px">Todo en góndolas, fácil de encontrar y confiable… pero caro, y solo acepta productos empaquetados: tablas.</p>
+    </div>
+    <div class="a" data-fx="pop" style="--d:.9s;font:800 80px 'DM Sans';text-align:center;color:var(--muted)">+</div>
+    <div class="card a" style="--d:.7s;text-align:center;padding:30px;height:540px">
+      <svg viewBox="0 0 300 200" style="width:100%;height:190px"><path d="M30 190 V80 L150 30 L270 80 V190Z" fill="#C3BBAE"/><rect x="110" y="120" width="80" height="70" fill="#7D8B90"/>
+        <g class="loop bob"><rect x="44" y="150" width="46" height="40" rx="4" fill="#D9A066"/><path d="M44 164h46" stroke="#B57E46" stroke-width="3"/></g><g class="loop bob" style="animation-delay:-.5s"><rect x="210" y="140" width="50" height="50" rx="4" fill="#D9A066"/><path d="M210 158h50" stroke="#B57E46" stroke-width="3"/></g><g class="loop bob" style="animation-delay:-1s"><rect x="128" y="96" width="44" height="34" rx="4" fill="#6B5FD6"/><path d="M144 106l12 7-12 7z" fill="#fff"/></g>
+        <text x="72" y="134" font-size="30" font-weight="800" fill="#B3200F">?</text><text x="226" y="126" font-size="30" font-weight="800" fill="#B3200F">?</text></svg>
+      <div class="tag" style="margin-top:6px">Data lake</div>
+      <h3 style="margin-top:4px">Como un almacén mayorista</h3><p style="font-size:21px;margin-top:10px">Entra de todo y es barato: archivos, fotos, PDFs… pero sin orden. Encontrar algo es una aventura.</p>
+    </div>
+    <div class="a" data-fx="pop" style="--d:1.2s;font:800 80px 'DM Sans';text-align:center;color:var(--muted)">=</div>
+    <div class="card a" data-fx="pop" style="--d:1.5s;text-align:center;padding:30px;height:540px;outline:5px solid var(--lava);outline-offset:-5px">
+      <svg viewBox="0 0 300 200" style="width:100%;height:190px"><path d="M20 190 V80 L150 24 L280 80 V190Z" fill="#E3E0D8"/><rect x="20" y="70" width="260" height="16" fill="#FF3621"/>
+        <g fill="#4C9BE8"><rect x="40" y="100" width="64" height="12" rx="3"/><rect x="118" y="100" width="64" height="12" rx="3"/></g>
+        <g fill="#3CCB97"><rect x="40" y="128" width="64" height="12" rx="3"/><rect x="118" y="128" width="64" height="12" rx="3"/></g>
+        <g fill="#FFAB00"><rect x="40" y="156" width="64" height="12" rx="3"/><rect x="118" y="156" width="64" height="12" rx="3"/></g>
+        <rect x="200" y="98" width="62" height="40" rx="4" fill="#D9A066"/><rect x="200" y="146" width="62" height="40" rx="4" fill="#6B5FD6"/>
+        <g class="loop glow"><circle cx="262" cy="40" r="8" fill="#FFAB00"/><circle cx="40" cy="52" r="6" fill="#FFAB00"/></g></svg>
+      <div class="tag" style="margin-top:6px">Lakehouse</div>
+      <h3 class="t-lava" style="margin-top:4px">Almacén con pasillos de supermercado</h3><p style="font-size:21px;margin-top:10px">Entra de todo y es barato, pero con el orden y las reglas del supermercado. <b>Una sola copia</b> para reportes, predicciones e IA.</p>
+    </div>
+  </div>
+  <div class="abs a" style="--d:2s;left:120px;right:120px;bottom:104px;display:flex;align-items:center;gap:18px">
+    <span data-icon="swap" class="ic" style="width:46px;height:46px"></span>
+    <p style="font-size:26px">En la práctica: <b>ya no se copian los datos</b> de un sistema a otro para cada uso. Power BI, los modelos y la IA leen del mismo lugar.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 07 MEDALLÓN COMO COCINA -->
+<section class="slide oat2" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="kicker a">Cómo se ordenan los datos · bronce, plata y oro</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Como en la cocina de un restaurante</h2>
+  <div class="abs" style="left:120px;right:120px;top:290px;display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:stretch">
+    <div class="card a" style="--d:.4s;padding:28px;border-top:10px solid #C58B5C">
+      <div class="tag">Bronce · tal como llega</div><h3 style="margin-top:4px">Ingredientes recién llegados</h3>
+      <svg viewBox="0 0 300 120" style="width:100%;height:170px;margin-top:14px"><rect x="70" y="50" width="160" height="62" rx="6" fill="#D9A066"/><path d="M70 72h160M70 92h160" stroke="#B57E46" stroke-width="3"/>
+        <g class="loop bob"><circle cx="110" cy="44" r="18" fill="#FF3621"/><circle cx="150" cy="40" r="18" fill="#FFAB00"/><circle cx="190" cy="44" r="18" fill="#00A972"/></g><path d="M150 22 q6 -12 16 -10" stroke="#00A972" stroke-width="4" fill="none"/></svg>
+      <div style="background:var(--navy);border-radius:14px;padding:14px 16px;margin-top:12px;font:500 16px/1.6 'DM Mono';color:#C8D3D6">
+        <div class="a" data-fx="type" style="--d:1s">TDA-014;19/11;ARROZ 5KG ;2;37.8</div>
+        <div class="a" data-fx="type" style="--d:1.4s;color:#FF8A73">TDA-014;19/11;ARROZ 5KG ;2;37.8</div>
+        <div class="a" data-fx="type" style="--d:1.8s">tda14;2026-11-19;Arroz 5 kg;1;18,9</div>
+      </div>
+      <p style="font-size:19px;margin-top:12px">Formatos distintos, filas repetidas, nombres con errores.</p>
+    </div>
+    <div class="a" data-fx="pop" style="--d:2.1s;display:grid;place-items:center;font:800 54px 'DM Sans';color:var(--muted)">→</div>
+    <div class="card a" style="--d:.6s;padding:28px;border-top:10px solid #A9B4B9">
+      <div class="tag">Plata · limpio y unificado</div><h3 style="margin-top:4px">Lavados y picados</h3>
+      <svg viewBox="0 0 300 120" style="width:100%;height:170px;margin-top:14px"><rect x="50" y="64" width="200" height="44" rx="12" fill="#D9A066"/>
+        <g><rect x="80" y="54" width="22" height="14" rx="4" fill="#FF3621"/><rect x="108" y="56" width="22" height="12" rx="4" fill="#FF3621"/><rect x="140" y="54" width="22" height="14" rx="4" fill="#00A972"/><rect x="168" y="56" width="22" height="12" rx="4" fill="#00A972"/></g>
+        <g class="loop wiggle" style="transform-origin:230px 50px"><rect x="200" y="20" width="60" height="14" rx="4" fill="#C3BBAE" transform="rotate(30 230 27)"/><rect x="246" y="30" width="26" height="10" rx="4" fill="#1B3139" transform="rotate(30 230 27)"/></g></svg>
+      <table class="box-t a" style="--d:2.4s;margin-top:12px;font-size:18px"><tr><th>Tienda</th><th>Fecha</th><th>Producto</th><th>Und.</th><th>Monto</th></tr><tr><td>Miraflores</td><td>19-nov</td><td>Arroz 5 kg</td><td>3</td><td>S/ 56,70</td></tr></table>
+      <p style="font-size:19px;margin-top:12px">Sin duplicados, con nombres y montos en un solo formato.</p>
+    </div>
+    <div class="a" data-fx="pop" style="--d:2.7s;display:grid;place-items:center;font:800 54px 'DM Sans';color:var(--muted)">→</div>
+    <div class="card a" data-fx="pop" style="--d:.8s;padding:28px;border-top:10px solid #E0A100;outline:4px solid #F5DE9C;outline-offset:-4px">
+      <div class="tag">Oro · listo para el negocio</div><h3 style="margin-top:4px">El plato servido</h3>
+      <svg viewBox="0 0 300 120" style="width:100%;height:170px;margin-top:14px"><ellipse cx="150" cy="100" rx="110" ry="14" fill="#E3E0D8"/><path d="M70 96 a80 70 0 0 1 160 0z" fill="#F5DE9C"/><circle cx="150" cy="22" r="8" fill="#E0A100"/>
+        <g class="loop glow"><path d="M110 40 q-8 -14 0 -26M150 34 q-8 -14 0 -26M190 40 q-8 -14 0 -26" stroke="#C3BBAE" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
+      <div class="a" data-fx="pop" style="--d:3s;background:var(--yellow-soft);border-radius:14px;padding:14px 18px;margin-top:12px"><div class="tag">Ventas Miraflores · 19-nov</div><div style="display:flex;align-items:baseline;gap:14px"><b style="font:800 44px 'DM Sans'">S/ 48 210</b><span class="chip ga" style="font-size:17px">+6 % vs. jueves pasado</span></div></div>
+      <p style="font-size:19px;margin-top:12px">El indicador que ves en Power BI o en un tablero.</p>
+    </div>
+  </div>
+  <div class="abs a" style="--d:3.3s;left:120px;right:120px;bottom:104px">
+    <p style="font-size:26px">Tú normalmente usas la capa <b>oro</b>. Los equipos de datos preparan bronce y plata, y lo automatizan para que ocurra solo cada día.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 08 POWER BI SIGUE SIENDO LA CARA VISIBLE -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">De Excel y Power BI a Databricks</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Power BI sigue siendo <span class="t-blue">la cara visible</span></h2>
+  <div class="abs tag a" style="--d:.3s;left:120px;top:290px">Antes</div>
+  <div class="abs" style="left:120px;top:325px;width:1680px;height:150px">
+    <div class="abs card a" data-fx="left" style="--d:.4s;left:0;top:0;width:300px;height:90px;display:flex;align-items:center;gap:14px;padding:16px 20px"><span data-icon="db" class="ic" style="width:44px;height:44px"></span><b style="font-size:23px">ERP</b></div>
+    <div class="abs card a" data-fx="left" style="--d:.6s;left:460px;top:0;width:300px;height:90px;display:flex;align-items:center;gap:14px;padding:16px 20px"><span data-icon="file" class="ic" style="width:44px;height:44px"></span><b style="font-size:23px">Exportar a Excel</b></div>
+    <div class="abs card a" data-fx="left" style="--d:.8s;left:920px;top:0;width:300px;height:90px;display:flex;align-items:center;gap:14px;padding:16px 20px"><span data-icon="mail" class="ic" style="width:44px;height:44px;background:#7D8B90;border-radius:10px;padding:6px"></span><b style="font-size:17px;font-family:'DM Mono'">ventas_v7_final.xlsx</b></div>
+    <div class="abs card a" data-fx="left" style="--d:1s;left:1380px;top:0;width:300px;height:90px;display:flex;align-items:center;gap:14px;padding:16px 20px"><span data-icon="bars" class="ic" style="width:44px;height:44px"></span><b style="font-size:23px">Power BI</b></div>
+    <div class="abs a" data-fx="fade" style="--d:.7s;left:318px;top:18px;font:800 40px 'DM Sans';color:#C3BBAE">→</div>
+    <div class="abs a" data-fx="fade" style="--d:.9s;left:778px;top:18px;font:800 40px 'DM Sans';color:#C3BBAE">→</div>
+    <div class="abs a" data-fx="fade" style="--d:1.1s;left:1238px;top:18px;font:800 40px 'DM Sans';color:#C3BBAE">→</div>
+    <span class="abs chip new a" data-fx="pop" style="--d:1.3s;left:460px;top:106px;font-size:18px">a mano, cada lunes</span>
+    <span class="abs chip new a" data-fx="pop" style="--d:1.45s;left:920px;top:106px;font-size:18px">¿cuál es la versión buena?</span>
+    <span class="abs chip new a" data-fx="pop" style="--d:1.6s;right:0;top:106px;font-size:18px;white-space:nowrap">se actualiza si alguien se acuerda</span>
+  </div>
+  <div class="abs tag a" style="--d:1.9s;left:120px;top:520px">Ahora</div>
+  <div class="abs" style="left:120px;top:560px;width:1680px;height:330px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:330px" viewBox="0 0 1680 330">
+      <g fill="none" stroke="#C7DBEE" stroke-width="5">
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.2s" d="M230 50 C400 50 400 165 560 165"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.25s" d="M230 165 H560"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.3s" d="M230 280 C400 280 400 165 560 165"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.8s" d="M980 165 C1150 165 1150 40 1320 40"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.85s" d="M980 165 C1150 165 1150 125 1320 125"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.9s" d="M980 165 C1150 165 1150 210 1320 210"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.95s" d="M980 165 C1150 165 1150 295 1320 295"/>
+      </g>
+    </svg>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#00A972;offset-path:path('M230 50 C400 50 400 165 560 165 H980 C1150 165 1150 40 1320 40');--t:3.4s;--fd:3.2s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#2272B4;offset-path:path('M230 165 H980 C1150 165 1150 125 1320 125');--t:3.4s;--fd:3.8s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#FFAB00;offset-path:path('M230 280 C400 280 400 165 560 165 H980 C1150 165 1150 210 1320 210');--t:3.4s;--fd:4.4s"></div>
+    <div class="abs card a" data-fx="left" style="--d:2s;left:0;top:10px;width:230px;height:80px;display:flex;align-items:center;gap:12px;padding:12px 18px"><span data-icon="db" class="ic" style="width:38px;height:38px"></span><b style="font-size:22px">ERP</b></div>
+    <div class="abs card a" data-fx="left" style="--d:2.1s;left:0;top:125px;width:230px;height:80px;display:flex;align-items:center;gap:12px;padding:12px 18px"><span data-icon="saas" class="ic" style="width:38px;height:38px"></span><b style="font-size:22px">Tienda web</b></div>
+    <div class="abs card a" data-fx="left" style="--d:2.2s;left:0;top:240px;width:230px;height:80px;display:flex;align-items:center;gap:12px;padding:12px 18px"><span data-icon="customerlake" class="ic" style="width:38px;height:38px"></span><b style="font-size:22px">CRM</b></div>
+    <div class="abs card a" data-fx="pop" style="--d:2.5s;left:560px;top:60px;width:420px;height:210px;display:flex;align-items:center;gap:22px;padding:26px;outline:4px solid var(--lava);outline-offset:-4px">
+      <span data-dbmark style="width:84px;height:84px;flex:none"></span>
+      <div><b style="font-size:30px">Databricks</b><p style="font-size:20px;margin-top:6px;line-height:1.35">Capa oro con los números oficiales, actualizada sola y con permisos</p></div>
+    </div>
+    <div class="abs card a" data-fx="right" style="--d:3.1s;left:1320px;top:5px;width:360px;height:70px;display:flex;align-items:center;gap:12px;padding:10px 18px;background:var(--blue-soft)"><span data-icon="bars" class="ic" style="width:36px;height:36px"></span><b style="font-size:22px">Power BI</b><span class="sub" style="margin-left:auto">tu reporte de siempre</span></div>
+    <div class="abs card a" data-fx="right" style="--d:3.2s;left:1320px;top:90px;width:360px;height:70px;display:flex;align-items:center;gap:12px;padding:10px 18px"><span data-icon="aibi" class="ic" style="width:36px;height:36px"></span><b style="font-size:22px">Dashboards AI/BI</b></div>
+    <div class="abs card a" data-fx="right" style="--d:3.3s;left:1320px;top:175px;width:360px;height:70px;display:flex;align-items:center;gap:12px;padding:10px 18px"><span data-icon="genie" class="ic" style="width:36px;height:36px"></span><b style="font-size:22px">Genie</b><span class="sub" style="margin-left:auto">preguntas en español</span></div>
+    <div class="abs card a" data-fx="right" style="--d:3.4s;left:1320px;top:260px;width:360px;height:70px;display:flex;align-items:center;gap:12px;padding:10px 18px"><span data-icon="file" class="ic" style="width:36px;height:36px"></span><b style="font-size:22px">Excel</b><span class="sub" style="margin-left:auto">datos oficiales</span></div>
+  </div>
+  <div class="abs a" style="--d:3.8s;left:120px;right:120px;bottom:100px">
+    <p style="font-size:26px">Tu reporte <b>se ve igual</b>. Lo que cambia es <b>de dónde salen los números</b>: una sola fuente oficial, que se actualiza sola.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 09 QUÉ CAMBIA Y QUÉ NO -->
+<section class="slide big-li" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">Para tu trabajo del día a día</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Qué cambia y <span class="t-green">qué no</span></h2>
+  <div class="grid2" style="position:absolute;left:120px;right:120px;top:280px;gap:40px">
+    <div class="card a" style="--d:.3s;padding:34px;height:580px">
+      <div style="display:flex;align-items:center;gap:16px"><span data-icon="keep" class="ic" style="width:56px;height:56px"></span><h3 style="font-size:38px">Lo que no cambia</h3></div>
+      <div class="col" style="margin-top:26px;gap:22px">
+        <div class="li a" data-fx="left" style="--d:.6s"><span data-icon="check" class="ic"></span><p><b>Tus reportes de Power BI</b> siguen ahí: se conectan a Databricks en vez de a un Excel.</p></div>
+        <div class="li a" data-fx="left" style="--d:.75s"><span data-icon="check" class="ic"></span><p><b>Tu SQL básico</b> sirve tal cual: SELECT, WHERE, GROUP BY.</p></div>
+        <div class="li a" data-fx="left" style="--d:.9s"><span data-icon="check" class="ic"></span><p><b>Tus indicadores</b> y tu forma de leer el negocio.</p></div>
+        <div class="li a" data-fx="left" style="--d:1.05s"><span data-icon="check" class="ic"></span><p><b>Excel</b> sigue existiendo. En Azure hay un complemento para traer datos oficiales a Excel (en preview).</p></div>
+      </div>
+    </div>
+    <div class="card a" style="--d:.5s;padding:34px;height:580px">
+      <div style="display:flex;align-items:center;gap:16px"><span data-icon="swap" class="ic" style="width:56px;height:56px"></span><h3 style="font-size:38px">Lo que sí cambia</h3></div>
+      <div class="col" style="margin-top:26px;gap:20px">
+        <div class="li a" data-fx="right" style="--d:1.2s"><span data-icon="check" class="ic"></span><p>Los datos <b>dejan de viajar por correo</b>: hay una sola fuente oficial.</p></div>
+        <div class="li a" data-fx="right" style="--d:1.35s"><span data-icon="check" class="ic"></span><p>Se <b>actualizan solos</b>, cada noche o cada hora, sin exportar nada.</p></div>
+        <div class="li a" data-fx="right" style="--d:1.5s"><span data-icon="check" class="ic"></span><p>Los <b>permisos</b> se definen una vez, en un solo lugar.</p></div>
+        <div class="li a" data-fx="right" style="--d:1.65s"><span data-icon="check" class="ic"></span><p>Puedes <b>preguntar en español</b> y recibir una tabla o un gráfico.</p></div>
+        <div class="li a" data-fx="right" style="--d:1.8s"><span data-icon="check" class="ic"></span><p>Sobre los mismos datos se suman <b>predicciones y agentes de IA</b>.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="abs a" style="--d:2.2s;left:120px;right:120px;bottom:100px;background:var(--navy);border-radius:22px;padding:20px 28px;display:flex;gap:20px;align-items:center">
+    <span class="tag" style="color:#A9BCC2;white-space:nowrap">Ejemplo hipotético</span>
+    <p style="color:var(--oat);font-size:22px">En Tiendas Quipu el reporte semanal de ventas se armaba los lunes a mano. Ahora amanece listo a las 7 a.m., con el mismo diseño de Power BI.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 10 LO QUE TÚ SÍ VAS A TOCAR (interactivo) -->
+<section class="slide oat2" style="--acc:#FF3621">
+  <div class="kicker a">Los servicios para negocio</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:16px">
+    <h2 class="a" style="--d:.15s">Lo que tú <span class="t-lava">sí vas a tocar</span></h2>
+    <span class="tag a" style="--d:.5s">clic en cada uno para ver el detalle →</span>
+  </div>
+  <div class="grid3" style="position:absolute;left:120px;right:120px;top:270px;gap:26px">
+    <div class="card clickable a" data-modal="aibi" style="--d:.3s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="aibi" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Dashboards AI/BI</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">Tableros sobre los datos oficiales que también responden preguntas.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · seguir tus indicadores</div></div>
+    <div class="card clickable a" data-modal="genie" style="--d:.4s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="genie" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Genie</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">Preguntas en español y recibes una tabla o un gráfico.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · resolver dudas sin pedir un reporte</div></div>
+    <div class="card clickable a" data-modal="sql" style="--d:.5s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="sql" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Editor SQL</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">Tus consultas SQL de siempre, desde el navegador.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · explorar y cruzar datos</div></div>
+    <div class="card clickable a" data-modal="uc" style="--d:.6s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="uc" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Unity Catalog</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">El catálogo y los permisos: qué datos hay y quién los ve.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · encontrar la tabla oficial</div></div>
+    <div class="card clickable a" data-modal="apps" style="--d:.7s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="apps" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Apps</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">Herramientas a medida para aprobar, registrar o simular.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · actuar, no solo mirar</div></div>
+    <div class="card clickable a" data-modal="agentes" style="--d:.8s;height:250px;padding:26px 28px"><div style="display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:70px;height:70px;background:var(--oat);box-shadow:none"><span data-icon="agentbricks" style="width:46px;height:46px;display:block"></span></div><div><h3 style="font-size:30px">Agentes de IA</h3><span class="chip ga" style="font-size:15px;padding:3px 10px;margin-top:4px">GA</span></div></div><p style="font-size:21px;margin-top:14px">Asistentes que siguen pasos y piden tu aprobación.</p><div class="ex-tag" style="margin-top:10px">Lo usas para · delegar tareas repetitivas</div></div>
+  </div>
+  <div class="abs clickable a" data-modal="backstage" style="--d:1.1s;left:120px;right:120px;bottom:100px;background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:18px 26px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <span class="tag" style="margin-right:8px">Por detrás lo maneja TI</span>
+    <span class="chip">Lakeflow</span><span class="chip">Cómputo serverless</span><span class="chip">Delta Lake</span><span class="chip">Lakebase</span><span class="chip">Model Serving</span><span class="chip">Notebooks</span>
+    <span style="margin-left:auto;font:600 19px 'DM Sans';color:var(--blue)">qué es cada uno →</span>
+  </div>
+</section>
+
+<!-- ================================================================ 11 DASHBOARDS AI/BI -->
+<section class="slide" style="--acc:#FF3621">
+  <div class="kicker a">Servicio 1 · Dashboards AI/BI</div>
+  <div style="position:absolute;left:120px;top:190px;width:700px">
+    <div class="a" data-fx="pop" style="--d:.1s;display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:90px;height:90px"><span data-icon="aibi" style="width:60px;height:60px;display:block"></span></div><span class="chip ga">GA</span></div>
+    <h2 class="a" style="--d:.2s;margin-top:20px">Tableros que <span class="t-lava">también conversan</span></h2>
+    <p class="a" style="--d:.4s;margin-top:20px">Tableros dentro de Databricks, sobre los datos oficiales. Se arman arrastrando campos o <b>describiendo lo que quieres ver</b>.</p>
+    <div class="col" style="margin-top:22px;gap:14px">
+      <div class="li a" data-fx="left" style="--d:.6s"><span data-icon="check" class="ic"></span><p>Botón <b>Ask Genie</b> activo: preguntas sobre el mismo tablero.</p></div>
+      <div class="li a" data-fx="left" style="--d:.75s"><span data-icon="check" class="ic"></span><p>Se comparte con un link y <b>cada quien ve lo que su permiso le deja</b>.</p></div>
+      <div class="li a" data-fx="left" style="--d:.9s"><span data-icon="check" class="ic"></span><p>Se envía por correo con horario, por ejemplo cada lunes a las 8 a.m.</p></div>
+    </div>
+    <div class="card a" style="--d:1.1s;margin-top:24px;padding:20px 24px;background:var(--blue-soft);box-shadow:none"><b style="font-size:23px">¿Y Power BI?</b><p style="font-size:20px;margin-top:6px">Si tu empresa ya vive en Power BI, sigue ahí. AI/BI suma tableros rápidos dentro de la plataforma y preguntas sin salir del tablero.</p></div>
+  </div>
+  <div class="abs mock a" data-fx="up" style="--d:.4s;left:900px;top:170px;width:900px;height:780px">
+    <div class="mock-bar"><span data-icon="aibi" class="ic" style="width:34px;height:34px"></span><span class="ttl">Ventas · Tiendas Quipu</span><span class="meta">noviembre · todas las regiones</span></div>
+    <div style="padding:26px 30px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="kpi a" data-fx="pop" style="--d:.9s"><div class="tag">Ventas del mes</div><b>S/ 31,6 M</b></div>
+        <div class="kpi a" data-fx="pop" style="--d:1s"><div class="tag">Ticket promedio</div><b>S/ 42</b></div>
+        <div class="kpi a" data-fx="pop" style="--d:1.1s"><div class="tag">vs. octubre</div><b class="t-green">+4,1 %</b></div>
+      </div>
+      <div class="tag" style="margin-top:22px">Variación por región</div>
+      <svg viewBox="0 0 840 262" style="width:100%;height:262px;margin-top:6px">
+        <line x1="0" y1="150" x2="840" y2="150" stroke="#E3E0D8" stroke-width="2"/>
+        <g font-size="19" font-family="DM Sans" fill="#4A5D64" text-anchor="middle">
+          <g transform="translate(90 150)"><rect class="a" data-fx="growy" style="--d:1.3s" x="-45" y="-110" width="90" height="110" rx="8" fill="#2272B4"/><text y="-122" font-weight="700" fill="#1B3139">+7 %</text><text y="92">Lima</text></g>
+          <g transform="translate(250 150)"><rect class="a" data-fx="growy" style="--d:1.4s" x="-45" y="-60" width="90" height="60" rx="8" fill="#4C9BE8"/><text y="-72" font-weight="700" fill="#1B3139">+4 %</text><text y="92">Trujillo</text></g>
+          <g transform="translate(410 150)"><g class="a" data-fx="down" style="--d:1.5s"><rect x="-45" y="0" width="90" height="80" rx="8" fill="#FF3621"/></g><text y="-14" font-weight="700" fill="#B3200F">−9 %</text><text y="104" font-weight="700" fill="#B3200F">Arequipa</text></g>
+          <g transform="translate(570 150)"><rect class="a" data-fx="growy" style="--d:1.6s" x="-45" y="-80" width="90" height="80" rx="8" fill="#4C9BE8"/><text y="-92" font-weight="700" fill="#1B3139">+5 %</text><text y="92">Cusco</text></g>
+          <g transform="translate(730 150)"><rect class="a" data-fx="growy" style="--d:1.7s" x="-45" y="-36" width="90" height="36" rx="8" fill="#C7DBEE"/><text y="-48" font-weight="700" fill="#1B3139">+2 %</text><text y="92">Piura</text></g>
+        </g>
+      </svg>
+      <div class="a" style="--d:2.1s;margin-top:18px;border:2px solid var(--oat3);border-radius:20px;padding:16px 20px">
+        <div style="display:flex;align-items:center;gap:12px"><span data-icon="genie" class="ic" style="width:30px;height:30px"></span><b style="font-size:20px">Ask Genie</b></div>
+        <div class="a" data-fx="type" style="--d:2.4s;font-size:21px;margin-top:10px;color:var(--navy)">¿Qué productos explican la caída de Arequipa?</div>
+        <div class="a" data-fx="up" style="--d:3.8s;margin-top:12px;background:var(--oat);border-radius:14px;padding:12px 16px;font-size:19px;color:var(--ink2)"><b>Aceite 1 L</b> y <b>arroz 5 kg</b> explican el 70 % de la caída: quiebre de stock en 4 tiendas desde el día 12.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 12 GENIE -->
+<section class="slide" style="--acc:#FF3621">
+  <div class="kicker a">Servicio 2 · Genie</div>
+  <div style="position:absolute;left:120px;top:190px;width:780px">
+    <h2 class="a" style="--d:.15s">Pregúntale a tus datos<br><span class="t-lava">en español</span></h2>
+    <div class="grid2" style="margin-top:28px;gap:20px">
+      <div class="card a" data-fx="left" style="--d:.4s;padding:22px 24px"><div style="display:flex;align-items:center;gap:12px"><span data-icon="genieone" class="ic" style="width:44px;height:44px"></span><b style="font-size:25px">Genie One</b><span class="chip ga" style="font-size:15px;padding:3px 10px">GA</span></div><div class="ex-tag" style="margin-top:6px">antes: Databricks One</div><p style="font-size:20px;margin-top:8px">El chat de la empresa para preguntar sobre datos con tus permisos.</p></div>
+      <div class="card a" data-fx="left" style="--d:.55s;padding:22px 24px"><div style="display:flex;align-items:center;gap:12px"><span data-icon="genieagents" class="ic" style="width:44px;height:44px"></span><b style="font-size:25px">Genie Agents</b><span class="chip ga" style="font-size:15px;padding:3px 10px">GA</span></div><div class="ex-tag" style="margin-top:6px">antes: Genie Spaces</div><p style="font-size:20px;margin-top:8px">Un «experto» de un tema que se publica en Teams o Slack.</p></div>
+    </div>
+    <div class="tag a" style="--d:.8s;margin-top:28px">Qué pasa cuando preguntas</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px"><div class="card a" data-fx="pop" style="--d:0.90s;padding:14px 16px;box-shadow:none;display:flex;gap:10px;align-items:center"><span class="step-n" style="width:36px;height:36px;font-size:18px;background:#7D8B90">1</span><span style="font-size:18px;font-weight:600;line-height:1.25">Preguntas en español</span></div><div class="card a" data-fx="pop" style="--d:1.05s;padding:14px 16px;box-shadow:none;display:flex;gap:10px;align-items:center"><span class="step-n" style="width:36px;height:36px;font-size:18px;background:#2272B4">2</span><span style="font-size:18px;font-weight:600;line-height:1.25">Escribe la consulta SQL</span></div><div class="card a" data-fx="pop" style="--d:1.20s;padding:14px 16px;box-shadow:none;display:flex;gap:10px;align-items:center"><span class="step-n" style="width:36px;height:36px;font-size:18px;background:#6B5FD6">3</span><span style="font-size:18px;font-weight:600;line-height:1.25">La corre con tus permisos</span></div><div class="card a" data-fx="pop" style="--d:1.35s;padding:14px 16px;box-shadow:none;display:flex;gap:10px;align-items:center"><span class="step-n" style="width:36px;height:36px;font-size:18px;background:#00A972">4</span><span style="font-size:18px;font-weight:600;line-height:1.25">Responde con tabla o gráfico</span></div></div>
+    <div class="card a" style="--d:1.2s;margin-top:28px;padding:20px 24px;background:var(--yellow-soft);box-shadow:none"><b style="font-size:23px">Responde bien si alguien le enseñó el negocio</b><p style="font-size:20px;margin-top:6px">Qué es «venta neta», qué tabla es la oficial, cómo se cuenta un cliente activo. Ese trabajo lo hacen <b>negocio y datos juntos</b>.</p></div>
+  </div>
+  <div class="abs mock a" data-fx="up" style="--d:.4s;left:980px;top:170px;width:820px;height:780px">
+    <div class="mock-bar"><span data-icon="genieagents" class="ic" style="width:36px;height:36px"></span><span class="ttl">Genie Agent · Ventas</span><span class="meta">en Microsoft Teams</span></div>
+    <div style="padding:28px;display:flex;flex-direction:column;gap:20px">
+      <div class="a" data-fx="left" style="--d:1s;align-self:flex-end;background:var(--blue);color:#fff;padding:16px 22px;border-radius:24px 24px 6px 24px;font-size:23px;max-width:600px">¿Qué 5 productos crecieron más en Arequipa este mes?</div>
+      <div class="a" data-fx="fade" style="--d:1.6s;display:flex;gap:8px;padding-left:6px"><span class="loop blink" style="width:12px;height:12px;border-radius:50%;background:var(--muted)"></span><span class="loop blink" style="width:12px;height:12px;border-radius:50%;background:var(--muted);animation-delay:.2s"></span><span class="loop blink" style="width:12px;height:12px;border-radius:50%;background:var(--muted);animation-delay:.4s"></span></div>
+      <div class="a" data-fx="right" style="--d:2.2s;background:var(--oat);padding:20px 24px;border-radius:24px 24px 24px 6px">
+        <div style="font-size:21px">Estos son los 5 con mayor crecimiento frente a octubre:</div>
+        <svg viewBox="0 0 700 250" style="width:100%;height:250px;margin-top:10px">
+          <g font-size="18" font-family="DM Sans" fill="#1B3139">
+            <text x="0" y="30">Panetón 900 g</text><rect class="a" data-fx="growx" style="--d:2.6s" x="210" y="12" width="420" height="26" rx="6" fill="#00A972"/><text x="640" y="31" font-weight="700">+48 %</text>
+            <text x="0" y="80">Chocolate taza</text><rect class="a" data-fx="growx" style="--d:2.7s" x="210" y="62" width="330" height="26" rx="6" fill="#3CCB97"/><text x="550" y="81" font-weight="700">+37 %</text>
+            <text x="0" y="130">Leche evaporada</text><rect class="a" data-fx="growx" style="--d:2.8s" x="210" y="112" width="230" height="26" rx="6" fill="#3CCB97"/><text x="450" y="131" font-weight="700">+25 %</text>
+            <text x="0" y="180">Pavo entero</text><rect class="a" data-fx="growx" style="--d:2.9s" x="210" y="162" width="190" height="26" rx="6" fill="#B5E8D2"/><text x="410" y="181" font-weight="700">+21 %</text>
+            <text x="0" y="230">Vino tinto</text><rect class="a" data-fx="growx" style="--d:3s" x="210" y="212" width="150" height="26" rx="6" fill="#B5E8D2"/><text x="370" y="231" font-weight="700">+16 %</text>
+          </g>
+        </svg>
+      </div>
+      <div class="a" data-fx="pop" style="--d:3.5s;display:flex;gap:10px"><span class="chip">Ver la consulta SQL</span><span class="chip">Agregar al tablero</span><span class="chip new">Compartir en el canal</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 13 EDITOR SQL -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">Servicio 3 · Editor SQL</div>
+  <div style="position:absolute;left:120px;top:190px;width:680px">
+    <h2 class="a" style="--d:.15s">Tu SQL de siempre,<br><span class="t-blue">en el navegador</span></h2>
+    <p class="a" style="--d:.35s;margin-top:20px">Una pantalla para escribir consultas sobre los datos de la empresa. Si sabes <b>SELECT, WHERE y GROUP BY</b>, ya puedes empezar.</p>
+    <div class="card a" data-fx="left" style="--d:.6s;margin-top:22px;padding:20px 24px">
+      <div class="tag">Los nombres tienen tres partes</div>
+      <div style="display:flex;gap:10px;margin-top:10px;font:700 23px 'DM Mono'"><span style="color:var(--blue)">quipu</span>.<span style="color:var(--green)">ventas</span>.<span style="color:#B3200F">ventas_diarias</span></div>
+      <p style="font-size:19px;margin-top:6px">catálogo . esquema . tabla, como <b>edificio . piso . oficina</b>.</p>
+    </div>
+    <div class="card a" data-fx="left" style="--d:.8s;margin-top:16px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start"><span data-icon="cloud" class="ic" style="width:44px;height:44px"></span><div><b style="font-size:22px">SQL warehouse: el motor</b><p style="font-size:19px;margin-top:4px">Es quien ejecuta tu consulta. En modo serverless se enciende al consultar y se apaga solo.</p></div></div>
+    <div class="card a" data-fx="left" style="--d:1s;margin-top:16px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start"><span data-icon="geniecode" class="ic" style="width:44px;height:44px"></span><div><b style="font-size:22px">Genie Code te ayuda</b> <span class="ex-tag">· antes: Databricks Assistant</span><p style="font-size:19px;margin-top:4px">Escribe la consulta desde una frase, la explica o corrige el error.</p></div></div>
+  </div>
+  <div class="abs mock a" data-fx="up" style="--d:.4s;left:860px;top:170px;width:940px;height:780px">
+    <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">Editor SQL</span><span class="meta">warehouse serverless · encendido</span></div>
+    <div style="display:flex;height:714px">
+      <div style="width:230px;background:var(--oat);padding:20px 18px;font:500 17px/1.9 'DM Mono';color:var(--ink2);flex:none">
+        <div class="tag" style="font-size:13px;margin-bottom:6px">Catálogo</div>
+        <div>▾ <b style="color:var(--blue)">quipu</b></div><div style="padding-left:16px">▾ <b style="color:var(--green)">ventas</b></div>
+        <div style="padding-left:34px;background:#fff;border-radius:8px;color:var(--navy);font-weight:700">ventas_diarias</div><div style="padding-left:34px">tiendas</div><div style="padding-left:34px">productos</div>
+        <div style="padding-left:16px">▸ inventario</div><div style="padding-left:16px">▸ clientes</div>
+      </div>
+      <div style="flex:1;padding:24px 28px;position:relative">
+        <div class="code">
+          <div class="a" data-fx="type" style="--d:.9s"><span class="k">SELECT</span> tienda, <span class="k">SUM</span>(monto) <span class="k">AS</span> ventas</div>
+          <div class="a" data-fx="type" style="--d:1.4s"><span class="k">FROM</span> quipu.ventas.ventas_diarias</div>
+          <div class="a" data-fx="type" style="--d:1.9s"><span class="k">WHERE</span> fecha &gt;= <span class="s">'2026-11-01'</span></div>
+          <div class="a" data-fx="type" style="--d:2.4s"><span class="k">GROUP BY</span> tienda</div>
+          <div class="a" data-fx="type" style="--d:2.9s"><span class="k">ORDER BY</span> ventas <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="n">5</span>;</div>
+        </div>
+        <div class="a" data-fx="pop" style="--d:3.3s;display:inline-flex;margin-top:18px"><span class="pill-btn" style="background:var(--blue);font-size:19px;padding:10px 20px">▶ Ejecutar</span></div>
+        <table class="box-t a" style="--d:3.7s;margin-top:20px"><tr><th>tienda</th><th style="text-align:right">ventas</th></tr>
+          <tr><td>Miraflores</td><td style="text-align:right;font-family:'DM Mono'">S/ 1 284 300</td></tr><tr><td>San Isidro</td><td style="text-align:right;font-family:'DM Mono'">S/ 1 190 750</td></tr><tr><td>Cayma (Arequipa)</td><td style="text-align:right;font-family:'DM Mono'">S/ 986 420</td></tr><tr><td>Trujillo Centro</td><td style="text-align:right;font-family:'DM Mono'">S/ 912 080</td></tr><tr><td>Surco</td><td style="text-align:right;font-family:'DM Mono'">S/ 874 610</td></tr></table>
+        <div class="abs a" data-fx="pop" style="--d:4.4s;right:28px;bottom:28px;width:360px;background:var(--navy);color:var(--oat);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow-lg)"><div style="display:flex;gap:10px;align-items:center"><span data-icon="geniecode" class="ic" style="width:28px;height:28px"></span><b style="font-size:18px;color:#fff">Genie Code</b></div><div style="font-size:18px;margin-top:8px;line-height:1.35">«Agrega una columna con la variación frente a octubre.»</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 14 UNITY CATALOG -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#1B3139">
+  <div class="kicker a">Servicio 4 · Unity Catalog</div>
+  <div style="position:absolute;left:120px;top:190px;width:720px">
+    <h2 class="a" style="--d:.15s">El catálogo<br><span class="t-blue">y los permisos</span></h2>
+    <p class="a" style="--d:.35s;margin-top:20px">Funciona como una biblioteca: cada libro tiene su <b>ficha</b> (qué es, de quién es, de dónde viene) y tu <b>carnet</b> define a qué salas puedes entrar.</p>
+    <div class="grid2" style="margin-top:24px;gap:16px">
+      <div class="card a" data-fx="up" style="--d:.6s;padding:18px 20px"><div style="display:flex;gap:12px;align-items:center"><span data-icon="search" class="ic" style="width:36px;height:36px"></span><b style="font-size:23px">Buscar</b></div><p style="font-size:18px;margin-top:6px">Escribes «ventas» y aparece la tabla oficial, con descripción y responsable.</p></div>
+      <div class="card a" data-fx="up" style="--d:.7s;padding:18px 20px"><div style="display:flex;gap:12px;align-items:center"><span data-icon="key" class="ic" style="width:36px;height:36px"></span><b style="font-size:23px">Permisos</b></div><p style="font-size:18px;margin-top:6px">Quién ve qué tabla, qué filas y qué columnas.</p></div>
+      <div class="card a" data-fx="up" style="--d:.8s;padding:18px 20px"><div style="display:flex;gap:12px;align-items:center"><span data-icon="tree" class="ic" style="width:36px;height:36px"></span><b style="font-size:23px">Linaje</b></div><p style="font-size:18px;margin-top:6px">El árbol genealógico de cada número: de dónde viene y quién lo usa.</p></div>
+      <div class="card a" data-fx="up" style="--d:.9s;padding:18px 20px"><div style="display:flex;gap:12px;align-items:center"><span data-icon="eye" class="ic" style="width:36px;height:36px"></span><b style="font-size:23px">Auditoría</b></div><p style="font-size:18px;margin-top:6px">Quién consultó qué dato y cuándo.</p></div>
+    </div>
+  </div>
+  <div class="abs" style="left:920px;top:180px;width:880px">
+    <div class="card a" style="--d:.5s;padding:24px 28px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:22px;font-family:'DM Mono'">ceibo.clientes.cartera</b><span class="chip" style="font-size:17px">lo que ve Marketing</span></div>
+      <table class="box-t" style="margin-top:12px;font-size:21px">
+        <tr><th>Cliente</th><th>DNI</th><th>Segmento</th><th>Saldo</th></tr>
+        <tr><td>María P.</td><td style="position:relative"><span>45812273</span><span class="loop" style="position:absolute;inset:0;display:flex;align-items:center;background:#fff;color:#2272B4;font-weight:700;animation:mask-on 5s ease infinite">••••••73</span></td><td>Premium</td><td>S/ 12 400</td></tr>
+        <tr><td>Jorge R.</td><td style="position:relative"><span>70114928</span><span class="loop" style="position:absolute;inset:0;display:flex;align-items:center;background:#fff;color:#2272B4;font-weight:700;animation:mask-on 5s ease infinite">••••••28</span></td><td>Joven</td><td>S/ 1 820</td></tr>
+        <tr><td>Ana L.</td><td style="position:relative"><span>09912745</span><span class="loop" style="position:absolute;inset:0;display:flex;align-items:center;background:#fff;color:#2272B4;font-weight:700;animation:mask-on 5s ease infinite">••••••45</span></td><td>Pyme</td><td>S/ 58 300</td></tr>
+      </table>
+      <div class="ex-tag" style="margin-top:10px">Riesgo ve el DNI completo. Misma tabla, distinto carnet.</div>
+    </div>
+    <div class="card a" style="--d:.9s;margin-top:22px;padding:24px 28px">
+      <div class="tag">Linaje automático · si algo cambia, sabes qué se afecta</div>
+      <svg viewBox="0 0 820 170" style="width:100%;height:170px;margin-top:8px">
+        <g font-size="19" font-weight="700" text-anchor="middle" font-family="DM Sans">
+          <g transform="translate(70 85)"><g class="a" data-fx="pop" style="--d:1.2s"><rect x="-68" y="-34" width="136" height="68" rx="14" fill="#E9CDB6"/><text y="7" fill="#1B3139">Core bancario</text></g></g>
+          <g transform="translate(260 85)"><g class="a" data-fx="pop" style="--d:1.5s"><rect x="-68" y="-34" width="136" height="68" rx="14" fill="#DDE2E5"/><text y="7" fill="#1B3139">plata</text></g></g>
+          <g transform="translate(450 85)"><g class="a" data-fx="pop" style="--d:1.8s"><rect x="-68" y="-34" width="136" height="68" rx="14" fill="#F5DE9C"/><text y="7" fill="#1B3139">oro</text></g></g>
+          <g transform="translate(640 40)"><g class="a" data-fx="pop" style="--d:2.1s"><rect x="-74" y="-30" width="148" height="60" rx="14" fill="#DDEBF7"/><text y="7" fill="#1B3139">Power BI</text></g></g>
+          <g transform="translate(640 130)"><g class="a" data-fx="pop" style="--d:2.3s"><rect x="-74" y="-30" width="148" height="60" rx="14" fill="#FFE1DB"/><text y="7" fill="#1B3139">Genie Agent</text></g></g>
+        </g>
+        <g fill="none" stroke="#2272B4" stroke-width="4" stroke-linecap="round">
+          <path class="a" data-fx="draw" pathLength="1" style="--d:1.4s" d="M140 85 H190"/><path class="a" data-fx="draw" pathLength="1" style="--d:1.7s" d="M330 85 H380"/>
+          <path class="a" data-fx="draw" pathLength="1" style="--d:2s" d="M520 85 Q545 85 556 50 L564 42"/><path class="a" data-fx="draw" pathLength="1" style="--d:2.2s" d="M520 85 Q545 85 556 120 L564 128"/>
+        </g>
+        <g transform="translate(775 85)"><g class="a" data-fx="pop" style="--d:2.6s"><circle r="40" fill="#1B3139"/><text y="-4" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">auditado</text><text y="16" text-anchor="middle" font-size="22" fill="#3CCB97">✓</text></g></g>
+      </svg>
+    </div>
+    <div class="a" style="--d:2.8s;margin-top:20px;font-size:23px;color:var(--ink2)">Para negocio: ya no preguntas por correo <b>«¿de dónde salió este número?»</b>. Lo ves.</div>
+  </div>
+</section>
+
+<!-- ================================================================ 15 APPS -->
+<section class="slide" style="--acc:#FF3621">
+  <div class="kicker a">Servicio 5 · Databricks Apps</div>
+  <div style="position:absolute;left:120px;top:190px;width:700px">
+    <div class="a" data-fx="pop" style="--d:.1s;display:flex;align-items:center;gap:16px"><div class="ico-tile" style="width:90px;height:90px"><span data-icon="apps" style="width:60px;height:60px;display:block"></span></div><span class="chip ga">GA</span></div>
+    <h2 class="a" style="--d:.2s;margin-top:20px">Herramientas <span class="t-lava">a medida</span> sobre los mismos datos</h2>
+    <p class="a" style="--d:.4s;margin-top:20px">Para cuando un tablero no alcanza porque necesitas <b>hacer algo</b>: aprobar, registrar, simular.</p>
+    <div class="col" style="margin-top:22px;gap:14px">
+      <div class="li a" data-fx="left" style="--d:.6s"><span data-icon="check" class="ic"></span><p>Vive dentro de Databricks: <b>no hay un servidor aparte</b> que mantener.</p></div>
+      <div class="li a" data-fx="left" style="--d:.75s"><span data-icon="check" class="ic"></span><p>Entras con tu <b>usuario de la empresa</b> y se respetan tus permisos.</p></div>
+      <div class="li a" data-fx="left" style="--d:.9s"><span data-icon="check" class="ic"></span><p><b>Tú defines qué debe hacer</b>; un equipo técnico la programa y la publica.</p></div>
+      <div class="li a" data-fx="left" style="--d:1.05s"><span data-icon="wait" class="ic"></span><p>Crearla describiéndola en español (Genie App Builder) aún está en <b>preview privada</b>.</p></div>
+    </div>
+  </div>
+  <div class="abs mock a" data-fx="up" style="--d:.4s;left:900px;top:200px;width:900px;height:640px">
+    <div class="mock-bar"><span data-icon="apps" class="ic" style="width:34px;height:34px"></span><span class="ttl">Descuentos por vencimiento</span><span class="meta">Tiendas Quipu · zona sur</span></div>
+    <div style="padding:26px 30px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:24px">Solicitudes pendientes</b><span class="chip beta" style="font-size:17px">3 por aprobar</span></div>
+      <table class="box-t" style="margin-top:14px;font-size:20px">
+        <tr><th>Tienda</th><th>Producto</th><th>Vence</th><th>Descuento</th><th style="width:220px"></th></tr>
+        <tr class="a" data-fx="left" style="--d:1s"><td>Cayma</td><td>Yogur 1 L</td><td>22-nov</td><td>30 %</td><td style="position:relative;height:56px">
+          <span class="loop" style="position:absolute;left:0;top:10px;display:flex;gap:8px;animation:hide-on-approve 6s ease 1.6s infinite"><span class="chip ga" style="font-size:16px">Aprobar</span><span class="chip" style="font-size:16px">Rechazar</span></span>
+          <span class="loop" style="position:absolute;left:0;top:10px;opacity:0;animation:approve 6s var(--spring) 1.6s infinite"><span class="chip ga" style="font-size:16px;background:var(--green);color:#fff">Aprobado ✓</span></span></td></tr>
+        <tr class="a" data-fx="left" style="--d:1.15s"><td>Yanahuara</td><td>Pan de molde</td><td>21-nov</td><td>40 %</td><td><span style="display:flex;gap:8px"><span class="chip ga" style="font-size:16px">Aprobar</span><span class="chip" style="font-size:16px">Rechazar</span></span></td></tr>
+        <tr class="a" data-fx="left" style="--d:1.3s"><td>Tacna Centro</td><td>Queso fresco</td><td>23-nov</td><td>25 %</td><td><span style="display:flex;gap:8px"><span class="chip ga" style="font-size:16px">Aprobar</span><span class="chip" style="font-size:16px">Rechazar</span></span></td></tr>
+      </table>
+      <div class="a" style="--d:1.7s;margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="kpi"><div class="tag">Merma evitada esta semana</div><b>S/ 18 400</b></div>
+        <div class="kpi"><div class="tag">Tiempo de aprobación</div><b>2 h</b></div>
+      </div>
+      <div class="a" data-fx="fade" style="--d:2.1s;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap"><span class="chip pre" style="font-size:17px">Cada decisión queda registrada</span><span class="chip pre" style="font-size:17px">El tablero de mermas se actualiza esa noche</span></div>
+      <div class="ex-tag" style="margin-top:16px">Ejemplo hipotético · cifras ilustrativas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 16 AGENTES DE IA -->
+<section class="slide" style="--acc:#FF3621">
+  <div class="kicker a">Servicio 6 · Agentes de IA</div>
+  <h2 class="a" style="--d:.15s;margin-top:20px">Del <span class="hl">«responde»</span> al <span class="t-lava">«hace»</span></h2>
+  <div class="abs a" style="--d:.35s;left:120px;right:120px;top:250px;display:flex;gap:20px;align-items:center">
+    <span class="chip" style="font-size:20px">Un chatbot <b style="margin-left:6px">responde</b> una pregunta</span><span style="font-size:28px;color:var(--muted)">→</span>
+    <span class="chip new" style="font-size:20px">Un agente <b style="margin-left:6px">sigue pasos, usa herramientas y pide aprobación</b></span>
+  </div>
+  <div class="abs" style="left:120px;top:340px;width:1680px;height:430px">
+    <div class="abs tag a" style="--d:.5s;left:0;top:0">Ejemplo hipotético · agente de reposición de Tiendas Quipu, cada mañana</div>
+    <svg class="abs" style="left:0;top:40px;width:1680px;height:80px" viewBox="0 0 1680 80"><path class="a" data-fx="draw" pathLength="1" style="--d:.7s" d="M150 40 H1530" stroke="#D9D3C7" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
+    <div class="loop flow" style="position:absolute;left:0;top:40px;width:20px;height:20px;border-radius:50%;background:#FF3621;offset-path:path('M150 40 H1530');--t:6s;--fd:2.6s"></div>
+    <div id="agsteps"></div>
+  </div>
+  <div class="abs a" style="--d:2.6s;left:120px;right:120px;bottom:100px;display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:20px;align-items:stretch">
+    <div class="card" style="padding:18px 20px"><b style="font-size:21px">Agent Bricks</b> <span class="chip ga" style="font-size:14px;padding:2px 9px">GA</span><p style="font-size:17px;margin-top:4px">Donde los equipos técnicos construyen y prueban los agentes.</p></div>
+    <div class="card" style="padding:18px 20px"><b style="font-size:21px">Unity Gateway</b> <span class="chip ga" style="font-size:14px;padding:2px 9px">GA</span><p style="font-size:17px;margin-top:4px">Controla qué modelos de IA se usan y cuánto se gasta.</p></div>
+    <div class="card" style="padding:18px 20px"><b style="font-size:21px">MLflow</b> <span class="chip ga" style="font-size:14px;padding:2px 9px">GA</span><p style="font-size:17px;margin-top:4px">Registra cada paso para revisar si el agente lo hizo bien.</p></div>
+    <div class="card" style="padding:18px 22px;background:var(--navy)"><b style="font-size:21px;color:#fff">Tú decides los límites</b><p style="font-size:17px;margin-top:4px;color:#C8D3D6">Qué puede hacer solo y qué necesita aprobación. Los agentes preparan la decisión; no la reemplazan.</p></div>
+  </div>
+</section>
+
+<!-- ================================================================ 17 ROLES -->
+<section class="slide" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">Roles</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Quién hace qué, y <span class="t-green">dónde encajas tú</span></h2>
+  <div class="abs" style="left:120px;top:300px;width:1680px;height:600px">
+    <svg class="abs" style="left:0;top:0;width:1680px;height:600px" viewBox="0 0 1680 600">
+      <g fill="none" stroke="#D9D3C7" stroke-width="5" stroke-linecap="round">
+        <path class="a" data-fx="draw" pathLength="1" style="--d:.6s" d="M150 300 H270"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:1.2s" d="M370 300 H500"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.6s" d="M980 300 Q1040 300 1060 120 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.7s" d="M980 300 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:2.8s" d="M980 300 Q1040 300 1060 480 H1110"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 120 Q1430 120 1450 290 H1480"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 300 H1480"/>
+        <path class="a" data-fx="draw" pathLength="1" style="--d:3.6s" d="M1370 480 Q1430 480 1450 310 H1480"/>
+      </g>
+      <g class="a" data-fx="down" style="--d:2.2s">
+        <path d="M500 150 Q740 20 980 150 Q920 128 860 150 Q800 128 740 150 Q680 128 620 150 Q560 128 500 150Z" fill="#2272B4"/>
+        <rect x="737" y="146" width="6" height="40" fill="#1B3139"/>
+        <text x="740" y="112" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">UNITY CATALOG</text>
+      </g>
+    </svg>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#FFAB00;offset-path:path('M150 300 H500 H980 Q1040 300 1060 120 H1370 Q1430 120 1450 290 H1480');--t:5s;--fd:3.8s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#00A972;offset-path:path('M150 300 H1480');--t:5s;--fd:4.6s"></div>
+    <div class="loop flow" style="position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#FF3621;offset-path:path('M150 300 H500 H980 Q1040 300 1060 480 H1370 Q1430 480 1450 310 H1480');--t:5s;--fd:5.4s"></div>
+    <div class="abs col a" data-fx="left" style="--d:.3s;left:0;top:130px;gap:12px;width:150px">
+      <div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="db" style="width:28px;height:28px;display:inline-block;flex:none"></span>ERP</div><div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="saas" style="width:28px;height:28px;display:inline-block;flex:none"></span>Web</div>
+      <div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="file" style="width:28px;height:28px;display:inline-block;flex:none"></span>Archivos</div><div class="card" style="padding:12px 16px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:10px"><span data-icon="customerlake" style="width:28px;height:28px;display:inline-block;flex:none"></span>CRM</div>
+    </div>
+    <div class="abs col a" data-fx="pop" style="--d:.9s;left:270px;top:250px;align-items:center;gap:6px"><div class="ico-tile" data-icon="lakeflow" style="width:100px;height:100px"></div></div>
+    <div class="abs col a" data-fx="up" style="--d:1s;left:240px;top:370px;align-items:center;width:160px;gap:4px">
+      <div class="pp sm" data-person="style:short;shirt:#2272B4;prop:laptop;skin:1;hair:#2B2523"></div>
+      <b style="font-size:19px;text-align:center">Data Engineer</b><span class="sub" style="text-align:center">trae y ordena los datos</span>
+    </div>
+    <div class="abs a" data-fx="pop" style="--d:1.5s;left:500px;top:250px;width:140px;height:100px;border-radius:18px;background:#E9CDB6;display:grid;place-items:center;font:800 24px 'DM Sans'">Bronce</div>
+    <div class="abs a" data-fx="pop" style="--d:1.75s;left:670px;top:250px;width:140px;height:100px;border-radius:18px;background:#DDE2E5;display:grid;place-items:center;font:800 24px 'DM Sans'">Plata</div>
+    <div class="abs a" data-fx="pop" style="--d:2s;left:840px;top:250px;width:140px;height:100px;border-radius:18px;background:#F5DE9C;display:grid;place-items:center;font:800 24px 'DM Sans'">Oro</div>
+    <div class="abs col a" data-fx="up" style="--d:2.4s;left:640px;top:380px;align-items:center;width:200px;gap:4px">
+      <div class="pp sm" data-person="style:long;shirt:#1B3139;prop:clip;skin:0;hair:#7A4A2A;acc:#2272B4"></div>
+      <b style="font-size:19px">Data Steward</b><span class="sub">permisos y calidad</span>
+    </div>
+    <div class="abs a" data-fx="right" style="--d:3s;left:1110px;top:50px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:bun;shirt:#FFAB00;prop:tablet;skin:2;hair:#1A1412"></div><div><b style="font-size:20px">Analista BI</b><div class="sub">tableros y Power BI</div></div></div></div>
+    <div class="abs a" data-fx="right" style="--d:3.15s;left:1110px;top:230px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:curly;shirt:#0194E2;prop:laptop;skin:3;hair:#1A1412;glasses:1"></div><div><b style="font-size:20px">Data Scientist</b><div class="sub">predicciones</div></div></div></div>
+    <div class="abs a" data-fx="right" style="--d:3.3s;left:1110px;top:410px;width:260px"><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div class="pp sm" style="width:60px" data-person="style:side;shirt:#FF3621;prop:laptop;skin:0;hair:#3A2A1E"></div><div><b style="font-size:20px">AI Engineer</b><div class="sub">agentes de IA</div></div></div></div>
+    <div class="abs a" data-fx="pop" style="--d:3.9s;left:1470px;top:110px;width:210px;height:440px;border:4px dashed var(--lava);border-radius:28px;background:rgba(255,54,33,.05)"></div>
+    <div class="abs col a" data-fx="pop" style="--d:4s;left:1480px;top:130px;align-items:center;width:190px;gap:6px">
+      <div class="bubble" style="position:relative;font-size:19px;white-space:normal;text-align:center">“¿Qué decisión mejora con esto?”</div>
+      <div class="pp" data-person="style:long;shirt:#1B3139;prop:tablet;skin:2;hair:#2B2523;acc:#FF3621"></div>
+      <b style="font-size:20px;text-align:center">Negocio y producto</b><span class="sub" style="text-align:center">define, prioriza y valida</span>
+    </div>
+  </div>
+  <div class="abs" style="left:120px;right:120px;bottom:96px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <span class="tag a" style="--d:4.3s;margin-right:6px">Lo que aportas tú</span>
+    <span class="chip a" data-fx="pop" style="--d:4.4s;font-size:20px">La pregunta correcta</span><span class="chip a" data-fx="pop" style="--d:4.5s;font-size:20px">La definición del indicador</span><span class="chip a" data-fx="pop" style="--d:4.6s;font-size:20px">Qué caso va primero</span><span class="chip a" data-fx="pop" style="--d:4.7s;font-size:20px">Validar si el resultado sirve</span><span class="chip new a" data-fx="pop" style="--d:4.8s;font-size:20px">Que tu equipo lo use</span>
+  </div>
+</section>
+
+<!-- ================================================================ 18 INDUSTRIAS -->
+<section class="slide" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="kicker a">Casos por industria</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:16px">
+    <h2 class="a" style="--d:.15s">Contados por su <span class="hl">impacto en el negocio</span></h2>
+    <span class="tag a" style="--d:.5s">clic en cada industria →</span>
+  </div>
+  <div class="grid4" style="position:absolute;left:120px;right:120px;top:300px;gap:26px">
+    <div class="ind-tile clickable a" data-ind="banca" style="--d:.3s"><div class="scene" data-scene="banca"></div><h3>Banca y fintech</h3><p>Menos fraude, mejores créditos</p></div>
+    <div class="ind-tile clickable a" data-ind="seguros" style="--d:.4s"><div class="scene" data-scene="seguros"></div><h3>Seguros</h3><p>Tarifas justas, siniestros más rápidos</p></div>
+    <div class="ind-tile clickable a" data-ind="mineria" style="--d:.5s"><div class="scene" data-scene="mineria"></div><h3>Minería</h3><p>Menos paradas no planificadas</p></div>
+    <div class="ind-tile clickable a" data-ind="energia" style="--d:.6s"><div class="scene" data-scene="energia"></div><h3>Energía y utilities</h3><p>Anticipar la demanda y los cortes</p></div>
+    <div class="ind-tile clickable a" data-ind="oilgas" style="--d:.7s"><div class="scene" data-scene="oilgas"></div><h3>Petróleo y gas</h3><p>Activos seguros, respuestas al instante</p></div>
+    <div class="ind-tile clickable a" data-ind="retail" style="--d:.8s"><div class="scene" data-scene="retail"></div><h3>Retail y consumo</h3><p>Menos quiebres de stock y mermas</p></div>
+    <div class="ind-tile clickable a" data-ind="salud" style="--d:.9s"><div class="scene" data-scene="salud"></div><h3>Salud y farma</h3><p>Prever ocupación, proteger datos</p></div>
+    <div class="ind-tile clickable a" data-ind="telecom" style="--d:1s"><div class="scene" data-scene="telecom"></div><h3>Telecomunicaciones</h3><p>Clientes que no se van</p></div>
+  </div>
+</section>
+
+<!-- ================================================================ 19 CÓMO COBRA -->
+<section class="slide" style="--acc:#FFAB00" data-wipe="#FFAB00">
+  <div class="kicker a">¿Cómo cobra Databricks?</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Como la luz de tu casa: <span class="hl">pagas lo que consumes</span></h2>
+  <div class="abs" style="left:120px;top:290px;width:600px">
+    <div class="card a" data-fx="pop" style="--d:.4s;background:var(--navy);padding:30px;text-align:center">
+      <div class="tag" style="color:#A9BCC2">Consumo de hoy, en DBUs</div>
+      <div class="counter" style="--to:1284;--d:.6s;font:700 110px 'DM Mono';color:#FFAB00;line-height:1.1;margin-top:8px"></div>
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:6px"><span class="loop blink" style="width:14px;height:14px;border-radius:50%;background:#3CCB97"></span><span style="font:500 18px 'DM Mono';color:#A9BCC2">se mide por segundo</span></div>
+    </div>
+    <div class="card a" style="--d:.8s;margin-top:22px">
+      <h3>¿Qué es una DBU?</h3>
+      <p style="font-size:21px;margin-top:8px">Es el «kilovatio» de Databricks: una unidad de cómputo. Consultar, refrescar un tablero o correr un agente consume DBUs. <b>Si nada corre, no se consume.</b></p>
+    </div>
+  </div>
+  <div class="abs" style="left:780px;right:120px;top:290px">
+    <div class="tag a" style="--d:1s">La factura tiene tres partes</div>
+    <div class="a" style="--d:1.1s;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px">
+      <div class="card" style="padding:20px 22px"><b style="font-size:23px">Cómputo</b><p style="font-size:18px;margin-top:6px">Las DBUs que consumen consultas, procesos y apps.</p></div>
+      <div class="card" style="padding:20px 22px"><b style="font-size:23px">Almacenamiento</b><p style="font-size:18px;margin-top:6px">Los datos guardados, normalmente en la nube de tu empresa.</p></div>
+      <div class="card" style="padding:20px 22px"><b style="font-size:23px">IA</b><p style="font-size:18px;margin-top:6px">Los modelos se cobran por uso: según cuánto texto procesan.</p></div>
+    </div>
+    <div class="grid2 a" style="--d:1.5s;margin-top:20px;gap:16px">
+      <div class="card" style="padding:20px 22px;border-top:6px solid var(--lava)"><b style="font-size:22px">Lo que la hace subir</b>
+        <p style="font-size:18px;margin-top:8px">· Tableros que se refrescan cada minuto sin necesidad<br>· Máquinas encendidas que nadie usa<br>· Consultas que leen todo el histórico cada vez</p></div>
+      <div class="card" style="padding:20px 22px;border-top:6px solid var(--green)"><b style="font-size:22px">Lo que la controla</b>
+        <p style="font-size:18px;margin-top:8px">· Serverless: se apaga solo cuando no se usa<br>· Presupuestos y alertas de gasto por área<br>· Límites al gasto en IA con Unity Gateway</p></div>
+    </div>
+    <div class="a" style="--d:1.9s;display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <span class="chip">Pago por uso</span><span class="chip">Compromiso anual con descuento</span><span class="chip ga">Free Edition: gratis para aprender</span><span class="chip">El precio varía por nube, región, plan y tipo de carga</span>
+    </div>
+  </div>
+  <div class="abs a" style="--d:2.2s;left:120px;bottom:104px;font-size:21px;color:var(--ink2)">Para un número real: la calculadora oficial de precios o tu ejecutivo de Databricks. Aquí no hay montos a propósito.</div>
+</section>
+
+<!-- ================================================================ 20 SEÑALES -->
+<section class="slide oat2 big-li" style="--acc:#00A972" data-wipe="#00A972">
+  <div class="kicker a">¿Lo necesitamos?</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Señales de que sí… <span class="t-yellow">y de que todavía no</span></h2>
+  <div class="abs" style="left:120px;right:120px;top:280px;display:grid;grid-template-columns:1.15fr 1fr;gap:36px">
+    <div class="card a" style="--d:.3s;padding:30px 34px;border-top:10px solid var(--green)">
+      <h3 style="font-size:34px">Señales de que sí</h3>
+      <div class="col" style="margin-top:20px;gap:16px">
+        <div class="li a" data-fx="left" style="--d:.6s"><span data-icon="check" class="ic"></span><p>Varias áreas reportan <b>números distintos</b> del mismo indicador.</p></div>
+        <div class="li a" data-fx="left" style="--d:.72s"><span data-icon="check" class="ic"></span><p>Los reportes dependen de <b>exportar Excel a mano</b>.</p></div>
+        <div class="li a" data-fx="left" style="--d:.84s"><span data-icon="check" class="ic"></span><p>Los datos <b>ya no caben</b> o tardan horas en refrescar.</p></div>
+        <div class="li a" data-fx="left" style="--d:.96s"><span data-icon="check" class="ic"></span><p>Quieren <b>IA o agentes</b>, pero sobre datos confiables y con permisos.</p></div>
+        <div class="li a" data-fx="left" style="--d:1.08s"><span data-icon="check" class="ic"></span><p>Tienen que <b>demostrar de dónde sale cada número</b> (auditoría, regulador).</p></div>
+        <div class="li a" data-fx="left" style="--d:1.2s"><span data-icon="check" class="ic"></span><p>Hay datos en <b>muchos sistemas</b> que no conversan.</p></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div class="card a" style="--d:.5s;padding:30px 34px;border-top:10px solid var(--yellow)">
+        <h3 style="font-size:34px">Todavía no (y está bien)</h3>
+        <div class="col" style="margin-top:20px;gap:16px">
+          <div class="li a" data-fx="right" style="--d:1.4s"><span data-icon="wait" class="ic"></span><p>Los datos caben en un Excel y los usa un solo equipo.</p></div>
+          <div class="li a" data-fx="right" style="--d:1.52s"><span data-icon="wait" class="ic"></span><p>No hay quién la mantenga: ni equipo interno ni un socio.</p></div>
+          <div class="li a" data-fx="right" style="--d:1.64s"><span data-icon="wait" class="ic"></span><p>Aún no hay una pregunta de negocio clara que resolver.</p></div>
+          <div class="li a" data-fx="right" style="--d:1.76s"><span data-icon="wait" class="ic"></span><p>El problema es de proceso, no de datos: nadie registra la venta.</p></div>
+        </div>
+      </div>
+      <div class="card a" style="--d:2s;background:var(--navy);padding:24px 30px"><b style="font-size:23px;color:#fff">¿Ya está en tu empresa?</b><p style="font-size:20px;margin-top:6px;color:#C8D3D6">Entonces la pregunta no es si comprarlo, sino <b style="color:#FFAB00">cómo aprovecharlo</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 21 PRIMEROS PASOS + PREGUNTAS A TI -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">Primeros pasos en tu empresa</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Empieza pequeño, <span class="t-blue">con una pregunta real</span></h2>
+  <div class="abs" style="left:120px;top:290px;width:760px">
+    <div class="col" style="gap:18px">
+      <div class="card a" data-fx="left" style="--d:.4s;display:flex;gap:20px;align-items:center;padding:22px 26px"><span class="step-n" style="background:var(--blue)">1</span><div><b style="font-size:24px">Pide acceso a tu workspace</b><p style="font-size:19px;margin-top:4px">El «espacio de trabajo» de tu empresa en Databricks. Se entra con tu usuario.</p></div></div>
+      <div class="card a" data-fx="left" style="--d:.55s;display:flex;gap:20px;align-items:center;padding:22px 26px"><span class="step-n" style="background:var(--blue)">2</span><div><b style="font-size:24px">Encuentra la tabla oficial de tu área</b><p style="font-size:19px;margin-top:4px">En Catalog Explorer: busca, lee la descripción y mira quién es el responsable.</p></div></div>
+      <div class="card a" data-fx="left" style="--d:.7s;display:flex;gap:20px;align-items:center;padding:22px 26px"><span class="step-n" style="background:var(--blue)">3</span><div><b style="font-size:24px">Haz tu primera consulta</b><p style="font-size:19px;margin-top:4px">En el editor SQL o preguntándole a Genie. Compara con tu reporte actual.</p></div></div>
+      <div class="card a" data-fx="left" style="--d:.85s;display:flex;gap:20px;align-items:center;padding:22px 26px"><span class="step-n" style="background:var(--lava)">4</span><div><b style="font-size:24px">Elige un caso pequeño y mídelo</b><p style="font-size:19px;margin-top:4px">Ej.: «que el reporte semanal pase de 2 días a 1 hora». Una meta, un dueño.</p></div></div>
+    </div>
+  </div>
+  <div class="abs card a" data-fx="right" style="--d:.6s;left:940px;right:120px;top:290px;padding:30px 34px">
+    <div style="display:flex;align-items:center;gap:14px"><span data-icon="mail" class="ic" style="width:44px;height:44px;background:var(--navy);border-radius:12px;padding:6px"></span><h3 style="font-size:32px">Preguntas para llevarle a TI</h3></div>
+    <div id="qlist" style="margin-top:18px;display:flex;flex-direction:column;gap:12px"></div>
+  </div>
+  <div class="abs a" style="--d:2.6s;left:120px;bottom:100px;display:flex;align-items:center;gap:14px"><span class="chip ga" style="font-size:19px">Para practicar gratis</span><span style="font-size:21px;color:var(--ink2)"><b>Databricks Free Edition</b>: uso personal para aprender, no comercial.</span></div>
+</section>
+
+<!-- ================================================================ 22 GLOSARIO -->
+<section class="slide oat2" style="--acc:#6B5FD6" data-wipe="#6B5FD6">
+  <div class="kicker a">Glosario de bolsillo</div>
+  <h2 class="a" style="--d:.15s;margin-top:16px">Palabras que vas a escuchar</h2>
+  <div class="grid4" id="gloss" style="position:absolute;left:120px;right:120px;top:270px;gap:20px"></div>
+</section>
+
+<!-- ================================================================ 23 CIERRE -->
+<section class="slide no-foot" style="--acc:#FF3621" data-wipe="#FF3621">
+  <svg class="abs" style="left:0;top:0;width:1920px;height:1080px" viewBox="0 0 1920 1080"><g id="confetti"></g></svg>
+  <div style="position:absolute;left:0;right:0;top:220px;text-align:center">
+    <div class="kicker a" style="justify-content:center">El siguiente paso</div>
+    <h1 class="a" data-fx="blur" style="--d:.2s;margin-top:26px;font-size:150px">¿Conversamos?</h1>
+    <p class="lead a" style="--d:.5s;margin:30px auto 0;width:1200px">Si tu empresa ya tiene Databricks o lo está evaluando, encontremos juntos <b>la primera pregunta de negocio</b> que vale la pena resolver.</p>
+    <div class="a" style="--d:.8s;margin-top:54px;display:flex;justify-content:center;gap:20px">
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px;background:#0A66C2">in/danielportugalr</span>
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px">datawizard.tech</span>
+      <span class="pill-btn" style="font-size:26px;padding:18px 32px;background:#FF0000">@DanielDatashow</span>
+    </div>
+  </div>
+  <div class="abs a" data-fx="up" style="--d:1.1s;left:120px;right:120px;bottom:80px;display:flex;align-items:center;justify-content:space-between">
+    <span data-tpt style="--h:64px"></span>
+    <div style="display:flex;align-items:center;gap:16px"><img src="assets/datawizard-logo.png" alt="Data Wizard" style="height:64px"><div><b style="font-size:22px">Data Wizard</b><div style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:19px;color:var(--ink2)"><img src="assets/youtube-logo.svg" alt="YouTube" style="height:20px;display:block"><span data-si="tiktok" style="--s:20px;--c:#0B0B0B"></span>Daniel Datashow</div></div></div>
+    <div style="display:flex;align-items:center;gap:14px"><img src="assets/databricks-partner.svg" style="height:58px" alt=""><img src="assets/databricks-wordmark.png" style="height:34px" alt="Databricks"></div>
+  </div>
+</section>
+
+<img id="dw-src" src="assets/datawizard-logo.png" alt="" hidden>
+<img id="tpt-icon-src" src="assets/tpt-icon.png" alt="" hidden>
+<div id="wipe"><svg class="wlogo" viewBox="0 0 24 24"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z" fill="#fff"/></svg></div>
+<div id="modal"><div class="scrim"></div><div class="box"></div></div>
+<div id="progress"></div>
+<div id="navbtns"><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Siguiente">→</button></div>
+<div id="hint">← → para avanzar · R repite la animación · F pantalla completa</div>
+</div></div>
+
+<script>
+/* Bloques generados (listas repetitivas) antes de arrancar el motor */
+(function () {
+  let s = '';
+  // Agente de reposición: 5 pasos
+  const AG = [
+    ['search', 'Detecta', 'El arroz 5 kg se agotará el viernes en 3 tiendas.', '#2272B4'],
+    ['data', 'Consulta', 'Stock del almacén, pronóstico de ventas y pedidos en camino.', '#2272B4'],
+    ['lakeflow', 'Propone', 'Un pedido de reposición por tienda, con cantidades.', '#2272B4'],
+    ['key', 'Pide aprobación', 'El jefe de tienda revisa y aprueba en Teams.', '#FF3621'],
+    ['check', 'Registra y avisa', 'Deja el pedido creado y avisa al almacén.', '#00A972'],
+  ];
+  const ag = document.getElementById('agsteps');
+  AG.forEach(([ic, t, d, c], i) => {
+    const x = i * 345, del = (1 + i * .3).toFixed(1);
+    s += `<div class="a" data-fx="pop" style="--d:${del}s;position:absolute;left:${x + 122}px;top:52px;width:56px;height:56px;border-radius:50%;background:${c};color:#fff;display:grid;place-items:center;font:800 24px 'DM Sans';border:6px solid #fff;box-shadow:var(--shadow)">${i + 1}</div>
+      <div class="card a" style="--d:${(+del + .1).toFixed(1)}s;position:absolute;left:${x}px;top:140px;width:300px;height:${i === 3 ? 270 : 230}px;padding:22px 24px;${i === 3 ? 'outline:4px solid #FF3621;outline-offset:-4px;' : ''}">
+        <div style="display:flex;align-items:center;gap:12px"><span data-icon="${ic}" style="width:38px;height:38px;display:inline-block;flex:none"></span><h3 style="font-size:27px">${t}</h3></div>
+        <p style="font-size:19px;margin-top:10px;line-height:1.35">${d}</p>${i === 3 ? '<div class="ex-tag" style="margin-top:10px;color:#B3200F">una persona decide</div>' : ''}</div>`;
+  });
+  ag.innerHTML = s;
+
+  // Preguntas para TI
+  const Q = ['¿Ya tenemos Databricks? ¿En qué nube y quién lo administra?',
+    '¿Cómo pido acceso y a qué datos puedo entrar?',
+    '¿Cuáles son las tablas oficiales (capa oro) de mi área?',
+    '¿Nuestro Power BI ya se conecta a Databricks?',
+    '¿Está habilitado Genie? ¿Hay algún Genie Agent de mi área?',
+    '¿Cómo se controla el costo y qué área lo paga?',
+    '¿Hay un espacio de pruebas donde pueda practicar?'];
+  s = '';
+  Q.forEach((q, i) => {
+    const del = (1 + i * .18).toFixed(2);
+    s += `<div class="a" data-fx="left" style="--d:${del}s;display:flex;gap:14px;align-items:center"><span style="width:30px;height:30px;border-radius:8px;border:3px solid #2272B4;flex:none;display:grid;place-items:center"><svg class="a" data-fx="pop" style="--d:${(+del + .25).toFixed(2)}s;width:20px;height:20px" viewBox="0 0 20 20"><path d="M3 10l5 5 9-10" stroke="#00A972" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font-size:21px;line-height:1.3;color:var(--navy);font-weight:500">${q}</span></div>`;
+  });
+  document.getElementById('qlist').innerHTML = s;
+
+  // Glosario
+  const G = [
+    ['Workspace', 'plataforma', 'El espacio de trabajo de tu empresa en Databricks. Se entra desde el navegador.'],
+    ['Lakehouse', 'arquitectura', 'Almacén barato y abierto con el orden de un data warehouse. Una sola copia de los datos.'],
+    ['Bronce, plata y oro', 'arquitectura', 'Las tres etapas de los datos: crudos, limpios y listos para el negocio.'],
+    ['Tabla', 'datos', 'Datos en filas y columnas, como una hoja de Excel enorme y con reglas.'],
+    ['Unity Catalog', 'gobierno', 'El catálogo y los permisos: qué datos hay, qué significan y quién los ve.'],
+    ['SQL warehouse', 'cómputo', 'El motor que ejecuta las consultas de SQL, tableros y Power BI.'],
+    ['Serverless', 'cómputo', 'Las máquinas las administra Databricks: se encienden al usarse y se apagan solas.'],
+    ['DBU', 'costo', 'La unidad con la que se mide y cobra el cómputo. El «kilovatio» de Databricks.'],
+    ['Pipeline', 'ingeniería', 'Proceso automático que trae y transforma datos. En Databricks se hace con Lakeflow.'],
+    ['Notebook', 'ingeniería', 'Documento donde los equipos técnicos escriben y ejecutan código por partes.'],
+    ['Genie', 'IA', 'La familia de experiencias de IA de Databricks para preguntar a los datos en español.'],
+    ['Agente de IA', 'IA', 'Asistente que sigue pasos, usa herramientas y pide aprobación cuando corresponde.'],
+  ];
+  s = '';
+  G.forEach(([t, cat, d], i) => {
+    s += `<div class="card gl a" data-fx="pop" style="--d:${(.3 + i * .07).toFixed(2)}s;padding:20px 24px;height:198px"><div class="tag">${cat}</div><h3 style="margin-top:2px">${t}</h3><p>${d}</p></div>`;
+  });
+  document.getElementById('gloss').innerHTML = s;
+
+  // Confeti del cierre
+  const cf = document.getElementById('confetti'); s = ''; let k = 3;
+  for (let i = 0; i < 46; i++) {
+    k = (k * 53 + 17) % 211; const x = (k * 9.1) % 1920, y = (k * 5.3 + i * 23) % 1080, c = ['#FF3621', '#2272B4', '#00A972', '#FFAB00', '#6B5FD6'][i % 5];
+    if (y > 200 && y < 820 && x > 300 && x < 1620) continue;
+    const sh = i % 3 === 0 ? `<circle r="9" fill="${c}"/>` : i % 3 === 1 ? `<rect x="-8" y="-8" width="16" height="16" rx="3" fill="${c}" transform="rotate(${k % 90})"/>` : `<path d="M-10 6 L0 -10 L10 6Z" fill="${c}"/>`;
+    s += `<g transform="translate(${x.toFixed(0)} ${y.toFixed(0)})"><g class="a" data-fx="pop" style="--d:${(.2 + (i % 12) * .08).toFixed(2)}s"><g class="loop ${i % 2 ? 'float' : 'float2'}">${sh}</g></g></g>`;
+  }
+  cf.innerHTML = s;
+})();
+</script>
+<script src="deck.js?v=1.0"></script>
+</body>
+</html>
