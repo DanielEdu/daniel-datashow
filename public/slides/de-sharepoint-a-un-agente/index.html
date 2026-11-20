@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>De SharePoint a un agente de IA</title>
-<!-- v0.2 · creado 17-nov-2026 · actualizado 17-nov-2026 · Daniel Portugal · introducción de la demo RAG (evento DMC, 20-nov-2026)
+<!-- v0.3 · creado 17-nov-2026 · actualizado 20-nov-2026 · Daniel Portugal · introducción de la demo RAG (evento DMC, 20-nov-2026)
      Navegación: ← → / espacio · R repite la animación · F pantalla completa · clic en piezas para ver el detalle -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
@@ -366,6 +366,80 @@
   <div class="abs a loop float" data-fx="pop" style="--d:1.2s;right:200px;top:330px"><div class="pp xl" data-person="style:short;shirt:#FF3621;prop:laptop;skin:1"></div></div>
 </section>
 
+
+<!-- ================================================================ 11a EL JOB, ETAPA POR ETAPA -->
+<section class="slide" style="--acc:#2272B4" data-wipe="#2272B4">
+  <div class="kicker a">Lo que corre detrás · Lakeflow Jobs</div>
+  <h2 class="a" style="--d:.15s;margin-top:14px;font-size:62px">Un solo job lleva el documento <span class="t-blue">de SharePoint al índice</span></h2>
+  <div class="abs mono a" data-fx="fade" style="--d:.3s;left:120px;right:120px;top:286px;font-size:17px;color:var(--muted);display:flex;justify-content:space-between"><span>job · pl-ragdmc-pipeline-completo-dev · 4 de sus 5 tareas</span><span>clic en cada tarea para ver el detalle</span></div>
+  <!-- lienzo tipo vista de grafo del job -->
+  <div class="abs a" data-fx="fade" style="--d:.3s;left:120px;right:120px;top:330px;height:170px;border-radius:20px;border:1px solid #E1DDD5;background:#F6F7F9 radial-gradient(#D5D9E0 1.2px,transparent 1.2px) 0 0/22px 22px"></div>
+  <svg class="abs" style="left:120px;top:330px;width:1680px;height:170px" viewBox="0 0 1680 170">
+    <g stroke="#9AA4B2" stroke-width="3" fill="none">
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.7s" d="M398 85 H462"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.9s" d="M828 85 H892"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.1s" d="M1258 85 H1322"/>
+    </g>
+    <g fill="#9AA4B2"><path d="M462 78 l12 7 -12 7z"/><path d="M892 78 l12 7 -12 7z"/><path d="M1322 78 l12 7 -12 7z"/></g>
+    <circle r="7" fill="#2272B4" class="loop flow" style="offset-path:path('M30 85 H1650');--t:5s"/>
+  </svg>
+  <div class="abs" style="left:150px;right:150px;top:363px;display:grid;grid-template-columns:repeat(4,1fr);gap:66px">
+    <div class="a clickable" data-modal="lakeflow" data-fx="pop" style="--d:.4s;cursor:pointer;background:#fff;border:1px solid #D5D9E0;border-left:6px solid #00A972;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(11,26,58,.08)"><img src="assets/sharepoint-logo.svg" alt="SharePoint" style="width:46px;height:46px;display:block;flex:none"><div style="min-width:0"><div class="mono" style="font-size:17px;font-weight:500;color:#1B3139">ingesta_sharepoint</div><div style="font-size:15px;color:var(--muted)">Pipeline · Lakeflow Connect</div></div><span style="margin-left:auto;width:22px;height:22px;border-radius:50%;background:#00A972;color:#fff;display:grid;place-items:center;font:800 13px 'DM Sans';flex:none">✓</span></div>
+    <div class="a clickable" data-modal="parse" data-fx="pop" style="--d:.6s;cursor:pointer;background:#fff;border:1px solid #D5D9E0;border-left:6px solid #00A972;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(11,26,58,.08)"><span data-icon="file" style="width:46px;height:46px;display:block;flex:none"></span><div style="min-width:0"><div class="mono" style="font-size:17px;font-weight:500;color:#1B3139">procesar_normativa</div><div style="font-size:15px;color:var(--muted)">Pipeline · Lakeflow</div></div><span style="margin-left:auto;width:22px;height:22px;border-radius:50%;background:#00A972;color:#fff;display:grid;place-items:center;font:800 13px 'DM Sans';flex:none">✓</span></div>
+    <div class="a clickable" data-modal="fragmentos" data-fx="pop" style="--d:.8s;cursor:pointer;background:#fff;border:1px solid #D5D9E0;border-left:6px solid #00A972;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(11,26,58,.08)"><span data-icon="data" style="width:46px;height:46px;display:block;flex:none"></span><div style="min-width:0"><div class="mono" style="font-size:17px;font-weight:500;color:#1B3139">generar_fragmentos…</div><div style="font-size:15px;color:var(--muted)">SQL · warehouse serverless</div></div><span style="margin-left:auto;width:22px;height:22px;border-radius:50%;background:#00A972;color:#fff;display:grid;place-items:center;font:800 13px 'DM Sans';flex:none">✓</span></div>
+    <div class="a clickable" data-modal="aisearch" data-fx="pop" style="--d:1s;cursor:pointer;background:#fff;border:1px solid #D5D9E0;border-left:6px solid #00A972;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(11,26,58,.08)"><span data-icon="search" style="width:46px;height:46px;display:block;flex:none"></span><div style="min-width:0"><div class="mono" style="font-size:17px;font-weight:500;color:#1B3139">sincronizar_indice…</div><div style="font-size:15px;color:var(--muted)">Python · serverless</div></div><span style="margin-left:auto;width:22px;height:22px;border-radius:50%;background:#00A972;color:#fff;display:grid;place-items:center;font:800 13px 'DM Sans';flex:none">✓</span></div>
+  </div>
+  <!-- leyenda de cada etapa -->
+  <div class="abs" style="left:120px;right:120px;top:540px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;height:360px">
+    <div class="card a" data-fx="up" style="--d:1.2s;padding:24px 26px;display:flex;flex-direction:column;gap:12px"><div class="tag" style="color:#2272B4;font-size:19px">1 · Traer</div><p style="font-size:23px;line-height:1.42">Copia los PDF y sus columnas de SharePoint (tipo, vigencia, fecha) a Bronce. Solo baja lo nuevo o lo que cambió.</p><div style="margin-top:auto"><div class="tag" style="font-size:13px">Acción</div><span class="chip ga" style="font-size:19px;margin-top:6px">Conector administrado</span></div><div class="mono" style="font-size:17px;color:var(--muted)">→ documentos_raw</div></div>
+    <div class="card a" data-fx="up" style="--d:1.35s;padding:24px 26px;display:flex;flex-direction:column;gap:12px"><div class="tag" style="color:#2272B4;font-size:19px">2 · Validar y leer</div><p style="font-size:23px;line-height:1.42">Reglas de calidad sobre la metadata: lo que falla va a cuarentena. Parte los PDF grandes y lee el texto, con OCR si es escaneado.</p><div style="margin-top:auto"><div class="tag" style="font-size:13px">AI function</div><span class="chip new" style="font-size:19px;margin-top:6px;font-family:'DM Mono'">ai_parse_document</span></div><div class="mono" style="font-size:17px;color:var(--muted)">→ texto_extraido</div></div>
+    <div class="card a" data-fx="up" style="--d:1.5s;padding:24px 26px;display:flex;flex-direction:column;gap:12px"><div class="tag" style="color:#2272B4;font-size:19px">3 · Cortar</div><p style="font-size:23px;line-height:1.42">Divide cada norma en fragmentos con su metadata pegada. MERGE con un id estable: si nada cambió, no toca filas.</p><div style="margin-top:auto"><div class="tag" style="font-size:13px">AI function</div><span class="chip new" style="font-size:19px;margin-top:6px;font-family:'DM Mono'">ai_prep_search</span></div><div class="mono" style="font-size:17px;color:var(--muted)">→ fragmentos_normativa</div></div>
+    <div class="card a" data-fx="up" style="--d:1.65s;padding:24px 26px;display:flex;flex-direction:column;gap:12px"><div class="tag" style="color:#2272B4;font-size:19px">4 · Indexar</div><p style="font-size:23px;line-height:1.42">Crea el índice híbrido la primera vez y después lo sincroniza: solo calcula embeddings de los fragmentos nuevos.</p><div style="margin-top:auto"><div class="tag" style="font-size:13px">Acción</div><span class="chip pre" style="font-size:19px;margin-top:6px">Sync AI Search · Qwen3 Embedding</span></div><div class="mono" style="font-size:17px;color:var(--muted)">→ fragmentos_normativa_index</div></div>
+  </div>
+  <div class="abs mono a" data-fx="fade" style="--d:1.9s;left:120px;right:120px;bottom:104px;font-size:16px;color:var(--muted)">La quinta tarea, exportar_a_volumen, deja los PDF en un volumen para el camino de Genie Agents. Se corre a mano; la programación diaria está en pausa.</div>
+</section>
+
+<!-- ================================================================ 11b LINAJE DE LAS TABLAS -->
+<section class="slide dark" style="--acc:#22D3EE;background:radial-gradient(ellipse at 100% 0%,rgba(28,111,214,.35),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(0,169,114,.16),transparent 55%),#0a1440" data-wipe="#163a8f">
+  <div class="kicker a">El viaje del dato · Unity Catalog</div>
+  <h2 class="a" style="--d:.15s;margin-top:14px;font-size:62px;color:#fff">De SharePoint al índice, <span style="color:#5fd3f3">tabla por tabla</span></h2>
+  <!-- bandas de capa -->
+  <div class="abs" style="left:120px;right:120px;top:300px;height:520px;display:grid;grid-template-columns:230px 250px 520px 1fr 250px;gap:14px">
+    <div class="a" data-fx="fade" style="--d:.3s;border-radius:18px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14)"><div class="tag" style="padding:14px 16px;color:#8FA2C7">Origen</div></div>
+    <div class="a" data-fx="fade" style="--d:.35s;border-radius:18px;background:rgba(205,127,50,.12)"><div class="tag" style="padding:14px 16px;color:#E3A86B">Bronce</div></div>
+    <div class="a" data-fx="fade" style="--d:.4s;border-radius:18px;background:rgba(192,200,214,.10)"><div class="tag" style="padding:14px 16px;color:#C9D2E0">Plata</div></div>
+    <div class="a" data-fx="fade" style="--d:.45s;border-radius:18px;background:rgba(255,193,7,.10)"><div class="tag" style="padding:14px 16px;color:#FFD166">Oro</div></div>
+    <div class="a" data-fx="fade" style="--d:.5s;border-radius:18px;background:rgba(34,211,238,.10)"><div class="tag" style="padding:14px 16px;color:#5fd3f3">AI Search</div></div>
+  </div>
+  <!-- líneas de linaje -->
+  <svg class="abs" style="left:120px;top:300px;width:1680px;height:520px" viewBox="0 0 1680 520">
+    <g stroke="#5D7BB0" stroke-width="3" fill="none">
+      <path class="a" data-fx="draw" pathLength="1" style="--d:.8s" d="M210 200 H262"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1s" d="M474 200 H526"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.2s" d="M762 200 H794"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.4s" d="M1018 200 H1066"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.6s" d="M1400 200 H1448"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.3s;stroke-dasharray:7 7" d="M644 268 V340"/>
+      <path class="a" data-fx="draw" pathLength="1" style="--d:1.5s;stroke-dasharray:7 7" d="M906 268 V340"/>
+    </g>
+    <circle r="8" fill="#22D3EE" class="loop flow" style="offset-path:path('M90 200 H1560');--t:5s"/>
+    <circle r="8" fill="#3CCB97" class="loop flow" style="offset-path:path('M90 200 H1560');--t:5s;--fd:-2.5s"/>
+  </svg>
+  <!-- nodos -->
+  <div class="abs card a" data-fx="pop" style="--d:.6s;left:140px;top:420px;width:190px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center"><img src="assets/sharepoint-logo.svg" alt="SharePoint" style="width:56px;height:56px;display:block"><b style="font-size:20px">SharePoint</b><div style="font-size:17px;color:#A9BCC2;line-height:1.35">Normativa Mineria Industria</div><div style="font:800 40px 'DM Sans';color:#fff">25</div><div style="font-size:16px;color:#A9BCC2">PDF + columnas</div></div>
+  <div class="abs card a" data-fx="pop" style="--d:.9s;left:382px;top:410px;width:212px;padding:16px 18px;border-top:5px solid #CD7F32"><div class="mono" style="font-size:15px;color:#E3A86B">bronze_dev.ragdmc</div><b class="mono" style="display:block;font-size:19px;margin-top:4px">documentos_raw</b><div style="font:800 40px 'DM Sans';color:#fff;margin-top:6px">25</div><div style="font-size:17px;color:#A9BCC2;line-height:1.35">El PDF tal cual, en binario, con su metadata</div></div>
+  <div class="abs card a" data-fx="pop" style="--d:1.1s;left:646px;top:410px;width:236px;padding:16px 18px;border-top:5px solid #C9D2E0"><div class="mono" style="font-size:16px;color:#C9D2E0">silver_dev.ragdmc</div><b class="mono" style="display:block;font-size:15.5px;margin-top:4px;white-space:nowrap">documentos_con_metadata</b><div style="font:800 40px 'DM Sans';color:#fff;margin-top:6px">25 <span style="font-size:18px;color:#3CCB97">/ 25</span></div><div style="font-size:17px;color:#A9BCC2;line-height:1.35">Pasaron las reglas de calidad</div></div>
+  <div class="abs card a" data-fx="pop" style="--d:1.3s;left:914px;top:410px;width:224px;padding:16px 18px;border-top:5px solid #C9D2E0"><div class="mono" style="font-size:16px;color:#C9D2E0">silver_dev.ragdmc</div><b class="mono" style="display:block;font-size:19px;margin-top:4px">texto_extraido</b><div style="font:800 40px 'DM Sans';color:#fff;margin-top:6px">25</div><div style="font-size:17px;color:#A9BCC2;line-height:1.35">Texto leído por <span class="mono" style="color:#FF8A75">ai_parse_document</span></div></div>
+  <div class="abs card a" data-fx="pop" style="--d:1.5s;left:1186px;top:410px;width:334px;padding:16px 18px;border-top:5px solid #FFC107;outline:2px solid rgba(255,193,7,.5);outline-offset:-2px"><div class="mono" style="font-size:16px;color:#FFD166">gold_dev.ragdmc</div><b class="mono" style="display:block;font-size:19px;margin-top:4px">fragmentos_normativa</b><div style="font:800 40px 'DM Sans';color:#fff;margin-top:6px">751</div><div style="font-size:17px;color:#A9BCC2;line-height:1.35">Fragmentos con vigencia y tipo de norma, de <span class="mono" style="color:#FF8A75">ai_prep_search</span></div></div>
+  <div class="abs card a" data-fx="pop" style="--d:1.7s;left:1568px;top:410px;width:220px;padding:16px 18px;border-top:5px solid #22D3EE"><div class="mono" style="font-size:16px;color:#5fd3f3">índice híbrido</div><b class="mono" style="display:block;font-size:17px;margin-top:4px">…_normativa_index</b><div style="font:800 40px 'DM Sans';color:#fff;margin-top:6px">751 <span style="font-size:18px;color:#3CCB97">/ 751</span></div><div style="font-size:17px;color:#A9BCC2;line-height:1.35">Vectores + palabras clave. Lo consulta el agente</div></div>
+  <!-- ramas de control -->
+  <div class="abs a" data-fx="up" style="--d:1.6s;left:646px;top:640px;width:236px;padding:12px 16px;border-radius:14px;border:2px dashed #B3200F;background:rgba(179,32,15,.12)"><div class="mono" style="font-size:15px;color:#FFB4A8">cuarentena · descartados</div><div style="font:800 30px 'DM Sans';color:#fff">0 · 0</div><div style="font-size:16px;color:#A9BCC2">Sin metadata o formato no soportado</div></div>
+  <div class="abs a" data-fx="up" style="--d:1.8s;left:914px;top:640px;width:224px;padding:12px 16px;border-radius:14px;border:2px dashed #B3200F;background:rgba(179,32,15,.12)"><div class="mono" style="font-size:15px;color:#FFB4A8">error de lectura</div><div style="font:800 30px 'DM Sans';color:#fff">0</div><div style="font-size:16px;color:#A9BCC2">Lo que la IA no pudo leer</div></div>
+  <div class="abs a" data-fx="up" style="--d:2s;left:120px;right:120px;bottom:104px;display:flex;align-items:center;gap:20px">
+    <span class="pill-btn" style="background:#22D3EE;color:#0a1440">La idea</span>
+    <p style="font-size:24px;color:#E8EAF6">Cada documento se puede seguir de punta a punta. <b>Ninguno se pierde en silencio:</b> si falla, queda en una tabla de control.</p>
+  </div>
+</section>
 
 <!-- ================================================================ 11c COSTOS -->
 <section class="slide oat2" style="--acc:#FFAB00" data-wipe="#FFAB00">
