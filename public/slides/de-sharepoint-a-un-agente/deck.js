@@ -306,3 +306,33 @@ addEventListener('hashchange', () => { const n = (parseInt(location.hash.slice(1
 go((parseInt(location.hash.slice(1)) || 1) - 1, true);
 const hint = document.getElementById('hint');
 hint.classList.add('show'); setTimeout(() => hint.classList.remove('show'), 4200);
+
+/* reloj de la hora + cronómetro desde que se empieza a presentar.
+   Arranca al pasar de la portada, sobrevive a recargas (sessionStorage); T o clic lo reinicia, C lo oculta.
+   Ámbar desde los 10 min (fin de las slides en el guion), rojo desde los 25 min (fin de la charla). */
+(() => {
+  const el = document.getElementById('clock'); if (!el) return;
+  const now = document.getElementById('clk-now'), run = document.getElementById('clk-run');
+  const KEY = 'sp-agente-t0';
+  let t0 = null;
+  try { t0 = Number(sessionStorage.getItem(KEY)) || null; } catch (e) {}
+  const start = () => { t0 = Date.now(); try { sessionStorage.setItem(KEY, String(t0)); } catch (e) {} tick(); };
+  const pad = n => String(n).padStart(2, '0');
+  function tick() {
+    const d = new Date();
+    now.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    const s = t0 ? Math.floor((Date.now() - t0) / 1000) : 0;
+    run.textContent = `${pad(Math.floor(s / 60))}:${pad(s % 60)}`;
+    el.classList.toggle('warn', s >= 600 && s < 1500);
+    el.classList.toggle('over', s >= 1500);
+  }
+  addEventListener('hashchange', () => { if (!t0 && location.hash !== '#1') start(); });
+  addEventListener('keydown', e => {
+    if (!t0 && ['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) start();
+    else if (e.key.toLowerCase() === 't') start();
+    else if (e.key.toLowerCase() === 'c') el.classList.toggle('off');
+  });
+  document.getElementById('next')?.addEventListener('click', () => { if (!t0) start(); });
+  el.addEventListener('click', start);
+  tick(); setInterval(tick, 1000);
+})();

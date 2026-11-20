@@ -348,3 +348,15 @@ svg .a[data-fx="growx"] { transform-origin: left center; }
 .speaker-career li img.tall { height:32px; }
 .speaker-career li span { margin-left:8px;font-size:17px;font-weight:700; }
 .speaker-career li.txt { font-size:18px;font-weight:800; }
+
+/* ---------- reloj y cronómetro del presentador (fuera del escenario, no escala) ---------- */
+#clock { position: fixed; left: 14px; bottom: 14px; z-index: 200; display: flex; align-items: center; gap: 8px;
+  padding: 5px 11px; border-radius: 999px; background: rgba(11, 32, 38, .38); color: rgba(255, 255, 255, .78);
+  font: 600 13px/1 "JetBrains Mono", ui-monospace, Menlo, monospace; letter-spacing: .02em; font-variant-numeric: tabular-nums;
+  opacity: .55; cursor: pointer; user-select: none; backdrop-filter: blur(4px); transition: opacity .2s, background .3s; }
+#clock:hover { opacity: 1; }
+#clock i { width: 1px; height: 11px; background: rgba(255, 255, 255, .35); }
+#clock.warn #clk-run { color: #FFC24D; }
+#clock.over #clk-run { color: #FF7A6B; }
+#clock.off { display: none; }
+@media print { #clock { display: none !important; } }
