@@ -33,7 +33,7 @@ export const PRESENTACIONES: Presentacion[] = [
 		categoria: 'databricks',
 		fecha: '2026-11-20',
 		tags: ['Negocio', 'Genie', 'Power BI', 'Unity Catalog'],
-		slides: 23,
+		slides: 24,
 	},
 	{
 		slug: 'de-sharepoint-a-un-agente',

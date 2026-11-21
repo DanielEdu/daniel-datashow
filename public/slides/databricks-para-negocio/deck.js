@@ -1,5 +1,5 @@
 /* Databricks para negocio — motor del deck + datos de los popups
-   v1.0 · creado 20-nov-2026 · actualizado 20-nov-2026
+   v1.1 · creado 20-nov-2026 · actualizado 20-nov-2026
    Motor copiado de «Databricks para todos» v1.2. Nombres de servicios según el catálogo del vault
    (renombres 2026). Estados GA/Preview/Beta a nov-2026: verificar en release notes antes de presentarlo en público. */
 
